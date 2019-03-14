@@ -45,6 +45,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     }
 
     public void clickHandle(View view){
+
         mPresenter.login("","");
     }
 }
