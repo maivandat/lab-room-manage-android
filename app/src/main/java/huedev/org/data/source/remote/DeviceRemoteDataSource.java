@@ -27,7 +27,7 @@ public class DeviceRemoteDataSource implements DeviceDataSource.RemoteDataSource
     }
 
     @Override
-    public Single<ListDeviceResponse> users() {
-        return null;
+    public Single<ListDeviceResponse> devices() {
+        return mApiDevice.devices();
     }
 }

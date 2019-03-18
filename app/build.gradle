@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "huedev.org"
-        minSdkVersion 26
+        minSdkVersion 18
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -41,4 +41,11 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$versions.retrofitLogger"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
     implementation "com.squareup.retrofit2:retrofit-mock:$versions.retrofit"
+    //CardView
+    implementation "com.android.support:cardview-v7:27.1.1"
+    //Gridlayout
+    implementation "com.android.support:gridlayout-v7:27.1.1"
+    //RecyclerView
+    implementation "com.android.support:recyclerview-v7:27.1.1"
+    implementation "com.android.support:design:27.1.1"
 }
