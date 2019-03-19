@@ -15,12 +15,11 @@ public class RoomPresenter implements RoomContract.Presenter {
     RoomRepository mRoomRepository;
     SchedulerProvider mSchedulerProvider;
 
-    public RoomPresenter(Context mContext, RoomContract.View mView, RoomRepository mRoomRepository,
-                         SchedulerProvider mSchedulerProvider) {
-        this.mContext = Preconditions.checkNotNull(mContext);
-        this.mView = Preconditions.checkNotNull(mView);
-        this.mRoomRepository = Preconditions.checkNotNull(mRoomRepository);
-        this.mSchedulerProvider = Preconditions.checkNotNull(mSchedulerProvider);
+    public RoomPresenter(Context context, RoomRepository roomRepository,
+                         SchedulerProvider schedulerProvider) {
+        this.mContext = Preconditions.checkNotNull(context);
+        this.mRoomRepository = Preconditions.checkNotNull(roomRepository);
+        this.mSchedulerProvider = Preconditions.checkNotNull(schedulerProvider);
     }
 
     @Override

@@ -21,7 +21,7 @@ public class RoomRepository implements RoomDataSource.LocalDataSource, RoomDataS
     @NonNull
     private RoomRemoteDataSource mRoomRemoteDataSource;
 
-    private RoomRepository(@NonNull RoomLocalDataSource roomLocalDataSource,
+    public RoomRepository(@NonNull RoomLocalDataSource roomLocalDataSource,
                            @NonNull RoomRemoteDataSource remoteDataSource){
         mRoomLocalDataSource = roomLocalDataSource;
         mRoomRemoteDataSource = remoteDataSource;

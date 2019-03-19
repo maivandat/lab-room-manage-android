@@ -48,6 +48,17 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager_main"
+        android:layout_below="@id/appBar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+
+    </android.support.v4.view.ViewPager>
+
     <android.support.design.widget.BottomNavigationView
         android:layout_alignParentBottom="true"
         android:id="@+id/navigation"
