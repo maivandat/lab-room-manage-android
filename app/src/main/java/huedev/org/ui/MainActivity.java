@@ -1,4 +1,4 @@
-package huedev.org.ui.auth;
+package huedev.org.ui;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,11 +7,14 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import huedev.org.R;
+import huedev.org.ui.adapter.ViewPagerAdapter;
 import huedev.org.ui.base.BaseActivity;
+import huedev.org.ui.fragments.room.RoomFragment;
 
-public class IndexActivity extends BaseActivity {
+public class MainActivity extends BaseActivity {
     Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +26,6 @@ public class IndexActivity extends BaseActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
     }
 
     @Override
@@ -41,6 +43,8 @@ public class IndexActivity extends BaseActivity {
             switch (item.getItemId()) {
                 case R.id.menubt_home:
                     toolbar.setTitle("Home");
+                    ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+                    adapter.addFragment(new RoomFragment(), "Home");
                     return true;
                 case R.id.menubt_calendar:
                     toolbar.setTitle("Calendar");
