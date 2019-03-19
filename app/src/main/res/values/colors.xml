@@ -6,5 +6,6 @@
     <color name="app_bar_bg">#5e80b7</color>
     <color name="activity_bg">#3f689d</color>
     <color name="text_color">#ACA9D6</color>
+    <color name="text_color_black">#000</color>
     <color name="bgBottomNavigation">#3F51B5</color>
 </resources>
