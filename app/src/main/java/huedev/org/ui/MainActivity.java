@@ -15,16 +15,16 @@ import huedev.org.ui.base.BaseActivity;
 import huedev.org.ui.fragments.room.RoomFragment;
 
 public class MainActivity extends BaseActivity {
-    Toolbar toolbar;
-    ViewPager viewPager_main;
+    Toolbar mToolbar;
+    ViewPager mViewPagerMain;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar = findViewById(R.id.toolbar_main);
-        viewPager_main = findViewById(R.id.viewPager_main);
-        toolbar.setTitle("");
-        setSupportActionBar(toolbar);
+        mToolbar = findViewById(R.id.toolbar_main);
+        mViewPagerMain = findViewById(R.id.viewPager_main);
+        mToolbar.setTitle("");
+        setSupportActionBar(mToolbar);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -43,19 +43,19 @@ public class MainActivity extends BaseActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.menubt_home:
-                    toolbar.setTitle("Home");
+                    mToolbar.setTitle("Home");
                     ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
                     adapter.addFragment(new RoomFragment(), "Home");
-                    viewPager_main.setAdapter(adapter);
+                    mViewPagerMain.setAdapter(adapter);
                     return true;
                 case R.id.menubt_calendar:
-                    toolbar.setTitle("Calendar");
+                    mToolbar.setTitle("Calendar");
                     return true;
                 case R.id.menubt_feeds:
-                    toolbar.setTitle("Feeds");
+                    mToolbar.setTitle("Feeds");
                     return true;
                 case R.id.menubt_messenger:
-                    toolbar.setTitle("Messenger");
+                    mToolbar.setTitle("Messenger");
                     return true;
             }
             return false;

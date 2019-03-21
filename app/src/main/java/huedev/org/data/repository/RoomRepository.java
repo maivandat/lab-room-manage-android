@@ -3,13 +3,9 @@ package huedev.org.data.repository;
 import android.support.annotation.NonNull;
 
 import huedev.org.data.source.RoomDataSource;
-import huedev.org.data.source.UserDataSource;
 import huedev.org.data.source.local.RoomLocalDataSource;
-import huedev.org.data.source.local.UserLocalDataSource;
 import huedev.org.data.source.remote.RoomRemoteDataSource;
-import huedev.org.data.source.remote.UserRemoteDataSource;
-import huedev.org.data.source.remote.response.ListRoomResponse;
-import huedev.org.data.source.remote.response.ListUserResponse;
+import huedev.org.data.source.remote.response.room.ListRoomResponse;
 import io.reactivex.Single;
 
 public class RoomRepository implements RoomDataSource.LocalDataSource, RoomDataSource.RemoteDataSource {

@@ -2,14 +2,10 @@ package huedev.org.data.repository;
 
 import android.support.annotation.NonNull;
 
-import huedev.org.data.source.LoginDataSource;
 import huedev.org.data.source.UserDataSource;
-import huedev.org.data.source.local.LoginLocalDataSource;
 import huedev.org.data.source.local.UserLocalDataSource;
-import huedev.org.data.source.remote.LoginRemoteDataSource;
 import huedev.org.data.source.remote.UserRemoteDataSource;
-import huedev.org.data.source.remote.response.ListUserResponse;
-import huedev.org.data.source.remote.response.auth.LoginResponse;
+import huedev.org.data.source.remote.response.user.ListUserResponse;
 import io.reactivex.Single;
 
 public class UserRepository implements UserDataSource.LocalDataSource, UserDataSource.RemoteDataSource {

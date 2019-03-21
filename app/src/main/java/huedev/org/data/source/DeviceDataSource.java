@@ -1,7 +1,6 @@
 package huedev.org.data.source;
 
-import huedev.org.data.source.remote.response.ListDeviceResponse;
-import huedev.org.data.source.remote.response.ListUserResponse;
+import huedev.org.data.source.remote.response.device.ListDeviceResponse;
 import io.reactivex.Single;
 
 public interface DeviceDataSource {

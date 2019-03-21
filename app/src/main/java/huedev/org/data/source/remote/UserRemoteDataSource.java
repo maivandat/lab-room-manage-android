@@ -4,7 +4,7 @@ import android.content.Context;
 
 import huedev.org.data.source.UserDataSource;
 import huedev.org.data.source.remote.api.ApiUser;
-import huedev.org.data.source.remote.response.ListUserResponse;
+import huedev.org.data.source.remote.response.user.ListUserResponse;
 import huedev.org.data.source.remote.service.AppServiceClient;
 import io.reactivex.Single;
 

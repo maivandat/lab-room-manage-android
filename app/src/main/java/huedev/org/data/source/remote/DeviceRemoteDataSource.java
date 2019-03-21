@@ -3,11 +3,8 @@ package huedev.org.data.source.remote;
 import android.content.Context;
 
 import huedev.org.data.source.DeviceDataSource;
-import huedev.org.data.source.UserDataSource;
 import huedev.org.data.source.remote.api.ApiDevice;
-import huedev.org.data.source.remote.api.ApiUser;
-import huedev.org.data.source.remote.response.ListDeviceResponse;
-import huedev.org.data.source.remote.response.ListUserResponse;
+import huedev.org.data.source.remote.response.device.ListDeviceResponse;
 import huedev.org.data.source.remote.service.AppServiceClient;
 import io.reactivex.Single;
 
