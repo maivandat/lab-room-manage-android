@@ -4,7 +4,7 @@ import android.content.Context;
 
 import huedev.org.data.source.RoomDataSource;
 import huedev.org.data.source.remote.api.ApiRoom;
-import huedev.org.data.source.remote.response.ListRoomResponse;
+import huedev.org.data.source.remote.response.room.ListRoomResponse;
 import huedev.org.data.source.remote.service.AppServiceClient;
 import io.reactivex.Single;
 

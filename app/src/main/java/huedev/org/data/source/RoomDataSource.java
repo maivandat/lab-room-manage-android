@@ -1,6 +1,6 @@
 package huedev.org.data.source;
 
-import huedev.org.data.source.remote.response.ListRoomResponse;
+import huedev.org.data.source.remote.response.room.ListRoomResponse;
 import io.reactivex.Single;
 
 public interface RoomDataSource {
