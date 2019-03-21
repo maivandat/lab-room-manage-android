@@ -3,6 +3,7 @@ package huedev.org.data.source.remote.service;
 import android.content.Context;
 
 import huedev.org.data.source.remote.api.ApiAuth;
+import huedev.org.data.source.remote.api.ApiComputer;
 import huedev.org.data.source.remote.api.ApiDevice;
 import huedev.org.data.source.remote.api.ApiRoom;
 import huedev.org.data.source.remote.api.ApiUser;
@@ -14,6 +15,7 @@ public class AppServiceClient extends ServiceClient {
     private static ApiUser mApiUser;
     private static ApiDevice mApiDevice;
     private static ApiRoom mApiRoom;
+    private static ApiComputer mApiComputer;
 
     public static ApiAuth getLoginRemoteInstance(Context context) {
         if(mApiAuth == null){
@@ -41,5 +43,12 @@ public class AppServiceClient extends ServiceClient {
             mApiRoom = createService(context, AppConstants.HOST_URL, ApiRoom.class);
         }
         return mApiRoom;
+    }
+
+    public static ApiComputer getComputerRemoteInstance(Context context){
+        if (mApiComputer == null){
+            mApiComputer = createService(context, AppConstants.HOST_URL, ApiComputer.class);
+        }
+        return mApiComputer;
     }
 }

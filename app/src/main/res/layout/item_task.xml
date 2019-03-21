@@ -5,13 +5,12 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:src="@drawable/more"
+        android:src="@drawable/manager"
         android:id="@+id/img.itemTask"
         android:layout_width="@dimen/size_img"
         android:layout_height="@dimen/size_img" />
 
     <TextView
-
         android:textColor="@color/text_color_black"
         android:padding="@dimen/left_rc"
         android:text="Content"
@@ -19,6 +18,7 @@
         android:layout_toRightOf="@id/img.itemTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
     <ImageButton
         android:padding="10dp"
         android:scaleType="fitXY"

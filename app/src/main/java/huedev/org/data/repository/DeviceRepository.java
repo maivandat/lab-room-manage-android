@@ -1,4 +1,5 @@
 package huedev.org.data.repository;
 
-public class DeviceRepository {
+public class DeviceRepository  {
+
 }
