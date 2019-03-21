@@ -53,11 +53,14 @@
         android:id="@+id/viewPager_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/appBar_layout">
+        android:layout_below="@id/appBar_layout"
+        android:layout_above="@id/navigation"
+        android:layout_marginTop="-2dp">
 
     </android.support.v4.view.ViewPager>
 
     <android.support.design.widget.BottomNavigationView
+
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

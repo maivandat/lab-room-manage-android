@@ -8,5 +8,8 @@
     <string name="title_feeds">Feeds</string>
     <string name="title_item">Title</string>
     <string name="describe">Describe</string>
+    <string name="floor">Floor</string>
     <string name="title_messenger">Messenger</string>
+    <string name="title_today_task">TODAY TASK</string>
+    <string name="title_room_task">ROOM TASK</string>
 </resources>

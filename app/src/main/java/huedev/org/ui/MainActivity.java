@@ -17,6 +17,7 @@ import huedev.org.ui.fragments.room.RoomFragment;
 public class MainActivity extends BaseActivity {
     Toolbar mToolbar;
     ViewPager mViewPagerMain;
+    ViewPagerAdapter mViewPagerAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +25,11 @@ public class MainActivity extends BaseActivity {
         mToolbar = findViewById(R.id.toolbar_main);
         mViewPagerMain = findViewById(R.id.viewPager_main);
         mToolbar.setTitle("");
+        mViewPagerAdapter  = new ViewPagerAdapter(getSupportFragmentManager());
         setSupportActionBar(mToolbar);
+
+        mViewPagerAdapter.addFragment(new RoomFragment(), "Home");
+        mViewPagerMain.setAdapter(mViewPagerAdapter);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -44,9 +49,8 @@ public class MainActivity extends BaseActivity {
             switch (item.getItemId()) {
                 case R.id.menubt_home:
                     mToolbar.setTitle("Home");
-                    ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-                    adapter.addFragment(new RoomFragment(), "Home");
-                    mViewPagerMain.setAdapter(adapter);
+                    mViewPagerAdapter.addFragment(new RoomFragment(), "Home");
+                    mViewPagerMain.setAdapter(mViewPagerAdapter);
                     return true;
                 case R.id.menubt_calendar:
                     mToolbar.setTitle("Calendar");

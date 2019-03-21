@@ -1,7 +1,7 @@
 package huedev.org.utils;
 
 public class AppConstants {
-    public static final String HOST_URL = "http://192.168.1.109:3000/";
+    public static final String HOST_URL = "http://172.20.112.160:3000/";
 
     public static final String APP_PREFS_NAME = "LAB_ROOM_MANAGE_APP_PREFS";
     public static final String API_TOKEN = "API_TOKEN";

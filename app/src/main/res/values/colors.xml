@@ -8,4 +8,5 @@
     <color name="text_color">#ACA9D6</color>
     <color name="text_color_black">#000</color>
     <color name="bgBottomNavigation">#3F51B5</color>
+    <color name="colorWhile">#fff</color>
 </resources>
