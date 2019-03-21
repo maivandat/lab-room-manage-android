@@ -2,15 +2,49 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:padding="5dp"
+    android:weightSum="10"
     android:layout_height="match_parent">
-    <TextView
-        android:text="Thang ga"
+    <LinearLayout
+        android:padding="5dp"
+        android:orientation="vertical"
+        android:layout_weight="3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rc.room"
+        <TextView
+            android:textSize="@dimen/text_title"
+            android:textColor="@color/text_color"
+            android:text="@string/title_today_task"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <android.support.v7.widget.RecyclerView
+            android:padding="@dimen/left_rc"
+            android:id="@+id/rc.task"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="5dp"
+        android:orientation="vertical"
+        android:layout_weight="5"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="@dimen/text_title"
+            android:textColor="@color/text_color"
+            android:text="@string/title_room_task"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <android.support.v7.widget.RecyclerView
+            android:padding="@dimen/left_rc"
+            android:id="@+id/rc.room"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
 </LinearLayout>

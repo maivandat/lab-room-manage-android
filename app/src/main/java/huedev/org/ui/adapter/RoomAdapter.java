@@ -33,8 +33,8 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.MyViewHolder> 
             super(itemView);
             itemView.setOnClickListener(this);
 
-            txt_title_item = itemView.findViewById(R.id.txt_title_room_item);
-            txt_descibe_item = itemView.findViewById(R.id.txt_describe_room_item);
+            txt_title_item = itemView.findViewById(R.id.tv_titleItemRoom);
+            txt_descibe_item = itemView.findViewById(R.id.tv_describeItemRoom);
         }
 
         private void setData(Room item){
