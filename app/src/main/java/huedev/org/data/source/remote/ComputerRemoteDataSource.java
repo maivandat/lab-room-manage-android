@@ -7,6 +7,7 @@ import huedev.org.data.source.remote.api.ApiComputer;
 import huedev.org.data.source.remote.response.computer.ListComputerResponse;
 import huedev.org.data.source.remote.service.AppServiceClient;
 import io.reactivex.Single;
+import retrofit2.Call;
 
 public class ComputerRemoteDataSource implements ComputerDataSource.RemoteDataSource {
     private static ComputerRemoteDataSource instance;
@@ -27,4 +28,5 @@ public class ComputerRemoteDataSource implements ComputerDataSource.RemoteDataSo
     public Single<ListComputerResponse> computersByRoom(int roomId) {
         return mApiComputer.computersByRoom(roomId);
     }
+
 }

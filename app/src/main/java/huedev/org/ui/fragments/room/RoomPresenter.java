@@ -33,12 +33,12 @@ public class RoomPresenter implements RoomContract.Presenter {
     }
 
     private void handleRoomsSuccess(ListRoomResponse listRoomResponse){
-        mView.updateRoomsList(listRoomResponse.roomList);
         mView.hideLoadingIndicator();
+        mView.updateRoomsList(listRoomResponse.roomList);
     }
 
     private void handleRoomsFailed(Throwable err){
-        mView.hideLoadingIndicator();
+        mView.showLoginError(err);
     }
     @Override
     public void setView(RoomContract.View view) {

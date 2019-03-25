@@ -20,7 +20,8 @@
             android:layout_height="wrap_content" />
 
         <android.support.v7.widget.RecyclerView
-            android:padding="@dimen/left_rc"
+            android:layout_marginTop="@dimen/left_rc"
+            android:layout_marginBottom="@dimen/left_rc"
             android:id="@+id/rc.task"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -41,7 +42,8 @@
             android:layout_height="wrap_content" />
 
         <android.support.v7.widget.RecyclerView
-            android:padding="@dimen/left_rc"
+            android:layout_marginTop="@dimen/left_rc"
+            android:layout_marginBottom="@dimen/left_rc"
             android:id="@+id/rc.room"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

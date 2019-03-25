@@ -3,7 +3,6 @@ package huedev.org.ui;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -37,7 +36,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_maintop, menu);
+        getMenuInflater().inflate(R.menu.menu_main_hometop, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
