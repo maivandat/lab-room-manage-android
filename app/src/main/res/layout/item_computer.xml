@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:background="@drawable/custom_border"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:src="@drawable/logo_pc"
+        android:id="@+id/iv.logoComputer"
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
+
+    <TextView
+        android:id="@+id/tv.nameComputer"
+        android:textSize="20sp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/text_color_black"
+        android:gravity="center"
+        android:text="Computer Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:background="@drawable/custom_border"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv.describeItemComputer"
+            android:textSize="15dp"
+            android:text="@string/describe"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ImageButton
+            android:id="@+id/ib.moreContentItemComputer"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:background="@null"
+            android:src="@drawable/more_computer"
+            android:layout_weight="1"
+            android:layout_width="30dp"
+            android:layout_height="15dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
