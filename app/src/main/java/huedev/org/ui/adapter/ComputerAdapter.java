@@ -11,6 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -21,27 +22,32 @@ import huedev.org.data.model.Computer;
 public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.ComputerViewholder> {
     private Context mContext;
     private List<Computer> mListComputer;
-    private ItemListener mItemListener;
 
-    public ComputerAdapter(Context Context, List<Computer> ListComputer, ItemListener ItemListener) {
+    public ComputerAdapter(Context Context, List<Computer> ListComputer) {
         this.mContext = Context;
         this.mListComputer = ListComputer;
-        this.mItemListener = ItemListener;
+
     }
 
     public class ComputerViewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvName, tvDetail;
-        ImageButton ibMoreContent;
+        ImageButton ibInsivilityDetailComputer;
+        LinearLayout linearRoomDetail,linearRoomMain, linearChildDetailComputer;
 
         Computer cptItem;
         public ComputerViewholder(@NonNull View itemView) {
             super(itemView);
+
             tvName = itemView.findViewById(R.id.tv_nameComputer);
             tvDetail = itemView.findViewById(R.id.tv_describeItemComputer);
-            ibMoreContent = itemView.findViewById(R.id.ib_moreContentItemComputer);
+            ibInsivilityDetailComputer = itemView.findViewById(R.id.ib_insivilityDetailComputer);
+            linearRoomDetail = itemView.findViewById(R.id.linear_detailcomputer);
+            linearRoomMain = itemView.findViewById(R.id.linear_maincomputer);
+            linearChildDetailComputer = itemView.findViewById(R.id.linear_childDetailComputer);
+            linearChildDetailComputer.setOnClickListener(this);
+            tvDetail.setOnClickListener(this);
+            ibInsivilityDetailComputer.setOnClickListener(this);
 
-            tvDetail.setOnClickListener(this::onClick);
-            ibMoreContent.setOnClickListener(this::onClick);
         }
 
         public void setData (Computer computer){
@@ -51,10 +57,25 @@ public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.Comput
 
         @Override
         public void onClick(View view) {
-            if (mItemListener != null){
-                mItemListener.onItemClick();
+            switch (view.getId()){
+                case R.id.linear_childDetailComputer:
+                    hideView(linearRoomDetail, mContext, R.anim.slide_top_in, View.VISIBLE);
+                    break;
+                case R.id.tv_describeItemComputer:
+                    hideView(linearRoomDetail, mContext, R.anim.slide_top_in, View.VISIBLE);
+                    break;
+                case R.id.ib_insivilityDetailComputer:
+                    hideView(linearRoomDetail, mContext, R.anim.slide_bottom_out, View.INVISIBLE);
+                    break;
             }
         }
+
+        private void hideView(LinearLayout linearRoomDetail, Context context, int anim, int visibility) {
+            Animation animation = AnimationUtils.loadAnimation(context, anim);
+            linearRoomDetail.setVisibility(visibility);
+            linearRoomDetail.startAnimation(animation);
+        }
+
     }
 
     @NonNull
@@ -73,10 +94,5 @@ public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.Comput
     public int getItemCount() {
         return mListComputer.size();
     }
-
-    public interface ItemListener {
-        void onItemClick();
-    }
-
 
 }

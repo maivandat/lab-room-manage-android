@@ -5,7 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -24,13 +26,12 @@ import huedev.org.ui.base.BaseActivity;
 import huedev.org.utils.rx.BaseSchedulerProvider;
 import huedev.org.utils.rx.SchedulerProvider;
 
-public class ComputerActivity extends BaseActivity implements ComputerContract.View, View.OnClickListener {
+
+public class ComputerActivity extends BaseActivity implements ComputerContract.View{
 
     ComputerContract.Presenter mComputerPresenter;
     RecyclerView mRvComputer;
     ComputerAdapter mComputerAdapter;
-
-    LinearLayout linearMainComputer, linearDetailComputer;
 
     Toolbar tbComputer;
 
@@ -40,8 +41,6 @@ public class ComputerActivity extends BaseActivity implements ComputerContract.V
         setContentView(R.layout.activity_computer);
         tbComputer = findViewById(R.id.toolbar_computer);
         mRvComputer = findViewById(R.id.rv_computer);
-        linearMainComputer = findViewById(R.id.linear_maincomputer);
-        linearDetailComputer = findViewById(R.id.linear_detailcomputer);
         tbComputer.setTitle("");
         setSupportActionBar(tbComputer);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -77,10 +76,16 @@ public class ComputerActivity extends BaseActivity implements ComputerContract.V
     }
 
     @Override
-    public void updateComputerList(List<Computer> computerList) {
-        mComputerAdapter = new ComputerAdapter(this, computerList, () -> {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_computerReset){
 
-        });
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void updateComputerList(List<Computer> computerList) {
+        mComputerAdapter = new ComputerAdapter(this, computerList);
 
         mRvComputer.setAdapter(mComputerAdapter);
         GridLayoutManager manager = new GridLayoutManager(
@@ -108,31 +113,4 @@ public class ComputerActivity extends BaseActivity implements ComputerContract.V
                 "" + throwable.toString(), Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.tv_describeItemComputer:
-                hideView(linearDetailComputer);
-                break;
-        }
-    }
-
-    private void hideView(LinearLayout linearLayout){
-        Animation animation = AnimationUtils.loadAnimation(this, R.anim.scale_layout_computer);
-        //use this to make it longer:  animation.setDuration(1000);
-        animation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {}
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {}
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                linearLayout.setVisibility(View.VISIBLE);
-            }
-        });
-
-        linearLayout.startAnimation(animation);
-    }
 }

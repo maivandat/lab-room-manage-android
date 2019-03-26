@@ -42,46 +42,39 @@
             android:layout_height="wrap_content" />
 
         <LinearLayout
+            android:id="@+id/linear.childDetailComputer"
             android:background="@drawable/custom_border_detail"
             android:padding="@dimen/left_rc_10"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="@dimen/size_img_40"
+            android:clickable="true">
 
             <TextView
                 android:id="@+id/tv.describeItemComputer"
-                android:textSize="@dimen/left_rc_10"
+                android:textSize="@dimen/margin_15"
                 android:text="@string/detail"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"/>
 
-            <ImageButton
-                android:id="@+id/ib.moreContentItemComputer"
-                android:layout_gravity="center"
-                android:scaleType="fitXY"
-                android:background="@null"
-                android:src="@drawable/more_computer"
-                android:layout_weight="1"
-                android:layout_width="@dimen/layout_size_30"
-                android:layout_height="@dimen/margin_15" />
-
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linear.detailcomputer"
         android:visibility="invisible"
         android:layout_marginTop="@dimen/margin_5"
         android:layout_marginLeft="@dimen/margin_2"
         android:layout_marginRight="@dimen/margin_2"
-        android:id="@+id/linear.detailcomputer"
         android:background="@drawable/custom_border_status"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageButton
+            android:id="@+id/ib.insivilityDetailComputer"
             android:layout_gravity="center"
             android:scaleType="fitXY"
             android:background="@null"
@@ -96,7 +89,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:textSize="@dimen/left_rc_10"
+                android:textSize="@dimen/margin_15"
                 android:textColor="@color/text_color"
                 android:id="@+id/tv.cpuDevice"
                 android:text="CPU: "
@@ -105,7 +98,7 @@
 
             <TextView
                 android:layout_marginTop="@dimen/margin_5"
-                android:textSize="@dimen/left_rc_10"
+                android:textSize="@dimen/margin_15"
                 android:textColor="@color/text_color"
                 android:id="@+id/tv.driverDevice"
                 android:text="Hard Drive: "
@@ -114,15 +107,13 @@
 
             <TextView
                 android:layout_marginTop="@dimen/margin_5"
-                android:textSize="@dimen/left_rc_10"
+                android:textSize="@dimen/margin_15"
                 android:textColor="@color/text_color"
                 android:id="@+id/tv.chipDevice"
                 android:text="Ram: "
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-
-
 
     </LinearLayout>
 </FrameLayout>
