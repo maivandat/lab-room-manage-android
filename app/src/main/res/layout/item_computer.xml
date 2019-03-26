@@ -3,41 +3,50 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_marginTop="5dp"
-    android:layout_marginLeft="2dp"
-    android:layout_marginRight="2dp"
+    android:layout_marginTop="@dimen/margin_5"
+    android:layout_marginLeft="@dimen/margin_2"
+    android:layout_marginRight="@dimen/margin_2"
     android:background="@drawable/custom_border"
     android:layout_height="wrap_content">
 
+    <View
+        android:layout_marginRight="@dimen/left_rc_10"
+        android:layout_marginTop="@dimen/left_rc_10"
+        android:layout_gravity="right"
+        android:background="@drawable/green_status"
+        android:layout_centerVertical="true"
+        android:layout_width="@dimen/left_rc_10"
+        android:layout_height="@dimen/left_rc_10"/>
+
     <ImageView
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:src="@drawable/logo_pc"
         android:id="@+id/iv.logoComputer"
-        android:layout_width="80dp"
-        android:layout_height="80dp" />
+        android:layout_width="@dimen/layout_size_80"
+        android:layout_height="@dimen/layout_size_80"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_20"
+        android:src="@drawable/logo_pc" />
 
     <TextView
+        android:layout_gravity="center"
         android:id="@+id/tv.nameComputer"
-        android:textSize="20sp"
-        android:layout_marginTop="5dp"
+        android:textSize="@dimen/margin_15"
         android:textColor="@color/text_color_black"
         android:gravity="center"
         android:text="Computer Name"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <LinearLayout
-        android:background="@drawable/custom_border"
-        android:padding="10dp"
+        android:background="@drawable/custom_border_detail"
+        android:padding="@dimen/left_rc_10"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/tv.describeItemComputer"
-            android:textSize="15dp"
-            android:text="@string/describe"
+            android:textSize="@dimen/left_rc_10"
+            android:text="@string/detail"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -49,8 +58,8 @@
             android:background="@null"
             android:src="@drawable/more_computer"
             android:layout_weight="1"
-            android:layout_width="30dp"
-            android:layout_height="15dp" />
+            android:layout_width="@dimen/layout_size_30"
+            android:layout_height="@dimen/margin_15" />
 
     </LinearLayout>
 

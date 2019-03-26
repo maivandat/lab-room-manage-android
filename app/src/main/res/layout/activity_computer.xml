@@ -3,9 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:background="@color/bg_color"
     android:layout_height="match_parent">
-
-
     <android.support.design.widget.AppBarLayout
         android:id="@+id/abl.computer"
         android:background="@color/bgToolbarComputer"
@@ -21,18 +20,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:gravity="left"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:textColor="@color/text_color"
-                        android:textSize="@dimen/text_title"
-                        android:text="@string/title_computer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
+                <TextView
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/text_title_18"
+                    android:text="@string/computer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
             </android.support.v7.widget.Toolbar>
 
@@ -41,7 +34,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:padding="5dp"
+        android:padding="@dimen/margin_5"
         android:id="@+id/rv.computer"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
