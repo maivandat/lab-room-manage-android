@@ -1,16 +1,19 @@
 <resources>
     <string name="app_name">Lab Room Manage</string>
-    <string name="title_todolist">TODO LIST</string>
-    <string name="title_computer">COMPUTER</string>
-    <string name="title_add">Add</string>
-    <string name="title_notify">Notify</string>
-    <string name="title_home">Home</string>
-    <string name="title_calendar">Calendar</string>
-    <string name="title_feeds">Feeds</string>
-    <string name="title_item">Title</string>
+    <string name="todolist">TODO LIST</string>
+    <string name="computer">COMPUTER</string>
+    <string name="add">Add</string>
+    <string name="notify">Notify</string>
+    <string name="home">Home</string>
+    <string name="calendar">Calendar</string>
+    <string name="feeds">Feeds</string>
+    <string name="title">Title</string>
     <string name="describe">Describe</string>
     <string name="floor">Floor</string>
-    <string name="title_messenger">Messenger</string>
-    <string name="title_today_task">TODAY TASK</string>
-    <string name="title_room_task">ROOM TASK</string>
+    <string name="messenger">Messenger</string>
+    <string name="today_task">TODAY TASK</string>
+    <string name="room_task">ROOM TASK</string>
+    <string name="content_task">Content</string>
+    <string name="view_item_room">VIEW ➞</string>
+    <string name="detail">Detail</string>
 </resources>

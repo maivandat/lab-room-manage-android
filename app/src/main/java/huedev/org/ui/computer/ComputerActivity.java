@@ -35,7 +35,7 @@ public class ComputerActivity extends BaseActivity implements ComputerContract.V
         setContentView(R.layout.activity_computer);
         tbComputer = findViewById(R.id.toolbar_computer);
         mRvComputer = findViewById(R.id.rv_computer);
-
+        tbComputer.setTitle("");
         setSupportActionBar(tbComputer);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

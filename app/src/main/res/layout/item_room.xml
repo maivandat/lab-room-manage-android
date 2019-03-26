@@ -14,7 +14,7 @@
         <View
             android:layout_gravity="center"
             android:background="@color/colorWhile"
-            android:layout_width="3dp"
+            android:layout_width="@dimen/layout_size_3"
             android:layout_height="0dp"
             android:layout_weight="1"
             />
@@ -23,37 +23,37 @@
             android:layout_gravity="center"
             android:background="@drawable/custom_point"
             android:id="@+id/tv.point"
-            android:layout_width="15dp"
-            android:layout_height="15dp"/>
+            android:layout_width="@dimen/margin_15"
+            android:layout_height="@dimen/margin_15"/>
 
 
         <View
             android:layout_gravity="center"
             android:background="@color/colorWhile"
-            android:layout_width="3dp"
+            android:layout_width="@dimen/layout_size_3"
             android:layout_height="0dp"
             android:layout_weight="1"/>
     </LinearLayout>
 
     <RelativeLayout
-        android:padding="5dp"
+        android:padding="@dimen/margin_5"
         android:layout_weight="1"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="10dp"
-        android:background="#fff"
+        android:layout_marginBottom="@dimen/margin_20"
+        android:layout_marginLeft="@dimen/left_rc_10"
+        android:background="@color/colorWhile"
         android:layout_toRightOf="@id/v.point"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <ImageView
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="@dimen/margin_5"
+            android:layout_marginTop="@dimen/left_rc_10"
             android:src="@drawable/logo_room"
             android:id="@+id/iv.logoRoom"
-            android:layout_width="50dp"
-            android:layout_height="50dp" />
+            android:layout_width="@dimen/layout_size_50"
+            android:layout_height="@dimen/layout_size_50" />
 
         <RelativeLayout
-            android:padding="10dp"
+            android:padding="@dimen/left_rc_10"
             android:layout_toRightOf="@id/iv.logoRoom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -61,9 +61,9 @@
             <TextView
                 android:textColor="@color/text_color_black"
                 android:textStyle="bold"
-                android:textSize="@dimen/item_room_title"
+                android:textSize="@dimen/item_room_title_25"
                 android:id="@+id/tv.titleItemRoom"
-                android:text="@string/title_item"
+                android:text="@string/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -79,7 +79,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_below="@id/tv.floorItemRoom"
                 android:id="@+id/tv.describeItemRoom"
-                android:textSize="@dimen/text_title"
+                android:textSize="@dimen/text_title_18"
                 android:text="@string/describe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -87,7 +87,7 @@
             <TextView
                 android:id="@+id/tv.horizontal"
                 android:background="@color/text_color"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/left_rc_10"
                 android:layout_below="@id/tv.describeItemRoom"
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
@@ -95,9 +95,9 @@
             <TextView
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/left_rc_10"
                 android:layout_below="@id/tv.horizontal"
-                android:text="VIEW ➞"
+                android:text="@string/view_item_room"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 

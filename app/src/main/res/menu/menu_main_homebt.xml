@@ -3,20 +3,20 @@
     <item
         android:id="@+id/menubt_home"
         android:icon="@drawable/home"
-        android:title="@string/title_home" />
+        android:title="@string/home" />
 
     <item
         android:id="@+id/menubt_calendar"
         android:icon="@drawable/calendar"
-        android:title="@string/title_calendar" />
+        android:title="@string/calendar" />
 
     <item
         android:id="@+id/menubt_feeds"
         android:icon="@drawable/feed"
-        android:title="@string/title_feeds" />
+        android:title="@string/feeds" />
 
     <item
         android:id="@+id/menubt_messenger"
         android:icon="@drawable/mess"
-        android:title="@string/title_messenger" />
+        android:title="@string/messenger" />
 </menu>

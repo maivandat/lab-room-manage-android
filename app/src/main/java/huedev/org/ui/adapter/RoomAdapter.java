@@ -18,28 +18,28 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
     private List<Room> mRoomList;
     private ItemListener mItemListener;
 
-    public RoomAdapter(Context mContext, List<Room> roomList, ItemListener itemListener) {
-        this.mContext = mContext;
+    public RoomAdapter(Context context, List<Room> roomList, ItemListener itemListener) {
+        this.mContext = context;
         this.mRoomList = roomList;
         this.mItemListener = itemListener;
     }
 
     public class RoomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView txt_title_item, txt_descibe_item;
-        Room roomItem;
+        TextView tvTitleItem, tvDescibeItem;
+        Room rItem;
         public RoomViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
 
-            txt_title_item = itemView.findViewById(R.id.tv_titleItemRoom);
-            txt_descibe_item = itemView.findViewById(R.id.tv_describeItemRoom);
+            tvTitleItem = itemView.findViewById(R.id.tv_titleItemRoom);
+            tvDescibeItem = itemView.findViewById(R.id.tv_describeItemRoom);
         }
 
-        public void setData(Room item){
-            this.roomItem = item;
+        public void setData(Room room){
+            this.rItem = room;
 
-            txt_title_item.setText(item.getName());
-            txt_descibe_item.setText(item.getStatus());
+            tvTitleItem.setText(room.getName());
+            tvDescibeItem.setText(room.getStatus());
         }
 
         @Override

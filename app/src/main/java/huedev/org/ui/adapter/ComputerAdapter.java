@@ -27,22 +27,20 @@ public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.Comput
     }
 
     public class ComputerViewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView txt_name, txt_describe;
-        ImageButton ib_moreContent;
-        Computer mItem;
+        TextView tvName;
+        ImageButton ibMoreContent;
+        Computer cptItem;
         public ComputerViewholder(@NonNull View itemView) {
             super(itemView);
-            txt_name = itemView.findViewById(R.id.tv_nameComputer);
-            txt_describe = itemView.findViewById(R.id.tv_describeItemComputer);
-            ib_moreContent = itemView.findViewById(R.id.ib_moreContentItemComputer);
+            tvName = itemView.findViewById(R.id.tv_nameComputer);
+            ibMoreContent = itemView.findViewById(R.id.ib_moreContentItemComputer);
 
-            ib_moreContent.setOnClickListener(this::onClick);
+            ibMoreContent.setOnClickListener(this::onClick);
         }
 
-        public void setData (Computer item){
-            this.mItem = item;
-            txt_name.setText(item.getName());
-            txt_describe.setText(item.getDesc());
+        public void setData (Computer computer){
+            this.cptItem = computer;
+            tvName.setText(computer.getName());
         }
 
         @Override
