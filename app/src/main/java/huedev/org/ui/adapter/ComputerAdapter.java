@@ -6,7 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -27,14 +30,17 @@ public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.Comput
     }
 
     public class ComputerViewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView tvName;
+        TextView tvName, tvDetail;
         ImageButton ibMoreContent;
+
         Computer cptItem;
         public ComputerViewholder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tv_nameComputer);
+            tvDetail = itemView.findViewById(R.id.tv_describeItemComputer);
             ibMoreContent = itemView.findViewById(R.id.ib_moreContentItemComputer);
 
+            tvDetail.setOnClickListener(this::onClick);
             ibMoreContent.setOnClickListener(this::onClick);
         }
 
@@ -71,4 +77,6 @@ public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.Comput
     public interface ItemListener {
         void onItemClick();
     }
+
+
 }
