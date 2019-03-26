@@ -15,4 +15,5 @@
     <color name="yellow_status">#FF9800</color>
     <color name="red_status">#F44336</color>
     <color name="green_status">#4CAF50</color>
+    <color name="black_status">#C8000000</color>
 </resources>
