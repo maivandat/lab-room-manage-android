@@ -7,6 +7,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface ApiComputer {
-    @GET("rooms/{roomId}")
-    Single<ListComputerResponse> computersByRoom (@Path("roomId")int roomId);
+    @GET("computers")
+    Single<ListComputerResponse> computersByRoom ();
 }

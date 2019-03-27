@@ -1,9 +1,11 @@
 package huedev.org.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,26 +15,27 @@ import java.util.List;
 
 import huedev.org.R;
 import huedev.org.data.model.Room;
+import huedev.org.ui.computer.ComputerActivity;
+
 public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder> {
     private Context mContext;
     private List<Room> mRoomList;
-    private ItemListener mItemListener;
 
-    public RoomAdapter(Context context, List<Room> roomList, ItemListener itemListener) {
+    public RoomAdapter(Context context, List<Room> roomList) {
         this.mContext = context;
         this.mRoomList = roomList;
-        this.mItemListener = itemListener;
     }
 
-    public class RoomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView tvTitleItem, tvDescibeItem;
+    public class RoomViewHolder extends RecyclerView.ViewHolder {
+        TextView tvTitleItem, tvDescibeItem, tvViewComputer;
         Room rItem;
         public RoomViewHolder(View itemView) {
             super(itemView);
-            itemView.setOnClickListener(this);
 
             tvTitleItem = itemView.findViewById(R.id.tv_titleItemRoom);
             tvDescibeItem = itemView.findViewById(R.id.tv_describeItemRoom);
+            tvViewComputer = itemView.findViewById(R.id.tv_viewcomputer);
+
         }
 
         public void setData(Room room){
@@ -42,12 +45,6 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
             tvDescibeItem.setText(room.getStatus());
         }
 
-        @Override
-        public void onClick(View view) {
-            if (mItemListener != null){
-                mItemListener.onItemClick();
-            }
-        }
     }
 
     @NonNull
@@ -60,15 +57,20 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
     @Override
     public void onBindViewHolder(@NonNull RoomViewHolder holder, int position) {
         holder.setData(mRoomList.get(position));
+        holder.tvViewComputer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), ComputerActivity.class);
+                intent.putExtra("idRoom", mRoomList.get(position).getId());
+                view.getContext().startActivity(intent);
+//                Log.d("LoggId", mRoomList.get(position).getId() + "");
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return mRoomList.size();
-    }
-
-    public interface ItemListener {
-        void onItemClick();
     }
 
 }

@@ -25,8 +25,8 @@ public class ComputerRemoteDataSource implements ComputerDataSource.RemoteDataSo
     }
 
     @Override
-    public Single<ListComputerResponse> computersByRoom(int roomId) {
-        return mApiComputer.computersByRoom(roomId);
+    public Single<ListComputerResponse> computersByRoom() {
+        return mApiComputer.computersByRoom();
     }
 
 }

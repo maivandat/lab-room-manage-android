@@ -1,5 +1,6 @@
 package huedev.org.ui.computer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
@@ -21,6 +22,7 @@ import huedev.org.data.model.Computer;
 import huedev.org.data.repository.ComputerRepository;
 import huedev.org.data.source.local.ComputerLocalDataSource;
 import huedev.org.data.source.remote.ComputerRemoteDataSource;
+import huedev.org.ui.MainActivity;
 import huedev.org.ui.adapter.ComputerAdapter;
 import huedev.org.ui.base.BaseActivity;
 import huedev.org.utils.rx.BaseSchedulerProvider;
@@ -32,9 +34,10 @@ public class ComputerActivity extends BaseActivity implements ComputerContract.V
     ComputerContract.Presenter mComputerPresenter;
     RecyclerView mRvComputer;
     ComputerAdapter mComputerAdapter;
-
     Toolbar tbComputer;
+    Intent mIntent;
 
+    int roomId;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,11 +50,15 @@ public class ComputerActivity extends BaseActivity implements ComputerContract.V
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         tbComputer.setNavigationIcon(R.drawable.back);
 
+        mIntent = this.getIntent();
+        roomId = Integer.parseInt(mIntent.getStringExtra("idRoom"));
+        Toast.makeText(this, roomId + "", Toast.LENGTH_SHORT).show();
+
         init();
         tbComputer.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                finish();
             }
         });
     }
@@ -65,7 +72,7 @@ public class ComputerActivity extends BaseActivity implements ComputerContract.V
                 , computerRepository
                 , SchedulerProvider.getInstance());
         mComputerPresenter.setView(this);
-        mComputerPresenter.computersByRoom(1);
+        mComputerPresenter.computersByRoom();
     }
 
     @Override
@@ -78,7 +85,8 @@ public class ComputerActivity extends BaseActivity implements ComputerContract.V
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.menu_computerReset){
-
+            finish();
+            startActivity(getIntent());
         }
         return super.onOptionsItemSelected(item);
     }

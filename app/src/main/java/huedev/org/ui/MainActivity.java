@@ -26,6 +26,9 @@ public class MainActivity extends BaseActivity {
         mToolbar.setTitle("");
         mViewPagerAdapter  = new ViewPagerAdapter(getSupportFragmentManager());
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        mToolbar.setNavigationIcon(R.drawable.btn_menu);
 
         mViewPagerAdapter.addFragment(new RoomFragment(), "Home");
         mViewPagerMain.setAdapter(mViewPagerAdapter);

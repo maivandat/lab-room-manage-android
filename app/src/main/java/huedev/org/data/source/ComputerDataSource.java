@@ -10,6 +10,6 @@ public interface ComputerDataSource {
     }
 
     interface RemoteDataSource{
-        Single<ListComputerResponse> computersByRoom(int id);
+        Single<ListComputerResponse> computersByRoom();
     }
 }

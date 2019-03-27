@@ -54,9 +54,7 @@ public class RoomFragment extends Fragment implements RoomContract.View {
 
     @Override
     public void updateRoomsList(List<Room> roomList) {
-        mAdapter = new RoomAdapter(getContext(), roomList, () -> {
-
-        });
+        mAdapter = new RoomAdapter(getContext(), roomList);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(llm);
@@ -78,6 +76,4 @@ public class RoomFragment extends Fragment implements RoomContract.View {
     public void showLoginError(Throwable throwable) {
         Toast.makeText(getContext(), throwable.toString(), Toast.LENGTH_SHORT).show();
     }
-
-
 }

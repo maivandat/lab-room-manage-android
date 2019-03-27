@@ -32,7 +32,7 @@ public class ComputerRepository implements ComputerDataSource.LocalDataSource, C
     }
 
     @Override
-    public Single<ListComputerResponse> computersByRoom(int id) {
-        return mComputerRemoteDataSource.computersByRoom(id);
+    public Single<ListComputerResponse> computersByRoom() {
+        return mComputerRemoteDataSource.computersByRoom();
     }
 }
