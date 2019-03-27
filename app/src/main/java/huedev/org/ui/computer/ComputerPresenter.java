@@ -1,7 +1,12 @@
 package huedev.org.ui.computer;
 
 import android.content.Context;
+import android.content.Intent;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import huedev.org.data.model.Computer;
 import huedev.org.data.repository.ComputerRepository;
 import huedev.org.data.source.remote.response.computer.ListComputerResponse;
 import huedev.org.utils.rx.BaseSchedulerProvider;
@@ -21,9 +26,9 @@ public class ComputerPresenter implements ComputerContract.Presenter {
     }
 
     @Override
-    public void computersByRoom(int id) {
+    public void computersByRoom() {
         mView.showLoadingIndicator();
-        mComputerRepository.computersByRoom(id)
+        mComputerRepository.computersByRoom()
                 .subscribeOn(mBaseSchedulerProvider.io())
                 .observeOn(mBaseSchedulerProvider.ui())
                 .subscribe(computerResponse -> handleComputerSuccess(computerResponse),
@@ -34,6 +39,7 @@ public class ComputerPresenter implements ComputerContract.Presenter {
         mView.hideLoadingIndicator();
         mView.updateComputerList(computerResponse.computersByRoom);
     }
+
 
     private void handleComputerFailed(Throwable error){
         mView.showLoginError(error);

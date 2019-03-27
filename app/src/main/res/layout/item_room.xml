@@ -8,13 +8,13 @@
         android:orientation="vertical"
         android:layout_weight="1"
         android:id="@+id/v.point"
-        android:layout_width="68dp"
+        android:layout_width="@dimen/layout_size_30"
         android:layout_height="match_parent">
 
         <View
             android:layout_gravity="center"
             android:background="@color/colorWhile"
-            android:layout_width="@dimen/layout_size_3"
+            android:layout_width="@dimen/margin_2"
             android:layout_height="0dp"
             android:layout_weight="1"
             />
@@ -23,14 +23,14 @@
             android:layout_gravity="center"
             android:background="@drawable/custom_point"
             android:id="@+id/tv.point"
-            android:layout_width="@dimen/margin_15"
-            android:layout_height="@dimen/margin_15"/>
+            android:layout_width="@dimen/left_rc_10"
+            android:layout_height="@dimen/left_rc_10"/>
 
 
         <View
             android:layout_gravity="center"
             android:background="@color/colorWhile"
-            android:layout_width="@dimen/layout_size_3"
+            android:layout_width="@dimen/margin_2"
             android:layout_height="0dp"
             android:layout_weight="1"/>
     </LinearLayout>
@@ -93,6 +93,8 @@
                 android:layout_height="1dp" />
 
             <TextView
+                android:id="@+id/tv.viewcomputer"
+                android:clickable="true"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
                 android:layout_marginTop="@dimen/left_rc_10"

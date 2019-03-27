@@ -12,6 +12,6 @@ public interface ComputerContract {
     }
 
     interface Presenter extends BasePresenter<View> {
-        void computersByRoom(int id);
+        void computersByRoom();
     }
 }

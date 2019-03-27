@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/add"
         android:title="Add"
-        android:icon="@drawable/add"
+        android:icon="@drawable/btn_add"
         app:showAsAction="ifRoom"/>
 
     <item android:id="@+id/notify"
         android:title="Notify"
-        android:icon="@drawable/notify"
+        android:icon="@drawable/btn_notify"
         app:showAsAction="ifRoom"/>
 </menu>

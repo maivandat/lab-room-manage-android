@@ -11,18 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageButton
-                android:background="@null"
-                android:src="@drawable/menu"
-                android:id="@+id/imgBtn_menuBar"
-                android:layout_width="@dimen/layout_size_50"
-                android:layout_height="@dimen/layout_size_50" />
-
             <android.support.v7.widget.Toolbar
-                android:layout_toRightOf="@id/imgBtn_menuBar"
                 android:id="@+id/toolbar_main"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -41,8 +30,6 @@
                 </LinearLayout>
 
             </android.support.v7.widget.Toolbar>
-
-        </RelativeLayout>
 
     </android.support.design.widget.AppBarLayout>
 
