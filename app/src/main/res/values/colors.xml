@@ -16,4 +16,7 @@
     <color name="red_status">#F44336</color>
     <color name="green_status">#4CAF50</color>
     <color name="black_status">#C8000000</color>
+    <color name="bg_login">#E16EC4FF</color>
+    <color name="while_edt">#80FFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>

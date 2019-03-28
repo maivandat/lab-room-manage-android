@@ -11,10 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.util.List;
-
 import huedev.org.R;
 import huedev.org.data.model.Computer;
 

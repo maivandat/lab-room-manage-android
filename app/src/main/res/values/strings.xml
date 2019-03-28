@@ -16,4 +16,10 @@
     <string name="content_task">Content</string>
     <string name="view_item_room">VIEW ➞</string>
     <string name="detail">Detail</string>
+    <string name="login">LOGIN</string>
+    <string name="username_login">USERNAME</string>
+    <string name="password_login">PASSWORD</string>
+    <string name="go">GO !</string>
+    <string name="remember">Keep me sign in</string>
+    <string name="forgot">Forgot</string>
 </resources>

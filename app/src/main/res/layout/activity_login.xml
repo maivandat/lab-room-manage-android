@@ -4,8 +4,123 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/img_bg_login"
     tools:context=".ui.auth.LoginActivity">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/bg_login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:padding="@dimen/left_rc_10"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:background="@null"
+                android:src="@drawable/img_logo_login"
+                android:layout_marginTop="@dimen/layout_size_80"
+                android:layout_gravity="center"
+                android:layout_width="@dimen/layout_size_100"
+                android:layout_height="@dimen/layout_size_100" />
+
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/colorWhile"
+                android:textSize="@dimen/margin_20"
+                android:layout_marginTop="@dimen/layout_size_30"
+                android:text="LOGIN"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/left_rc_10"
+                android:orientation="vertical"
+                android:layout_marginRight="@dimen/layout_size_30"
+                android:layout_marginLeft="@dimen/layout_size_30"
+                android:padding="@dimen/left_rc_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:textColor="@color/text_color_black"
+                    android:hint="@string/username_login"
+                    android:gravity="center"
+                    android:textSize="@dimen/fab_margin_16"
+                    android:background="@drawable/custom_edittext"
+                    android:id="@+id/et.usernameLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_size_60" />
+
+                <EditText
+                    android:textColor="@color/text_color_black"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:hint="@string/password_login"
+                    android:gravity="center"
+                    android:textSize="@dimen/fab_margin_16"
+                    android:background="@drawable/custom_edittext"
+                    android:id="@+id/et.passwordLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_size_60"/>
+
+                <LinearLayout
+                    android:padding="@dimen/margin_15"
+                    android:weightSum="10"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_weight="7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <CheckBox
+                            android:button="@drawable/custom_cb_rmb"
+                            android:id="@+id/cb.remeberLogin"
+                            android:layout_width="@dimen/item_room_title_25"
+                            android:layout_height="@dimen/item_room_title_25" />
+
+                        <TextView
+                            android:layout_marginLeft="@dimen/margin_5"
+                            android:textColor="@color/colorWhile"
+                            android:textSize="@dimen/fab_margin_16"
+                            android:text="@string/remember"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+
+
+                    <TextView
+                        android:textSize="@dimen/fab_margin_16"
+                        android:gravity="center_horizontal"
+                        android:layout_gravity="center"
+                        android:text="@string/forgot"
+                        android:textColor="@color/colorWhile"
+                        android:layout_weight="3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn.gologin"
+                    android:textColor="@color/colorWhile"
+                    android:background="@drawable/custom_btn_go"
+                    android:text="@string/go"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_size_60" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
     
 
 </LinearLayout>
