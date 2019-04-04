@@ -4,16 +4,15 @@ import android.content.Context;
 
 import huedev.org.data.source.remote.api.ApiAuth;
 import huedev.org.data.source.remote.api.ApiComputer;
-import huedev.org.data.source.remote.api.ApiDevice;
 import huedev.org.data.source.remote.api.ApiRoom;
+import huedev.org.data.source.remote.api.ApiDevice;
 import huedev.org.data.source.remote.api.ApiUser;
 import huedev.org.utils.AppConstants;
 
 public class AppServiceClient extends ServiceClient {
-
+    private static ApiDevice mApiDevice;
     private static ApiAuth mApiAuth;
     private static ApiUser mApiUser;
-    private static ApiDevice mApiDevice;
     private static ApiRoom mApiRoom;
     private static ApiComputer mApiComputer;
 
@@ -50,5 +49,12 @@ public class AppServiceClient extends ServiceClient {
             mApiComputer = createService(context, AppConstants.HOST_URL_SERVER_TEMP, ApiComputer.class);
         }
         return mApiComputer;
+    }
+
+    public static ApiDevice getTempDeviceRemoteInstance(Context context){
+        if (mApiDevice == null){
+            mApiDevice = createService(context, AppConstants.HOST_URL_SERVER_TEMP, ApiDevice.class);
+        }
+        return mApiDevice;
     }
 }

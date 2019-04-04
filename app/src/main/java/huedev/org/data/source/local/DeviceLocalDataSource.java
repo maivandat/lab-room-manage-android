@@ -1,6 +1,8 @@
 package huedev.org.data.source.local;
 
-public class DeviceLocalDataSource {
+import huedev.org.data.source.DeviceDataSource;
+
+public class DeviceLocalDataSource implements DeviceDataSource.LocalDataSource {
     private static DeviceLocalDataSource instance;
     public static synchronized DeviceLocalDataSource getInstance(){
         if(instance == null){

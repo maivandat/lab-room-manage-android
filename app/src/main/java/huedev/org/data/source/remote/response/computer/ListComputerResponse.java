@@ -6,8 +6,9 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 import huedev.org.data.model.Computer;
+import huedev.org.data.source.remote.response.BaseResponse;
 
-public class ListComputerResponse {
+public class ListComputerResponse extends BaseResponse {
     @SerializedName("data")
     @Expose
     public List<Computer> computersByRoom;

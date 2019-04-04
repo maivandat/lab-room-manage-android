@@ -6,13 +6,12 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-
-public class Device implements Serializable, Parcelable {
+public class Device implements Parcelable
+{
 
     @SerializedName("id")
     @Expose
-    private int id;
+    private String id;
     @SerializedName("name")
     @Expose
     private String name;
@@ -22,27 +21,46 @@ public class Device implements Serializable, Parcelable {
     @SerializedName("status")
     @Expose
     private String status;
-    @SerializedName("type_devices_id")
+    @SerializedName("typpe_devices_id")
     @Expose
-    private int typeDevicesId;
+    private String typpeDevicesId;
     @SerializedName("computers_id")
     @Expose
-    private int computersId;
+    private String computersId;
+    public final static Parcelable.Creator<Device> CREATOR = new Creator<Device>() {
+
+
+        @SuppressWarnings({
+                "unchecked"
+        })
+        public Device createFromParcel(Parcel in) {
+            return new Device(in);
+        }
+
+        public Device[] newArray(int size) {
+            return (new Device[size]);
+        }
+
+    }
+            ;
 
     protected Device(Parcel in) {
-        this.id = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.id = ((String) in.readValue((String.class.getClassLoader())));
         this.name = ((String) in.readValue((String.class.getClassLoader())));
         this.desc = ((String) in.readValue((String.class.getClassLoader())));
         this.status = ((String) in.readValue((String.class.getClassLoader())));
-        this.typeDevicesId = ((Integer) in.readValue((Integer.class.getClassLoader())));
-        this.computersId = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.typpeDevicesId = ((String) in.readValue((String.class.getClassLoader())));
+        this.computersId = ((String) in.readValue((String.class.getClassLoader())));
     }
 
-    public int getId() {
+    public Device() {
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -70,50 +88,33 @@ public class Device implements Serializable, Parcelable {
         this.status = status;
     }
 
-    public int getTypeDevicesId() {
-        return typeDevicesId;
+    public String getTyppeDevicesId() {
+        return typpeDevicesId;
     }
 
-    public void setTypeDevicesId(int typeDevicesId) {
-        this.typeDevicesId = typeDevicesId;
+    public void setTyppeDevicesId(String typpeDevicesId) {
+        this.typpeDevicesId = typpeDevicesId;
     }
 
-    public int getComputersId() {
+    public String getComputersId() {
         return computersId;
     }
 
-    public void setComputersId(int computersId) {
+    public void setComputersId(String computersId) {
         this.computersId = computersId;
     }
 
-    public final static Parcelable.Creator<Device> CREATOR = new Parcelable.Creator<Device>() {
-
-        @SuppressWarnings({
-                "unchecked"
-        })
-        public Device createFromParcel(Parcel in) {
-            return new Device(in);
-        }
-
-        public Device[] newArray(int size) {
-            return (new Device[size]);
-        }
-
-    };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeValue(id);
         dest.writeValue(name);
         dest.writeValue(desc);
         dest.writeValue(status);
-        dest.writeValue(typeDevicesId);
+        dest.writeValue(typpeDevicesId);
         dest.writeValue(computersId);
+    }
+
+    public int describeContents() {
+        return 0;
     }
 
 }

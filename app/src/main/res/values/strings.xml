@@ -34,5 +34,12 @@
     <string name="timeAM">AM</string>
     <string name="timePM">PM</string>
     <string name="enterhours">Hours</string>
+    <string-array name="title_devices">
+        <item>ID</item>
+        <item>Name</item>
+        <item>Desc</item>
+        <item>Type Device</item>
+        <item></item>
+    </string-array>
 
 </resources>

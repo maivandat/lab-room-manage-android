@@ -1,6 +1,10 @@
 package huedev.org.data.source.local;
 
-public class ComputerLocalDataSource {
+import android.util.Log;
+
+import huedev.org.data.source.ComputerDataSource;
+
+public class ComputerLocalDataSource implements ComputerDataSource.LocalDataSource {
     private static ComputerLocalDataSource instance;
     public static synchronized ComputerLocalDataSource getInstance(){
         if(instance == null){
