@@ -6,6 +6,6 @@ import retrofit2.http.POST;
 
 public interface ApiAuth {
 
-    @POST("auth/login")
-    Single<LoginResponse> login(String email, String password);
+    @POST("api/v1/login")
+    Single<LoginResponse> login(String username, String password);
 }

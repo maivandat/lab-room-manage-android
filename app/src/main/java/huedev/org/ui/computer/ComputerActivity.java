@@ -6,13 +6,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.List;
@@ -22,10 +18,8 @@ import huedev.org.data.model.Computer;
 import huedev.org.data.repository.ComputerRepository;
 import huedev.org.data.source.local.ComputerLocalDataSource;
 import huedev.org.data.source.remote.ComputerRemoteDataSource;
-import huedev.org.ui.MainActivity;
 import huedev.org.ui.adapter.ComputerAdapter;
 import huedev.org.ui.base.BaseActivity;
-import huedev.org.utils.rx.BaseSchedulerProvider;
 import huedev.org.utils.rx.SchedulerProvider;
 
 
@@ -48,7 +42,7 @@ public class ComputerActivity extends BaseActivity implements ComputerContract.V
         setSupportActionBar(tbComputer);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        tbComputer.setNavigationIcon(R.drawable.back);
+        tbComputer.setNavigationIcon(R.drawable.btn_back);
 
         mIntent = this.getIntent();
         roomId = Integer.parseInt(mIntent.getStringExtra("idRoom"));
