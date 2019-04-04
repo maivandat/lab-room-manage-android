@@ -12,7 +12,7 @@ public class User extends BaseModel implements Serializable, Parcelable {
 
     @SerializedName("id")
     @Expose
-    private int id;
+    private String id;
 
     @SerializedName("name")
     @Expose
@@ -34,12 +34,17 @@ public class User extends BaseModel implements Serializable, Parcelable {
     @Expose
     private String role;
 
+    @SerializedName("access_token")
+    @Expose
+    private String access_token;
+
     protected User(Parcel in) {
-        this.id = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.id = ((String) in.readValue((Integer.class.getClassLoader())));
         this.name = ((String) in.readValue((String.class.getClassLoader())));
         this.username = ((String) in.readValue((String.class.getClassLoader())));
         this.email = ((String) in.readValue((String.class.getClassLoader())));
         this.role = ((String) in.readValue((String.class.getClassLoader())));
+        this.access_token = ((String) in.readValue((String.class.getClassLoader())));
     }
 
 
@@ -70,6 +75,62 @@ public class User extends BaseModel implements Serializable, Parcelable {
         dest.writeValue(username);
         dest.writeValue(email);
         dest.writeValue(role);
+        dest.writeValue(access_token);
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getAccess_token() {
+        return access_token;
+    }
+
+    public void setAccess_token(String access_token) {
+        this.access_token = access_token;
+    }
 }
