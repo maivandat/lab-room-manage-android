@@ -7,7 +7,6 @@
     android:orientation="vertical"
     android:background="@drawable/img_bg_login"
     tools:context=".ui.auth.LoginActivity">
-
     <LinearLayout
         android:orientation="vertical"
         android:background="@color/bg_login"
@@ -19,15 +18,13 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <ImageView
                 android:background="@null"
                 android:src="@drawable/img_logo_login"
                 android:layout_marginTop="@dimen/layout_size_80"
                 android:layout_gravity="center"
                 android:layout_width="@dimen/layout_size_100"
-                android:layout_height="@dimen/layout_size_100" />
-
+                android:layout_height="@dimen/layout_size_90" />
             <TextView
                 android:textStyle="bold"
                 android:textColor="@color/colorWhile"
@@ -37,7 +34,6 @@
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
             <LinearLayout
                 android:layout_marginTop="@dimen/left_rc_10"
                 android:orientation="vertical"
@@ -46,36 +42,34 @@
                 android:padding="@dimen/left_rc_10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
                 <EditText
-                    android:textColor="@color/text_color_black"
-                    android:hint="@string/username_login"
-                    android:gravity="center"
-                    android:textSize="@dimen/fab_margin_16"
-                    android:background="@drawable/custom_edittext"
                     android:id="@+id/et.usernameLogin"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/layout_size_60" />
-
-                <EditText
-                    android:textColor="@color/text_color_black"
-                    android:layout_marginTop="@dimen/margin_20"
-                    android:hint="@string/password_login"
-                    android:gravity="center"
-                    android:textSize="@dimen/fab_margin_16"
+                    android:layout_height="@dimen/layout_size_60"
                     android:background="@drawable/custom_edittext"
+                    android:gravity="center"
+                    android:hint="@string/username_login"
+                    android:inputType="text"
+                    android:textColor="@color/text_color_black"
+                    android:textSize="@dimen/fab_margin_16" />
+                <EditText
                     android:id="@+id/et.passwordLogin"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/layout_size_60"/>
-
+                    android:layout_height="@dimen/layout_size_60"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:background="@drawable/custom_edittext"
+                    android:gravity="center"
+                    android:hint="@string/password_login"
+                    android:inputType="textPassword"
+                    android:textColor="@color/text_color_black"
+                    android:textSize="@dimen/fab_margin_16" />
                 <LinearLayout
-                    android:padding="@dimen/margin_15"
+                    android:padding="@dimen/margin_20"
                     android:weightSum="10"
                     android:layout_marginTop="@dimen/margin_20"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_weight="7"
@@ -96,9 +90,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
-
-
-
                     <TextView
                         android:textSize="@dimen/fab_margin_16"
                         android:gravity="center_horizontal"
@@ -111,6 +102,8 @@
                 </LinearLayout>
 
                 <Button
+                    android:layout_marginTop="@dimen/left_rc_10"
+                    style="?android:attr/buttonStyleSmall"
                     android:id="@+id/btn.gologin"
                     android:textColor="@color/colorWhile"
                     android:background="@drawable/custom_btn_go"
