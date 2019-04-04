@@ -10,5 +10,5 @@ import huedev.org.data.source.remote.response.BaseResponse;
 public class LoginResponse extends BaseResponse {
     @SerializedName("data")
     @Expose
-    public Login data;
+    public User data;
 }

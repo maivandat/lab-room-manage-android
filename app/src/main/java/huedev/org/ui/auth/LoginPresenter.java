@@ -1,11 +1,14 @@
 package huedev.org.ui.auth;
 
 import android.content.Context;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.google.common.base.Preconditions;
 
 import huedev.org.data.repository.LoginRepository;
 import huedev.org.data.source.remote.response.auth.LoginResponse;
+import huedev.org.utils.AppPrefs;
 import huedev.org.utils.rx.BaseSchedulerProvider;
 
 public class LoginPresenter implements LoginContract.Presenter {
@@ -32,11 +35,12 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     private void handleLoginSuccess(LoginResponse loginResponse){
-
+        mView.getUser(loginResponse.data);
+        AppPrefs.getInstance(mContext).putApiToken(loginResponse.data.getAccess_token());
     }
 
     private void handleLoginFailed(Throwable error){
-
+        Log.e("errr", error.toString());
     }
     @Override
     public void setView(LoginContract.View view) {
