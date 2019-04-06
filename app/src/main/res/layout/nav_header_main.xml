@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/bg_nav_header"
+    android:layout_width="match_parent"
+    android:layout_height="178dp">
+
+    <ImageView
+        android:layout_marginTop="@dimen/layout_size_60"
+        android:src="@drawable/logo_manager"
+        android:id="@+id/iv.logoUser"
+        android:layout_marginLeft="@dimen/layout_size_30"
+        android:layout_width="@dimen/layout_size_60"
+        android:layout_height="@dimen/layout_size_60" />
+
+    <TextView
+        android:id="@+id/tv.nameUser"
+        android:textSize="@dimen/margin_15"
+        android:layout_marginLeft="@dimen/layout_size_30"
+        android:text="Manager"
+        android:layout_marginTop="@dimen/left_rc_10"
+        android:textColor="@color/colorWhile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

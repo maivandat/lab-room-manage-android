@@ -1,8 +1,11 @@
 package huedev.org.ui.adapter;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 
 import android.util.Log;
@@ -58,11 +61,13 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
     public void onBindViewHolder(@NonNull RoomViewHolder holder, int position) {
         holder.setData(mRoomList.get(position));
         holder.tvViewComputer.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), ComputerActivity.class);
                 intent.putExtra("idRoom", mRoomList.get(position).getId());
-                view.getContext().startActivity(intent);
+                ActivityOptions options = ActivityOptions.makeCustomAnimation(view.getContext(), R.anim.slide_right_in, R.anim.slide_right_out);
+                view.getContext().startActivity(intent,options.toBundle());
 //                Log.d("LoggId", mRoomList.get(position).getId() + "");
             }
         });

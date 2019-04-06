@@ -22,4 +22,7 @@
     <string name="go">GO !</string>
     <string name="remember">Keep me sign in</string>
     <string name="forgot">Forgot ?</string>
+    <string name="logout">Log out</string>
+    <string name="logoutUC">Login</string>
+    <string name="edit_information">Edit Information</string>
 </resources>
