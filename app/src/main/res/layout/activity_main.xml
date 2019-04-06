@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.v4.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/activity_bg"
+    android:id="@+id/dl.main"
+    android:fitsSystemWindows="true"
     android:layout_height="match_parent">
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBar_layout"
-        android:background="@color/app_bar_bg"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appBar_layout"
+            android:background="@color/app_bar_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar_main"
@@ -31,29 +37,41 @@
 
             </android.support.v7.widget.Toolbar>
 
-    </android.support.design.widget.AppBarLayout>
+        </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/appBar_layout"
-        android:layout_above="@id/navigation"
-        android:layout_marginTop="-2dp">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/appBar_layout"
+            android:layout_above="@id/navigation.main"
+            android:layout_marginTop="-2dp">
 
-    </android.support.v4.view.ViewPager>
+        </android.support.v4.view.ViewPager>
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        android:background="@color/bgBottomNavigation"
-        android:foreground="?attr/selectableItemBackground"
-        app:itemBackground="@color/bgBottomNavigation"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"
-        app:menu="@menu/menu_main_homebt" />
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/navigation.main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:background="@color/bgBottomNavigation"
+            android:foreground="?attr/selectableItemBackground"
+            app:itemBackground="@color/bgBottomNavigation"
+            app:itemIconTint="@android:color/white"
+            app:itemTextColor="@android:color/white"
+            app:menu="@menu/menu_main_homebt" />
 
-</RelativeLayout>
+    </RelativeLayout>
+    
+    <android.support.design.widget.NavigationView
+        android:fitsSystemWindows="true"
+        android:id="@+id/nav.view"
+        android:layout_gravity="start"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:menu="@menu/menu_drawer_view"
+        app:headerLayout="@layout/nav_header_main"/>
+
+
+</android.support.v4.widget.DrawerLayout>

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/menubt_home"
+        android:id="@+id/nav.bt.home"
         android:icon="@drawable/btn_home"
         android:title="@string/home" />
 
     <item
-        android:id="@+id/menubt_calendar"
+        android:id="@+id/nav.bt.calendar"
         android:icon="@drawable/calendar"
         android:title="@string/calendar" />
 
     <item
-        android:id="@+id/menubt_feeds"
+        android:id="@+id/nav.bt.feeds"
         android:icon="@drawable/btn_feed"
         android:title="@string/feeds" />
 
     <item
-        android:id="@+id/menubt_messenger"
+        android:id="@+id/nav.bt.messenger"
         android:icon="@drawable/btn_mess"
         android:title="@string/messenger" />
 </menu>
