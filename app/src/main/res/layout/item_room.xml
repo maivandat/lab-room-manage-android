@@ -40,7 +40,7 @@
         android:layout_weight="1"
         android:layout_marginBottom="@dimen/margin_20"
         android:layout_marginLeft="@dimen/left_rc_10"
-        android:background="@color/colorWhile"
+        android:background="@drawable/custom_border"
         android:layout_toRightOf="@id/v.point"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
