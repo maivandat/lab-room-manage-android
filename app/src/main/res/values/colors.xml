@@ -14,6 +14,7 @@
     <color name="blanc">#fafffb</color>
     <color name="yellow_status">#FF9800</color>
     <color name="red_status">#F44336</color>
+    <color name="red_name">#AF2C21</color>
     <color name="green_status">#4CAF50</color>
     <color name="black_status">#C8000000</color>
     <color name="bg_login">#E16EC4FF</color>

@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/activity_bg"
+    android:background="@drawable/gradient_background"
     android:id="@+id/dl.main"
     android:fitsSystemWindows="true"
     android:layout_height="match_parent">
@@ -39,15 +39,16 @@
 
         </android.support.design.widget.AppBarLayout>
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewPager_main"
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/linear.container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/appBar_layout"
             android:layout_above="@id/navigation.main"
             android:layout_marginTop="-2dp">
 
-        </android.support.v4.view.ViewPager>
+        </LinearLayout>
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/navigation.main"

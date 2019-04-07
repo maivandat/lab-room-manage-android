@@ -1,7 +1,7 @@
 package huedev.org.utils;
 
 public class AppConstants {
-    public static final String HOST_URL = "http://172.20.112.170/lab-room-manage/public/";
+    public static final String HOST_URL = "http://192.168.2.111/lab-room-manage/public/";
 
     public static final String HOST_URL_SERVER_TEMP = "http://192.168.2.111:3000/";
 

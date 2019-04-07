@@ -9,6 +9,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -19,11 +22,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
 
 import huedev.org.R;
 import huedev.org.ui.adapter.ViewPagerAdapter;
 import huedev.org.ui.auth.LoginActivity;
 import huedev.org.ui.base.BaseActivity;
+import huedev.org.ui.fragments.MessengerFragment.MessengerFragment;
+import huedev.org.ui.fragments.calendar.CalendarFragment;
+import huedev.org.ui.fragments.feed.FeedFragment;
 import huedev.org.ui.fragments.room.RoomFragment;
 import huedev.org.utils.AppConstants;
 import huedev.org.utils.AppPrefs;
@@ -35,8 +42,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     NavigationView mNavigationView;
     BottomNavigationView mBtNavigation;
     Toolbar mToolbar;
-    ViewPager mViewPagerMain;
     ViewPagerAdapter mViewPagerAdapter;
+
+    LinearLayout linearLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +53,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
         mNavigationView = findViewById(R.id.nav_view);
         mDrawerLayout = findViewById(R.id.dl_main);
         mToolbar = findViewById(R.id.toolbar_main);
-        mViewPagerMain = findViewById(R.id.viewPager_main);
+        linearLayout = findViewById(R.id.linear_container);
         mBtNavigation = findViewById(R.id.navigation_main);
         mViewPagerAdapter  = new ViewPagerAdapter(getSupportFragmentManager());
 
@@ -65,9 +73,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
             mNavigationView.getMenu().getItem(2).setVisible(true);
         }
 
-        mViewPagerAdapter.addFragment(new RoomFragment(), "Home");
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.linear_container ,new RoomFragment());
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
 
-        mViewPagerMain.setAdapter(mViewPagerAdapter);
         mToolbar.setNavigationOnClickListener(this);
         mNavigationView.setNavigationItemSelectedListener(this);
         mBtNavigation.setOnNavigationItemSelectedListener(this);
@@ -77,9 +87,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         getMenuInflater().inflate(R.menu.menu_main_hometop, menu);
-
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -88,25 +96,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.nav_bt_home:
-                mToolbar.setTitle("Home");
-                mViewPagerAdapter.addFragment(new RoomFragment(), "Home");
-                mViewPagerMain.setAdapter(mViewPagerAdapter);
+                replaceFragment(new RoomFragment());
                 return true;
             case R.id.nav_bt_calendar:
-                mToolbar.setTitle("Calendar");
+                replaceFragment(new CalendarFragment());
                 return true;
             case R.id.nav_bt_feeds:
-                mToolbar.setTitle("Feeds");
+                replaceFragment(new FeedFragment());
                 return true;
             case R.id.nav_bt_messenger:
-                mToolbar.setTitle("Messenger");
+                replaceFragment(new MessengerFragment());
                 return true;
             case R.id.nav_start_login:
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 ActivityOptions options = ActivityOptions.makeCustomAnimation(MainActivity.this, R.anim.slide_left_in, R.anim.slide_left_out);
                 startActivity(intent, options.toBundle());
                 mDrawerLayout.closeDrawers();
-                break;
+                return true;
         }
         return false;
     }
@@ -114,5 +120,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     @Override
     public void onClick(View view) {
         mDrawerLayout.openDrawer(GravityCompat.START);
+    }
+
+    private void replaceFragment(Fragment fragment){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.linear_container ,fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }
