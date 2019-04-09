@@ -21,7 +21,7 @@
 
         <TextView
             android:layout_gravity="center"
-            android:background="@drawable/custom_point"
+            android:background="@drawable/custom_point_white"
             android:id="@+id/tv.point"
             android:layout_width="@dimen/left_rc_10"
             android:layout_height="@dimen/left_rc_10"/>

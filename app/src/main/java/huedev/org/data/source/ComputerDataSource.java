@@ -6,7 +6,6 @@ import retrofit2.Call;
 
 public interface ComputerDataSource {
     interface LocalDataSource{
-
     }
 
     interface RemoteDataSource{
