@@ -33,6 +33,7 @@ public class RoomRepository implements RoomDataSource.LocalDataSource, RoomDataS
 
     @Override
     public Single<ListRoomResponse> rooms() {
+
         return mRoomRemoteDataSource.rooms();
     }
 }

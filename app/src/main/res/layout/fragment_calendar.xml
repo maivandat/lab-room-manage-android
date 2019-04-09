@@ -7,20 +7,181 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_marginTop="70dp"
-        android:layout_marginLeft="44dp"
+        android:layout_marginTop="@dimen/left_rc_10"
+        android:gravity="center"
+        android:layout_gravity="center"
         android:background="@drawable/custom_border"
         android:orientation="vertical"
-        android:layout_width="320dp"
+        android:layout_width="360dp"
         android:layout_height="wrap_content">
 
         <CalendarView
             android:id="@+id/cv.calendar"
-            android:layout_width="wrap_content"
-            android:layout_height="320dp">
-
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
         </CalendarView>
+
     </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="@dimen/left_rc_10"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/item_room_title_25"
+            android:layout_marginRight="@dimen/item_room_title_25"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv.date"
+                    android:textSize="@dimen/margin_20"
+                    android:text="@string/today"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="@string/work_empty"
+                    android:id="@+id/tv.workEmpty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <ScrollView
+                android:layout_marginTop="@dimen/margin_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv.work"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </android.support.v7.widget.RecyclerView>
+
+                    <FrameLayout
+                        android:layout_marginTop="@dimen/margin_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageButton
+                            android:layout_marginLeft="@dimen/left_rc_10"
+                            android:layout_marginTop="@dimen/margin_5"
+                            android:id="@+id/ib.addwork"
+                            android:background="@null"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/btn_add"
+                            android:layout_width="@dimen/margin_15"
+                            android:layout_height="@dimen/margin_15" />
+
+                        <LinearLayout
+                            android:visibility="invisible"
+                            android:orientation="vertical"
+                            android:id="@+id/linear.formaddwork"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:weightSum="10"
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <EditText
+                                    android:hint="@string/enter_your_work"
+                                    android:padding="@dimen/left_rc_10"
+                                    android:layout_gravity="center"
+                                    android:textSize="@dimen/margin_15"
+                                    android:background="@drawable/custom_edittext"
+                                    android:id="@+id/et.namework"
+                                    android:layout_weight="6"
+                                    android:layout_width="@dimen/layout_size_80"
+                                    android:layout_height="wrap_content"/>
+                                <Button
+                                    android:textSize="@dimen/left_rc_10"
+                                    android:text="@string/confirm"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/custom_btn_go"
+                                    android:id="@+id/btn.confirm"
+                                    android:layout_weight="2"
+                                    android:layout_width="@dimen/left_rc_10"
+                                    android:layout_height="@dimen/margin_35" />
+
+                                <Button
+                                    android:textSize="@dimen/left_rc_10"
+                                    android:text="@string/cancel"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/custom_btn_go"
+                                    android:id="@+id/btn.cancel"
+                                    android:layout_weight="2"
+                                    android:layout_width="@dimen/left_rc_10"
+                                    android:layout_height="@dimen/margin_35" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginBottom="@dimen/left_rc_10"
+                                android:layout_marginTop="8dp"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:textSize="@dimen/margin_15"
+                                    android:textColor="@color/black_status"
+                                    android:text="@string/time"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+
+                                <EditText
+                                    android:inputType="number"
+                                    android:textSize="@dimen/margin_15"
+                                    android:hint="@string/enterhours"
+                                    android:gravity="center"
+                                    android:layout_marginLeft="@dimen/margin_5"
+                                    android:id="@+id/et.time"
+                                    android:padding="@dimen/margin_5"
+                                    android:background="@drawable/custom_edittext"
+                                    android:layout_width="@dimen/layout_size_60"
+                                    android:layout_height="wrap_content" />
+
+                                <RadioGroup
+                                    android:id="@+id/rg.time"
+                                    android:orientation="horizontal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                    <RadioButton
+                                        android:id="@+id/rb.timeAM"
+                                        android:text="AM"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                    <RadioButton
+                                        android:id="@+id/rb.timePM"
+                                        android:text="PM"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+                                </RadioGroup>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </FrameLayout>
+                </LinearLayout>
+
+
+            </ScrollView>
+        </LinearLayout>
 
 
 </LinearLayout>

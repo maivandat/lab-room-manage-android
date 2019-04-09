@@ -28,7 +28,7 @@ public class RoomPresenter implements RoomContract.Presenter {
         mRoomRepository.rooms()
                 .subscribeOn(mSchedulerProvider.io())
                 .observeOn(mSchedulerProvider.ui())
-                .subscribe(loginResponse -> handleRoomsSuccess(loginResponse),
+                .subscribe(listRoomResponse -> handleRoomsSuccess(listRoomResponse),
                         error -> handleRoomsFailed(error));
     }
 
