@@ -41,5 +41,6 @@
         <item>Type Device</item>
         <item></item>
     </string-array>
-
+    <string name="require_data">Please enter full data in the box</string>
+    <string name="warning_data">Invalid data ! Please re-enter</string>
 </resources>

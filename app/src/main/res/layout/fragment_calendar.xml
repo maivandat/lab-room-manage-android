@@ -50,7 +50,6 @@
             </LinearLayout>
 
             <ScrollView
-                android:layout_marginTop="@dimen/margin_5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -67,19 +66,18 @@
                     </android.support.v7.widget.RecyclerView>
 
                     <FrameLayout
-                        android:layout_marginTop="@dimen/margin_5"
+                        android:layout_marginTop="@dimen/left_rc_10"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
                         <ImageButton
-                            android:layout_marginLeft="@dimen/left_rc_10"
-                            android:layout_marginTop="@dimen/margin_5"
+                            android:layout_marginLeft="@dimen/margin_5"
                             android:id="@+id/ib.addwork"
                             android:background="@null"
                             android:scaleType="fitXY"
                             android:src="@drawable/btn_add"
-                            android:layout_width="@dimen/margin_15"
-                            android:layout_height="@dimen/margin_15" />
+                            android:layout_width="@dimen/margin_20"
+                            android:layout_height="@dimen/margin_20" />
 
                         <LinearLayout
                             android:visibility="invisible"

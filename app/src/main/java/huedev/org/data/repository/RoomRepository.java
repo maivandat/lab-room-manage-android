@@ -12,13 +12,13 @@ public class RoomRepository implements RoomDataSource.LocalDataSource, RoomDataS
     private static RoomRepository instance;
 
     @NonNull
-    private RoomLocalDataSource mRoomLocalDataSource;
+    private RoomDataSource.LocalDataSource mRoomLocalDataSource;
 
     @NonNull
-    private RoomRemoteDataSource mRoomRemoteDataSource;
+    private RoomDataSource.RemoteDataSource mRoomRemoteDataSource;
 
-    public RoomRepository(@NonNull RoomLocalDataSource roomLocalDataSource,
-                           @NonNull RoomRemoteDataSource remoteDataSource){
+    public RoomRepository(@NonNull RoomDataSource.LocalDataSource roomLocalDataSource,
+                           @NonNull RoomDataSource.RemoteDataSource remoteDataSource){
         mRoomLocalDataSource = roomLocalDataSource;
         mRoomRemoteDataSource = remoteDataSource;
     }

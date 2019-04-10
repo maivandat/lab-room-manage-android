@@ -10,7 +10,7 @@ import java.util.List;
 import huedev.org.data.model.Room;
 import huedev.org.data.source.remote.response.BaseResponse;
 
-public class ListRoomResponse extends BaseResponse {
+public class  ListRoomResponse extends BaseResponse {
 
     @SerializedName("data")
     @Expose

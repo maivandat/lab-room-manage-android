@@ -15,6 +15,9 @@ public class Work implements Serializable
     @SerializedName("time")
     @Expose
     private String time;
+    @SerializedName("date")
+    @Expose
+    private String date;
     private final static long serialVersionUID = 7036618553595109903L;
 
     public String getName() {
@@ -33,9 +36,22 @@ public class Work implements Serializable
         this.time = time;
     }
 
-    public Work(String name, String time) {
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Work(String name, String time, String date) {
         this.name = name;
         this.time = time;
+        this.date = date;
     }
 
     public Work() {
