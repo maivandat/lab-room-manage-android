@@ -34,6 +34,8 @@
     <string name="timeAM">AM</string>
     <string name="timePM">PM</string>
     <string name="enterhours">Hours</string>
+    <string name="sumwork">Total work: </string>
+    <string name="whoisthis">Who is this ?</string>
     <string-array name="title_devices">
         <item>ID</item>
         <item>Name</item>

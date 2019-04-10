@@ -8,7 +8,10 @@ import java.util.Date;
 public class StringHelper {
     public static String dateToString(){
         Date date = new Date();
-        return date.getDate() + "";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("d/M/yyyy");
+        long Ltime = date.getTime();
+        String Stime = simpleDateFormat.format(Ltime);
+        return Stime;
     }
 
     public static String dateToString(int date, int month){
@@ -22,7 +25,7 @@ public class StringHelper {
     }
 
     public static String dateToString(int date, int month, int year){
-        return date + "/" + month + "/" + year;
+        return date + "/" + (month + 1) + "/" + year;
     }
 
 

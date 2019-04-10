@@ -53,132 +53,152 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:orientation="vertical"
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/rv.work"
+                    <LinearLayout
+                        android:visibility="invisible"
+                        android:id="@+id/linear.work"
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                    </android.support.v7.widget.RecyclerView>
 
-                    <FrameLayout
-                        android:layout_marginTop="@dimen/left_rc_10"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <ImageButton
-                            android:layout_marginLeft="@dimen/margin_5"
-                            android:id="@+id/ib.addwork"
-                            android:background="@null"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/btn_add"
-                            android:layout_width="@dimen/margin_20"
-                            android:layout_height="@dimen/margin_20" />
-
-                        <LinearLayout
-                            android:visibility="invisible"
-                            android:orientation="vertical"
-                            android:id="@+id/linear.formaddwork"
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rv.work"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
+                        </android.support.v7.widget.RecyclerView>
+
+                        <FrameLayout
+                            android:layout_marginTop="@dimen/left_rc_10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageButton
+                                android:layout_marginLeft="@dimen/margin_5"
+                                android:id="@+id/ib.addwork"
+                                android:background="@null"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/btn_add"
+                                android:layout_width="@dimen/margin_20"
+                                android:layout_height="@dimen/margin_20" />
+
                             <LinearLayout
-                                android:weightSum="10"
-                                android:orientation="horizontal"
+                                android:visibility="invisible"
+                                android:orientation="vertical"
+                                android:id="@+id/linear.formaddwork"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
 
-                                <EditText
-                                    android:hint="@string/enter_your_work"
-                                    android:padding="@dimen/left_rc_10"
-                                    android:layout_gravity="center"
-                                    android:textSize="@dimen/margin_15"
-                                    android:background="@drawable/custom_edittext"
-                                    android:id="@+id/et.namework"
-                                    android:layout_weight="6"
-                                    android:layout_width="@dimen/layout_size_80"
-                                    android:layout_height="wrap_content"/>
-                                <Button
-                                    android:textSize="@dimen/left_rc_10"
-                                    android:text="@string/confirm"
-                                    android:layout_gravity="center"
-                                    android:background="@drawable/custom_btn_go"
-                                    android:id="@+id/btn.confirm"
-                                    android:layout_weight="2"
-                                    android:layout_width="@dimen/left_rc_10"
-                                    android:layout_height="@dimen/margin_35" />
-
-                                <Button
-                                    android:textSize="@dimen/left_rc_10"
-                                    android:text="@string/cancel"
-                                    android:layout_gravity="center"
-                                    android:background="@drawable/custom_btn_go"
-                                    android:id="@+id/btn.cancel"
-                                    android:layout_weight="2"
-                                    android:layout_width="@dimen/left_rc_10"
-                                    android:layout_height="@dimen/margin_35" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_marginBottom="@dimen/left_rc_10"
-                                android:layout_marginTop="8dp"
-                                android:layout_gravity="center"
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:textSize="@dimen/margin_15"
-                                    android:textColor="@color/black_status"
-                                    android:text="@string/time"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                                <EditText
-                                    android:inputType="number"
-                                    android:textSize="@dimen/margin_15"
-                                    android:hint="@string/enterhours"
-                                    android:gravity="center"
-                                    android:layout_marginLeft="@dimen/margin_5"
-                                    android:id="@+id/et.time"
-                                    android:padding="@dimen/margin_5"
-                                    android:background="@drawable/custom_edittext"
-                                    android:layout_width="@dimen/layout_size_60"
-                                    android:layout_height="wrap_content" />
-
-                                <RadioGroup
-                                    android:id="@+id/rg.time"
+                                <LinearLayout
+                                    android:weightSum="10"
                                     android:orientation="horizontal"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content">
-                                    <RadioButton
-                                        android:id="@+id/rb.timeAM"
-                                        android:text="AM"
+
+                                    <EditText
+                                        android:hint="@string/enter_your_work"
+                                        android:padding="@dimen/left_rc_10"
+                                        android:layout_gravity="center"
+                                        android:textSize="@dimen/margin_15"
+                                        android:background="@drawable/custom_edittext"
+                                        android:id="@+id/et.namework"
+                                        android:layout_weight="6"
+                                        android:layout_width="@dimen/layout_size_80"
+                                        android:layout_height="wrap_content"/>
+                                    <Button
+                                        android:textSize="@dimen/left_rc_10"
+                                        android:text="@string/confirm"
+                                        android:layout_gravity="center"
+                                        android:background="@drawable/custom_btn_go"
+                                        android:id="@+id/btn.confirm"
+                                        android:layout_weight="2"
+                                        android:layout_width="@dimen/left_rc_10"
+                                        android:layout_height="@dimen/margin_35" />
+
+                                    <Button
+                                        android:textSize="@dimen/left_rc_10"
+                                        android:text="@string/cancel"
+                                        android:layout_gravity="center"
+                                        android:background="@drawable/custom_btn_go"
+                                        android:id="@+id/btn.cancel"
+                                        android:layout_weight="2"
+                                        android:layout_width="@dimen/left_rc_10"
+                                        android:layout_height="@dimen/margin_35" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_marginBottom="@dimen/left_rc_10"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_gravity="center"
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:textSize="@dimen/margin_15"
+                                        android:textColor="@color/black_status"
+                                        android:text="@string/time"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content" />
 
-                                    <RadioButton
-                                        android:id="@+id/rb.timePM"
-                                        android:text="PM"
-                                        android:layout_width="wrap_content"
+                                    <EditText
+                                        android:inputType="number"
+                                        android:textSize="@dimen/margin_15"
+                                        android:hint="@string/enterhours"
+                                        android:gravity="center"
+                                        android:layout_marginLeft="@dimen/margin_5"
+                                        android:id="@+id/et.time"
+                                        android:padding="@dimen/margin_5"
+                                        android:background="@drawable/custom_edittext"
+                                        android:layout_width="@dimen/layout_size_60"
                                         android:layout_height="wrap_content" />
-                                </RadioGroup>
+
+                                    <RadioGroup
+                                        android:id="@+id/rg.time"
+                                        android:orientation="horizontal"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+                                        <RadioButton
+                                            android:id="@+id/rb.timeAM"
+                                            android:text="AM"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+
+                                        <RadioButton
+                                            android:id="@+id/rb.timePM"
+                                            android:text="PM"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+                                    </RadioGroup>
+
+                                </LinearLayout>
 
                             </LinearLayout>
 
-                        </LinearLayout>
+                        </FrameLayout>
 
+                    </LinearLayout>
 
-                    </FrameLayout>
-                </LinearLayout>
+                    <TextView
+                        android:id="@+id/tv.whoisthis"
+                        android:clickable="true"
+                        android:textColor="@color/while_edt"
+                        android:textSize="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/left_rc_10"
+                        android:text="@string/whoisthis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </FrameLayout>
 
 
             </ScrollView>
+
         </LinearLayout>
 
 

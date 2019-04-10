@@ -53,7 +53,7 @@ public class AppServiceClient extends ServiceClient {
 
     public static ApiDevice getTempDeviceRemoteInstance(Context context){
         if (mApiDevice == null){
-            mApiDevice = createService(context, AppConstants.HOST_URL_SERVER_TEMP, ApiDevice.class);
+            mApiDevice = createService(context, AppConstants.HOST_URL, ApiDevice.class);
         }
         return mApiDevice;
     }

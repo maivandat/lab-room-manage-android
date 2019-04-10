@@ -2,6 +2,7 @@ package huedev.org.ui.fragments.calendar;
 
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -19,8 +20,8 @@ public interface CalendarContact {
     interface Presenter extends BasePresenter<View> {
         void works(String name, String time, String date,
                    EditText etName, EditText etTime,
-                   RadioButton rbAM);
+                   RadioButton rbAM, TextView tvWorkEmpty);
 
-        void dates(String date);
+        void dates(String date, TextView tvWorkEmpty);
     }
 }
