@@ -41,7 +41,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         mNavigationView = findViewById(R.id.nav_view);
         mDrawerLayout = findViewById(R.id.dl_main);
         mToolbar = findViewById(R.id.toolbar_main);

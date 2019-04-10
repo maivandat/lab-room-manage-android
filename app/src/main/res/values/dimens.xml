@@ -16,5 +16,12 @@
     <dimen name="layout_size_100">100dp</dimen>
     <dimen name="layout_size_60">60dp</dimen>
     <dimen name="layout_size_90">90dp</dimen>
-
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_title">18dp</dimen>
+    <dimen name="item_room_title">25dp</dimen>
+    <dimen name="left_rc">10dp</dimen>
+    <dimen name="size_img">40dp</dimen>
+    <dimen name="size_img_title_divice_h">120dp</dimen>
+    <dimen name="size_img_title_divice_w">120dp</dimen>
+    <dimen name="text_size_divice_activity">20sp</dimen>
 </resources>

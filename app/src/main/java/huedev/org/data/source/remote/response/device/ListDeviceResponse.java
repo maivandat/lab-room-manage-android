@@ -9,7 +9,6 @@ import huedev.org.data.model.Device;
 import huedev.org.data.source.remote.response.BaseResponse;
 
 public class ListDeviceResponse extends BaseResponse {
-
     @SerializedName("data")
     @Expose
     public List<Device> deviceList;

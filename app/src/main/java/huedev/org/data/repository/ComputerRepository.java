@@ -12,19 +12,19 @@ public class ComputerRepository implements ComputerDataSource.LocalDataSource, C
     private static ComputerRepository instance;
 
     @NonNull
-    private ComputerLocalDataSource mComputerLocalDataSource;
+    private ComputerDataSource.LocalDataSource mComputerLocalDataSource;
 
     @NonNull
-    private ComputerRemoteDataSource mComputerRemoteDataSource;
+    private ComputerDataSource.RemoteDataSource mComputerRemoteDataSource;
 
-    public ComputerRepository(@NonNull ComputerLocalDataSource computerLocalDataSource,
-                          @NonNull ComputerRemoteDataSource computerRemoteDataSource){
+    public ComputerRepository(@NonNull ComputerDataSource.LocalDataSource computerLocalDataSource,
+                          @NonNull ComputerDataSource.RemoteDataSource computerRemoteDataSource){
         mComputerLocalDataSource = computerLocalDataSource;
         mComputerRemoteDataSource = computerRemoteDataSource;
     }
 
-    public static synchronized ComputerRepository getInstance(@NonNull ComputerLocalDataSource computerLocalDataSource,
-                                                          @NonNull ComputerRemoteDataSource computerRemoteDataSource){
+    public static synchronized ComputerRepository getInstance(@NonNull ComputerDataSource.LocalDataSource computerLocalDataSource,
+                                                              @NonNull ComputerDataSource.RemoteDataSource computerRemoteDataSource){
         if(instance == null){
             instance = new ComputerRepository(computerLocalDataSource, computerRemoteDataSource);
         }

@@ -5,7 +5,7 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Computer implements Parcelable
+public class Computer extends BaseModel implements Parcelable
 {
 
     @SerializedName("id")

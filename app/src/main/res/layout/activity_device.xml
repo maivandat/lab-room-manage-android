@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.device.DeviceActivity">
+    <RelativeLayout
+        android:background="#fff"
+        android:id="@+id/relative_divicetitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/image_title_device"
+            android:src="@drawable/logo_pc"
+            android:layout_width="@dimen/size_img_title_divice_w"
+            android:layout_height="@dimen/size_img_title_divice_h"
+            android:layout_centerHorizontal="true"
+            />
+        <TextView
+            android:text="Computer 1"
+            android:id="@+id/text_comtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/image_title_device"
+            android:layout_marginVertical="2dp"
+            android:textSize="@dimen/text_size_divice_activity"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/relative_title"
+        android:layout_marginVertical="5dp"
+        android:layout_below="@id/relative_divicetitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_device"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relative_title">
+    </android.support.v7.widget.RecyclerView>
+
+
+    <android.support.design.widget.BottomNavigationView
+
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="@color/bgBottomNavigation"
+        android:foreground="?attr/selectableItemBackground"
+        app:itemBackground="@color/bgBottomNavigation"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
+        app:menu="@menu/menu_main_homebt" />
+
+</RelativeLayout>

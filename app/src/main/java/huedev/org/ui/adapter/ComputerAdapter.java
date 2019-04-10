@@ -1,6 +1,7 @@
 package huedev.org.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import java.util.List;
 import huedev.org.R;
 import huedev.org.data.model.Computer;
+import huedev.org.ui.device.DeviceActivity;
 
 
 public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.ComputerViewholder> {
@@ -34,7 +36,6 @@ public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.Comput
         Computer cptItem;
         public ComputerViewholder(@NonNull View itemView) {
             super(itemView);
-
             tvName = itemView.findViewById(R.id.tv_nameComputer);
             tvDetail = itemView.findViewById(R.id.tv_describeItemComputer);
             ibInsivilityDetailComputer = itemView.findViewById(R.id.ib_insivilityDetailComputer);
@@ -85,6 +86,11 @@ public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.Comput
     @Override
     public void onBindViewHolder(@NonNull ComputerAdapter.ComputerViewholder myViewHolder, int i) {
         myViewHolder.setData(mListComputer.get(i));
+        myViewHolder.itemView.setOnClickListener(v -> {
+            Intent intentIdDevice = new Intent(mContext, DeviceActivity.class);
+            intentIdDevice.putExtra("iddevice",mListComputer.get(i).getId());
+            mContext.startActivity(intentIdDevice);
+        });
     }
 
     @Override

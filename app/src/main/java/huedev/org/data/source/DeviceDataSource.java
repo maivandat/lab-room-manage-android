@@ -9,6 +9,6 @@ public interface DeviceDataSource {
     }
 
     interface RemoteDataSource{
-        Single<ListDeviceResponse> devices();
+        Single<ListDeviceResponse> tempDevices();
     }
 }

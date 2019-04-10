@@ -10,21 +10,21 @@ import io.reactivex.Single;
 
 public class DeviceRemoteDataSource implements DeviceDataSource.RemoteDataSource {
     private static DeviceRemoteDataSource instance;
-    private ApiDevice mApiDevice;
+    private ApiDevice mapiDevice;
 
-    public DeviceRemoteDataSource(ApiDevice apiDevice){
-        mApiDevice = apiDevice;
+    public DeviceRemoteDataSource(ApiDevice tempDeviceRemoteInstance) {
+        mapiDevice = tempDeviceRemoteInstance;
     }
 
     public static synchronized DeviceRemoteDataSource getInstance(Context context){
         if(instance == null){
-            instance = new DeviceRemoteDataSource(AppServiceClient.getDeviceRemoteInstance(context));
+            instance = new DeviceRemoteDataSource(AppServiceClient.getTempDeviceRemoteInstance(context));
         }
         return instance;
     }
 
     @Override
-    public Single<ListDeviceResponse> devices() {
-        return mApiDevice.devices();
+    public Single<ListDeviceResponse> tempDevices() {
+        return mapiDevice.tempDevices();
     }
 }
