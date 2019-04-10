@@ -17,11 +17,13 @@ import java.util.ArrayList;
 import huedev.org.R;
 import huedev.org.data.model.Work;
 import huedev.org.data.source.local.io.SerializableFileFactory;
+import huedev.org.ui.fragments.calendar.CalendarContact;
 import huedev.org.utils.AppConstants;
 
 public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.MyViewHolder>{
     private Context mContext;
     private ArrayList<Work> listWork;
+    private CalendarContact.View calendarView;
 
     public WorkAdapter(Context mContext, ArrayList<Work> listWork) {
         this.mContext = mContext;

@@ -6,12 +6,14 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -20,7 +22,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import huedev.org.R;
@@ -28,6 +32,7 @@ import huedev.org.data.model.Work;
 import huedev.org.data.source.local.io.SerializableFileFactory;
 import huedev.org.ui.adapter.WorkAdapter;
 import huedev.org.utils.AppConstants;
+import huedev.org.utils.helpers.StringHelper;
 
 public class CalendarFragment extends Fragment implements View.OnClickListener, CalendarContact.View {
     LinearLayout linearForm;
@@ -37,7 +42,11 @@ public class CalendarFragment extends Fragment implements View.OnClickListener, 
     EditText etNameWork, etTime;
     RecyclerView rvWork;
     WorkAdapter workAdapter;
-    TextView tvWorkEmpty;
+    TextView tvWorkEmpty, tvDate;
+    CalendarView calendarView;
+
+    String date;
+
     CalendarContact.Presenter mPresenter;
     @Nullable
     @Override
@@ -53,14 +62,12 @@ public class CalendarFragment extends Fragment implements View.OnClickListener, 
         etTime = view.findViewById(R.id.et_time);
         rvWork = view.findViewById(R.id.rv_work);
         tvWorkEmpty = view.findViewById(R.id.tv_workEmpty);
-        if (!SerializableFileFactory.ReadFile(AppConstants.PATH, getContext()).isEmpty()){
-            ArrayList<Work> listWork = SerializableFileFactory.ReadFile(AppConstants.PATH, getContext());
-            updateWork(listWork);
-            tvWorkEmpty.setVisibility(View.INVISIBLE);
-        }
+        tvDate = view.findViewById(R.id.tv_date);
+        calendarView = view.findViewById(R.id.cv_calendar);
 
         init();
 
+        calendarView.setOnDateChangeListener(onDateChangeListener);
         ibAddWork.setOnClickListener(this);
         btnConfirm.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
@@ -69,9 +76,20 @@ public class CalendarFragment extends Fragment implements View.OnClickListener, 
     }
 
     private void init() {
+
         mPresenter = new CalendarPresenter(getContext());
         mPresenter.setView(this);
     }
+
+    private CalendarView.OnDateChangeListener onDateChangeListener = (calendarView, i, i1, i2) -> {
+        date = i2 + "";
+        if (StringHelper.dateToString().equals(date)){
+            tvDate.setText(StringHelper.getStringResourceByName("today", getContext()));
+        }else {
+            tvDate.setText(StringHelper.dateToString(i2, i1 + 1, i));
+        }
+        mPresenter.dates(date);
+    };
 
     @Override
     public void onClick(View view) {
@@ -88,39 +106,42 @@ public class CalendarFragment extends Fragment implements View.OnClickListener, 
                 linearForm.setAnimation(animationOut);
                 linearForm.setVisibility(View.INVISIBLE);
                 ibAddWork.setVisibility(View.VISIBLE);
-                ibAddWork.setClickable(false);
                 break;
             case R.id.btn_confirm:
                 String name = etNameWork.getText().toString().trim();
                 String time = etTime.getText().toString().trim();
-                if (name.isEmpty() || time.isEmpty() || (name.isEmpty() && time.isEmpty())){
-                    Toast.makeText(getContext(), "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
-                }else {
-                    if (Integer.parseInt(time) > 0 && Integer.parseInt(time) < 13){
-                        if (rbAM.isChecked()){
-                            time = time + " AM";
-                        }else {
-                            time = time + " PM";
-                        }
-                        mPresenter.works(name, time);
-                        etTime.setText("");
-                        etNameWork.setText("");
-                    }else {
-                        Toast.makeText(getContext(), "Không hợp lệ ! Vui lòng nhập lại", Toast.LENGTH_SHORT).show();
-                    }
-                }
+                mPresenter.works(name, time, date, etTime, etNameWork, rbAM);
                 break;
         }
 
     }
 
     @Override
-    public void updateWork(List<Work> workList) {
+    public void warningData() {
+        Toast.makeText(getContext(),
+                StringHelper.getStringResourceByName("warning_data", getContext()),
+                Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void requireData() {
+        Toast.makeText(getContext(),
+                StringHelper.getStringResourceByName("require_data", getContext()),
+                Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void getWorkOfDate(List<Work> workList) {
         workAdapter = new WorkAdapter(getContext(), (ArrayList<Work>) workList);
-        RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext(),
+                LinearLayoutManager.VERTICAL,
+                false);
         rvWork.setLayoutManager(manager);
         rvWork.setAdapter(workAdapter);
         workAdapter.notifyDataSetChanged();
+        if (!workList.isEmpty()){
+            tvWorkEmpty.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
@@ -137,4 +158,6 @@ public class CalendarFragment extends Fragment implements View.OnClickListener, 
     public void showLoginError(Throwable throwable) {
 
     }
+
+
 }

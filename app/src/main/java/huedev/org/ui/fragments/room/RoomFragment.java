@@ -60,6 +60,9 @@ public class RoomFragment extends Fragment implements RoomContract.View {
         mRecyclerView.setLayoutManager(llm);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
+        mRecyclerView.setOnClickListener(view -> {
+
+        });
     }
 
     @Override

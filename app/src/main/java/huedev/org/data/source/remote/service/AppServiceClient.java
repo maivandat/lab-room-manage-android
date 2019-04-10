@@ -25,28 +25,28 @@ public class AppServiceClient extends ServiceClient {
 
     public static ApiUser getUserRemoteInstance(Context context) {
         if(mApiUser == null){
-            mApiUser = createService(context, AppConstants.HOST_URL_SERVER_TEMP, ApiUser.class);
+            mApiUser = createService(context, AppConstants.HOST_URL, ApiUser.class);
         }
         return mApiUser;
     }
 
     public static ApiDevice getDeviceRemoteInstance(Context context){
         if (mApiDevice == null){
-            mApiDevice = createService(context, AppConstants.HOST_URL_SERVER_TEMP, ApiDevice.class);
+            mApiDevice = createService(context, AppConstants.HOST_URL, ApiDevice.class);
         }
         return mApiDevice;
     }
 
     public static ApiRoom getRoomRemoteInstance(Context context){
         if (mApiRoom == null){
-            mApiRoom = createService(context, AppConstants.HOST_URL_SERVER_TEMP, ApiRoom.class);
+            mApiRoom = createService(context, AppConstants.HOST_URL, ApiRoom.class);
         }
         return mApiRoom;
     }
 
     public static ApiComputer getComputerRemoteInstance(Context context){
         if (mApiComputer == null){
-            mApiComputer = createService(context, AppConstants.HOST_URL_SERVER_TEMP, ApiComputer.class);
+            mApiComputer = createService(context, AppConstants.HOST_URL, ApiComputer.class);
         }
         return mApiComputer;
     }
