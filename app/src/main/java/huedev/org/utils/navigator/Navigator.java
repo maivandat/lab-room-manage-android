@@ -88,7 +88,7 @@ public class Navigator {
     /**
      * Go to next fragment which nested inside current fragment
      *
-     * @param fragment new child fragment
+     * @param fragment newpanel child fragment
      */
     public void goNextChildFragment(@IdRes int containerViewId, Fragment fragment,
                                     boolean addToBackStack, int animation, String tag) {

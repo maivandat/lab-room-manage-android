@@ -21,7 +21,7 @@ public class Device implements Parcelable
     @SerializedName("status")
     @Expose
     private String status;
-    @SerializedName("typpe_devices_id")
+    @SerializedName("type_devices_id")
     @Expose
     private String typpeDevicesId;
     @SerializedName("computers_id")

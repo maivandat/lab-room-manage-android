@@ -1,11 +1,14 @@
 package huedev.org.ui.device;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import huedev.org.R;
@@ -15,12 +18,14 @@ import huedev.org.data.source.local.DeviceLocalDataSource;
 import huedev.org.data.source.remote.DeviceRemoteDataSource;
 import huedev.org.ui.adapter.DeviceAdapter;
 import huedev.org.ui.base.BaseActivity;
+import huedev.org.ui.computer.ComputerActivity;
 import huedev.org.utils.rx.SchedulerProvider;
 
 public class DeviceActivity extends BaseActivity implements DeviceConstract.View{
     DeviceConstract.Presenter presenter;
     DeviceAdapter deviceAdapter;
     RecyclerView recyclerView;
+    List<Device> listDevices;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,12 +48,23 @@ public class DeviceActivity extends BaseActivity implements DeviceConstract.View
 
     private void mapping() {
         recyclerView = findViewById(R.id.recycler_device);
+        listDevices = new ArrayList<>();
     }
 
     @Override
     public void updateTempDeviceList(List<Device> deviceList) {
+        Intent intent = getIntent();
+        String id = intent.getExtras().getString("iddevice");
+        Log.d("showid", id);
+        for (Device device : deviceList){
+            Log.d("getcpid", device.getComputersId());
+            if (device.getComputersId().equals(id)){
+                listDevices.add(device);
+            }
+        }
+        Log.d("listsize", "" + listDevices.size());
         recyclerView.setHasFixedSize(true);
-        deviceAdapter = new DeviceAdapter(this, deviceList);
+        deviceAdapter = new DeviceAdapter(this,listDevices);
         recyclerView.setAdapter(deviceAdapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);

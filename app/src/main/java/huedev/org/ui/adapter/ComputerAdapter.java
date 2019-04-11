@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,6 +89,7 @@ public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.Comput
         myViewHolder.setData(mListComputer.get(i));
         myViewHolder.itemView.setOnClickListener(v -> {
             Intent intentIdDevice = new Intent(mContext, DeviceActivity.class);
+            Log.d("th2509", mListComputer.get(i).getId());
             intentIdDevice.putExtra("iddevice",mListComputer.get(i).getId());
             mContext.startActivity(intentIdDevice);
         });

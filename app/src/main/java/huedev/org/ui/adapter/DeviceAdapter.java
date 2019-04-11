@@ -33,8 +33,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull DeviceAdapter.ViewHolder viewHolder, int i) {
         viewHolder.text_title.setText(deviceList.get(i).getName());
-//        viewHolder.text_title.setText(deviceList.get(i).getTitle());
-//        viewHolder.text_content.setText(deviceList.get(i).getContent());
+        viewHolder.text_content.setText(deviceList.get(i).getDesc());
     }
 
     @Override
@@ -43,11 +42,11 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.ViewHolder
     }
     protected class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView text_title;
+        TextView text_title,text_content;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             text_title = itemView.findViewById(R.id.text_item_title);
-//            text_content = itemView.findViewById(R.id.text_item_content);
+            text_content = itemView.findViewById(R.id.text_item_content);
         }
     }
 }
