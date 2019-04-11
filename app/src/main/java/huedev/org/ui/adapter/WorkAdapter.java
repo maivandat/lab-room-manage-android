@@ -19,15 +19,18 @@ import huedev.org.data.model.Work;
 import huedev.org.data.source.local.io.SerializableFileFactory;
 import huedev.org.ui.fragments.calendar.CalendarContact;
 import huedev.org.utils.AppConstants;
+import huedev.org.utils.helpers.StringHelper;
 
 public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.MyViewHolder>{
     private Context mContext;
     private ArrayList<Work> listWork;
     private CalendarContact.View calendarView;
+    private TextView mTextView;
 
-    public WorkAdapter(Context mContext, ArrayList<Work> listWork) {
+    public WorkAdapter(Context mContext, ArrayList<Work> listWork, TextView textView) {
         this.mContext = mContext;
         this.listWork = listWork;
+        this.mTextView = textView;
     }
 
 
@@ -76,6 +79,9 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.MyViewHolder>{
                             listWork.remove(i);
                             notifyDataSetChanged();
                             SerializableFileFactory.SaveFile(listWork, AppConstants.PATH, view.getContext());
+                            if (listWork.isEmpty()){
+                                mTextView.setText(StringHelper.getStringResourceByName("work_empty", view.getContext()));
+                            }
                         break;
                     default:
                         if (itemp == 0){

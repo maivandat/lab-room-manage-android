@@ -99,10 +99,24 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
                 return true;
             case R.id.nav_start_login:
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                ActivityOptions options = ActivityOptions.makeCustomAnimation(MainActivity.this, R.anim.slide_left_in, R.anim.slide_left_out);
+                ActivityOptions options = ActivityOptions.makeCustomAnimation
+                        (MainActivity.this,
+                                R.anim.slide_left_in,
+                                R.anim.slide_left_out);
                 startActivity(intent, options.toBundle());
                 mDrawerLayout.closeDrawers();
                 return true;
+            case R.id.nav_start_logout:
+                AppPrefs.getInstance(
+                        getApplicationContext()).
+                        putApiToken(AppConstants.
+                                API_TOKEN_DEFAULT);
+                mDrawerLayout.closeDrawers();
+                Intent intentRf = getIntent();
+                startActivity(intentRf);
+                finish();
+                return true;
+
         }
         return false;
     }

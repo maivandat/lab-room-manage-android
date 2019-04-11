@@ -5,6 +5,6 @@ import io.reactivex.Single;
 import retrofit2.http.GET;
 
 public interface ApiDevice {
-    @GET("tempdevices")
+    @GET("devices")
     Single<ListDeviceResponse> tempDevices();
 }

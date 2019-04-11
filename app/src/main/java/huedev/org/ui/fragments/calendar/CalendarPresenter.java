@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.List;
 import huedev.org.data.model.Work;
 import huedev.org.data.source.local.io.SerializableFileFactory;
 import huedev.org.utils.AppConstants;
+import huedev.org.utils.helpers.StringHelper;
 
 public class CalendarPresenter implements CalendarContact.Presenter{
     private Context mContext;
@@ -31,7 +33,7 @@ public class CalendarPresenter implements CalendarContact.Presenter{
     @Override
     public void works(String name, String time,String date,
                       EditText etTime, EditText etNameWork,
-                      RadioButton rbAM) {
+                      RadioButton rbAM, TextView tvWorkEmpty) {
         if (name.isEmpty() || time.isEmpty() || (name.isEmpty() && time.isEmpty())){
             mView.requireData();
         }else {
@@ -43,7 +45,7 @@ public class CalendarPresenter implements CalendarContact.Presenter{
                 }
                 listWork.add(new Work(name, time, date));
                 SerializableFileFactory.SaveFile(listWork,AppConstants.PATH, mContext);
-                dates(date);
+                dates(date,tvWorkEmpty);
                 etTime.setText("");
                 etNameWork.setText("");
             }else {
@@ -55,14 +57,18 @@ public class CalendarPresenter implements CalendarContact.Presenter{
     }
 
     @Override
-    public void dates(String date) {
+    public void dates(String date, TextView tvWorkEmpty) {
         List<Work> dsWorkOfDate = new ArrayList<>();
+        Log.d("getDate", date);
         if (!listWork.isEmpty()){
             for (Work work : listWork){
+                Log.d("getItemWork", work.getName() + " " + work.getTime() + " " + work.getDate());
                 if (work.getDate().equals(date)){
                     dsWorkOfDate.add(work);
                 }
-                Log.d("workitem", work.getName() + " "+ work.getDate());
+            }
+            if (dsWorkOfDate.isEmpty()){
+                tvWorkEmpty.setText(StringHelper.getStringResourceByName("work_empty", mContext));
             }
         }
         mView.getWorkOfDate(dsWorkOfDate);
