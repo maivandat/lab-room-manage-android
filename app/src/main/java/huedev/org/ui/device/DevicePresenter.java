@@ -1,6 +1,7 @@
 package huedev.org.ui.device;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import huedev.org.data.repository.DeviceRepository;
 import huedev.org.data.source.remote.response.device.ListDeviceResponse;
@@ -24,7 +25,7 @@ public class DevicePresenter implements DeviceConstract.Presenter {
     }
 
     private void handleTempDeviceFail(Throwable error) {
-        mView.showLoginError(error);
+        Toast.makeText(context, "fail", Toast.LENGTH_SHORT).show();
     }
 
     private void handleTempDeviceSuccess(ListDeviceResponse listDeviceResponse) {

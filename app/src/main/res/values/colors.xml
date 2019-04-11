@@ -20,4 +20,7 @@
     <color name="bg_login">#E16EC4FF</color>
     <color name="while_edt">#80FFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="device_border">#6ad3f0</color>
+    <color name="device_line">#6ecce6</color>
+    <color name="device_item_background">#F3FAF7</color>
 </resources>
