@@ -11,5 +11,5 @@ import retrofit2.http.Path;
 public interface ApiAuth {
     @FormUrlEncoded
     @POST("v1/login")
-    Single<LoginResponse> login(@Field("username") String username,@Field("password")String password);
+    Single<LoginResponse> login(@Field("username") String username,@Field("password") String password);
 }

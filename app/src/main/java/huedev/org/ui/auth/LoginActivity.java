@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +20,7 @@ import huedev.org.ui.MainActivity;
 import huedev.org.ui.base.BaseActivity;
 import huedev.org.utils.AppConstants;
 import huedev.org.utils.AppPrefs;
+import huedev.org.utils.navigator.Navigator;
 import huedev.org.utils.rx.SchedulerProvider;
 
 public class LoginActivity extends BaseActivity implements LoginContract.View, View.OnClickListener {
@@ -27,6 +29,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
 
     private EditText etUsername, etPassword;
     private Button btnConfirm;
+    private CheckBox cbRemember;
+    Navigator navigator;
 
     String sUsername, sPassword;
 
@@ -35,13 +39,16 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        navigator = new Navigator(this);
+
         if (!AppPrefs.getInstance(this).getApiToken().equals(AppConstants.API_TOKEN_DEFAULT)){
-            startActivity();
+            navigator.startActivity(MainActivity.class);
         }
 
         etUsername = findViewById(R.id.et_usernameLogin);
         etPassword = findViewById(R.id.et_passwordLogin);
         btnConfirm = findViewById(R.id.btn_gologin);
+        cbRemember = findViewById(R.id.cb_remeberLogin);
 
         init();
 
@@ -65,7 +72,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
     @Override
     public void getUser(User user) {
         Toast.makeText(this, "Xin chào " + user.getName(), Toast.LENGTH_SHORT).show();
-        startActivity();
+        navigator.startActivity(MainActivity.class);
     }
 
     @Override
@@ -87,11 +94,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
     @Override
     public void onClick(View view) {
         clickHandle(view);
-    }
-
-    public void startActivity(){
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
     }
 
 }

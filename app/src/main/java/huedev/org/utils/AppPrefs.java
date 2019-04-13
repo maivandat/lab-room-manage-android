@@ -26,4 +26,5 @@ public class AppPrefs {
     public String getApiToken(){
         return preferences.getString(AppConstants.API_TOKEN,AppConstants.API_TOKEN_DEFAULT);
     }
+
 }

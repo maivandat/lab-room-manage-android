@@ -14,6 +14,8 @@ import android.util.Patterns;
 import com.google.common.base.Preconditions;
 
 import huedev.org.R;
+import huedev.org.utils.AppConstants;
+import huedev.org.utils.AppPrefs;
 
 public class Navigator {
 
@@ -31,7 +33,7 @@ public class Navigator {
         mActivity = Preconditions.checkNotNull(fragment.getActivity());
     }
 
-    private void startActivity(@NonNull Intent intent) {
+    public void startActivity(@NonNull Intent intent) {
         mActivity.startActivity(intent);
         setActivityTransactionAnimation(ActivityTransition.START);
     }
@@ -81,6 +83,11 @@ public class Navigator {
         }
         Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse(url));
         startActivity(intent);
+    }
+
+    public Object getData(String key){
+        Intent intent = mActivity.getIntent();
+        return intent.getBundleExtra(key);
     }
 
     // Fragment

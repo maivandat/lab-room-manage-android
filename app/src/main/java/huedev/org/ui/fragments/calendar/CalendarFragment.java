@@ -83,6 +83,7 @@ public class CalendarFragment extends Fragment implements View.OnClickListener, 
         }else {
             linearWork.setVisibility(View.INVISIBLE);
             tvWhoisthis.setVisibility(View.VISIBLE);
+            tvWorkEmpty.setText(StringHelper.getStringResourceByName("work_empty", getContext()));
         }
 
         calendarView.setOnDateChangeListener(onDateChangeListener);
@@ -103,6 +104,7 @@ public class CalendarFragment extends Fragment implements View.OnClickListener, 
     private CalendarView.OnDateChangeListener onDateChangeListener = (calendarView, i, i1, i2) -> {
         date = StringHelper.dateToString(i2, i1 ,i);
         if (StringHelper.dateToString().equals(date)){
+
             tvDate.setText(StringHelper.getStringResourceByName("today", getContext()));
         }else {
             tvDate.setText(date);

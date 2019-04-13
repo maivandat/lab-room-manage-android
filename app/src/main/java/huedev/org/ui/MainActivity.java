@@ -27,6 +27,7 @@ import huedev.org.ui.fragments.feed.FeedFragment;
 import huedev.org.ui.fragments.room.RoomFragment;
 import huedev.org.utils.AppConstants;
 import huedev.org.utils.AppPrefs;
+import huedev.org.utils.navigator.Navigator;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener,
         NavigationView.OnNavigationItemSelectedListener,
@@ -35,8 +36,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     NavigationView mNavigationView;
     BottomNavigationView mBtNavigation;
     Toolbar mToolbar;
-
+    Navigator navigator;
     LinearLayout linearLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +49,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
         linearLayout = findViewById(R.id.linear_container);
         mBtNavigation = findViewById(R.id.navigation_main);
 
+        navigator = new Navigator(this);
         mToolbar.setTitle("");
         mToolbar.setNavigationIcon(R.drawable.btn_menu);
         setSupportActionBar(mToolbar);
@@ -57,6 +60,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
             mNavigationView.getMenu().getItem(0).setVisible(true);
             mNavigationView.getMenu().getItem(1).setVisible(true);
             mNavigationView.getMenu().getItem(2).setVisible(false);
+
         }else {
             mNavigationView.getMenu().getItem(0).setVisible(false);
             mNavigationView.getMenu().getItem(1).setVisible(false);
@@ -67,6 +71,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
         fragmentTransaction.add(R.id.linear_container ,new RoomFragment());
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+
 
         mToolbar.setNavigationOnClickListener(this);
         mNavigationView.setNavigationItemSelectedListener(this);
@@ -98,12 +103,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
                 replaceFragment(new MessengerFragment());
                 return true;
             case R.id.nav_start_login:
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                ActivityOptions options = ActivityOptions.makeCustomAnimation
-                        (MainActivity.this,
-                                R.anim.slide_left_in,
-                                R.anim.slide_left_out);
-                startActivity(intent, options.toBundle());
+                navigator.startActivity(LoginActivity.class);
                 mDrawerLayout.closeDrawers();
                 return true;
             case R.id.nav_start_logout:
@@ -112,9 +112,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
                         putApiToken(AppConstants.
                                 API_TOKEN_DEFAULT);
                 mDrawerLayout.closeDrawers();
-                Intent intentRf = getIntent();
-                startActivity(intentRf);
-                finish();
+                navigator.startActivity(MainActivity.class);
                 return true;
 
         }
@@ -131,5 +129,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
         fragmentTransaction.replace(R.id.linear_container ,fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public void overridePendingTransition(int enterAnim, int exitAnim) {
+        super.overridePendingTransition(R.anim.slide_left_in,
+                R.anim.slide_left_out);
     }
 }

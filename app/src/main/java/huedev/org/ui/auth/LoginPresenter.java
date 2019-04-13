@@ -2,12 +2,14 @@ package huedev.org.ui.auth;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.google.common.base.Preconditions;
 
 import huedev.org.data.repository.LoginRepository;
 import huedev.org.data.source.remote.response.auth.LoginResponse;
+import huedev.org.utils.AppConstants;
 import huedev.org.utils.AppPrefs;
 import huedev.org.utils.rx.BaseSchedulerProvider;
 
