@@ -1,6 +1,7 @@
 package huedev.org.ui.auth;
 
 import android.provider.ContactsContract;
+import android.widget.CheckBox;
 
 import huedev.org.data.model.User;
 import huedev.org.ui.base.BasePresenter;
