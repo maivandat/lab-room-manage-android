@@ -13,6 +13,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,9 +26,12 @@ import huedev.org.ui.fragments.MessengerFragment.MessengerFragment;
 import huedev.org.ui.fragments.calendar.CalendarFragment;
 import huedev.org.ui.fragments.feed.FeedFragment;
 import huedev.org.ui.fragments.room.RoomFragment;
+import huedev.org.ui.user.edit.UEditActivity;
 import huedev.org.utils.AppConstants;
 import huedev.org.utils.AppPrefs;
 import huedev.org.utils.navigator.Navigator;
+
+
 
 public class MainActivity extends BaseActivity implements View.OnClickListener,
         NavigationView.OnNavigationItemSelectedListener,
@@ -38,6 +42,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     Toolbar mToolbar;
     Navigator navigator;
     LinearLayout linearLayout;
+    String bLogin = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +56,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
 
         navigator = new Navigator(this);
         mToolbar.setTitle("");
-        mToolbar.setNavigationIcon(R.drawable.btn_menu);
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        setupToolbar(mToolbar, R.drawable.btn_menu);
+
 
         if (!AppPrefs.getInstance(this).getApiToken().equals(AppConstants.API_TOKEN_DEFAULT)){
             mNavigationView.getMenu().getItem(0).setVisible(true);
@@ -105,6 +108,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
             case R.id.nav_start_login:
                 navigator.startActivity(LoginActivity.class);
                 mDrawerLayout.closeDrawers();
+                finish();
                 return true;
             case R.id.nav_start_logout:
                 AppPrefs.getInstance(
@@ -113,6 +117,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
                                 API_TOKEN_DEFAULT);
                 mDrawerLayout.closeDrawers();
                 navigator.startActivity(MainActivity.class);
+                return true;
+            case R.id.nav_start_editInformation:
+                navigator.startActivity(UEditActivity.class);
                 return true;
 
         }

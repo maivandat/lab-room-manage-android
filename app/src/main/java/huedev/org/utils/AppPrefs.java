@@ -27,4 +27,16 @@ public class AppPrefs {
         return preferences.getString(AppConstants.API_TOKEN,AppConstants.API_TOKEN_DEFAULT);
     }
 
+    public void putBooleanRemember(boolean value){
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(AppConstants.BOOLEAN_REMEMBER, value);
+        editor.commit();
+    }
+
+    public boolean getBooleanRemember(){
+        return preferences.getBoolean(AppConstants.BOOLEAN_REMEMBER,AppConstants.BOOLEAN_REMEMBER_DEFAULT);
+    }
+
+
+
 }

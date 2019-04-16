@@ -47,4 +47,8 @@
     <string name="warning_data">Invalid data ! Please re-enter</string>
     <string name="devicenametitle">Device Name</string>
     <string name="devicedesctitle">Description</string>
+    <string name="profile">Profile</string>
+    <string name="informations_personnelles">Informations personnelles</string>
+    <string name="fullname_user">Full name</string>
+    <string name="email_user">Email</string>
 </resources>
