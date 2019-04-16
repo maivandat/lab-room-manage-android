@@ -19,6 +19,8 @@ import huedev.org.data.source.remote.DeviceRemoteDataSource;
 import huedev.org.ui.adapter.DeviceAdapter;
 import huedev.org.ui.base.BaseActivity;
 import huedev.org.ui.computer.ComputerActivity;
+import huedev.org.utils.AppConstants;
+import huedev.org.utils.navigator.Navigator;
 import huedev.org.utils.rx.SchedulerProvider;
 
 public class DeviceActivity extends BaseActivity implements DeviceConstract.View{
@@ -26,6 +28,7 @@ public class DeviceActivity extends BaseActivity implements DeviceConstract.View
     DeviceAdapter deviceAdapter;
     RecyclerView recyclerView;
     List<Device> listDevices;
+    Navigator navigator;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,16 +52,16 @@ public class DeviceActivity extends BaseActivity implements DeviceConstract.View
     private void mapping() {
         recyclerView = findViewById(R.id.recycler_device);
         listDevices = new ArrayList<>();
+        navigator = new Navigator(this);
     }
 
     @Override
     public void updateTempDeviceList(List<Device> deviceList) {
-        Intent intent = getIntent();
-        String id = intent.getExtras().getString("iddevice");
-        Log.d("showid", id);
+        String idComputer = navigator.getData().getString(AppConstants.ID_COMPUTER);
+        Log.d("showid", idComputer);
         for (Device device : deviceList){
-            Log.d("getcpid", device.getComputersId());
-            if (device.getComputersId().equals(id)){
+//            Log.d("getcpid", device.getComputersId());
+            if (device.getComputersId().equals(idComputer)){
                 listDevices.add(device);
             }
         }

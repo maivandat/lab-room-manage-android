@@ -23,6 +23,7 @@
         <activity android:name=".ui.device.DeviceActivity"></activity>
         <activity android:name=".ui.auth.LoginActivity"></activity>
         <activity android:name=".ui.computer.ComputerActivity"></activity>
+        <activity android:name=".ui.user.edit.UEditActivity"></activity>
     </application>
 
 </manifest>

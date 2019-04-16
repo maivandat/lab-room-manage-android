@@ -85,9 +85,9 @@ public class Navigator {
         startActivity(intent);
     }
 
-    public Object getData(String key){
-        Intent intent = mActivity.getIntent();
-        return intent.getBundleExtra(key);
+    public Bundle getData(){
+        Bundle bundle = mActivity.getIntent().getExtras();
+        return bundle;
     }
 
     // Fragment

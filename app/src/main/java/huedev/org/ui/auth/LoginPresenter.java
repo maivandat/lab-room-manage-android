@@ -37,8 +37,8 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     private void handleLoginSuccess(LoginResponse loginResponse){
-        mView.getUser(loginResponse.data);
         AppPrefs.getInstance(mContext).putApiToken(loginResponse.data.getAccess_token());
+        mView.getUser(loginResponse.data);
     }
 
     private void handleLoginFailed(Throwable error){

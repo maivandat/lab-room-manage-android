@@ -41,10 +41,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
 
         navigator = new Navigator(this);
 
-        if (!AppPrefs.getInstance(this).getApiToken().equals(AppConstants.API_TOKEN_DEFAULT)){
-            navigator.startActivity(MainActivity.class);
-        }
-
         etUsername = findViewById(R.id.et_usernameLogin);
         etPassword = findViewById(R.id.et_passwordLogin);
         btnConfirm = findViewById(R.id.btn_gologin);

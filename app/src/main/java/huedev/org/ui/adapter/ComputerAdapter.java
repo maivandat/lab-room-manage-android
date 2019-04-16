@@ -1,7 +1,9 @@
 package huedev.org.ui.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,15 +19,19 @@ import java.util.List;
 import huedev.org.R;
 import huedev.org.data.model.Computer;
 import huedev.org.ui.device.DeviceActivity;
+import huedev.org.utils.AppConstants;
+import huedev.org.utils.navigator.Navigator;
 
 
 public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.ComputerViewholder> {
     private Context mContext;
     private List<Computer> mListComputer;
+    Navigator navigator;
 
     public ComputerAdapter(Context Context, List<Computer> ListComputer) {
         this.mContext = Context;
         this.mListComputer = ListComputer;
+        navigator = new Navigator((Activity) mContext);
 
     }
 
@@ -88,10 +94,10 @@ public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.Comput
     public void onBindViewHolder(@NonNull ComputerAdapter.ComputerViewholder myViewHolder, int i) {
         myViewHolder.setData(mListComputer.get(i));
         myViewHolder.itemView.setOnClickListener(v -> {
-            Intent intentIdDevice = new Intent(mContext, DeviceActivity.class);
             Log.d("th2509", mListComputer.get(i).getId());
-            intentIdDevice.putExtra("iddevice",mListComputer.get(i).getId());
-            mContext.startActivity(intentIdDevice);
+            Bundle bundle = new Bundle();
+            bundle.putString(AppConstants.ID_COMPUTER, mListComputer.get(i).getId());
+            navigator.startActivity(DeviceActivity.class, bundle);
         });
     }
 

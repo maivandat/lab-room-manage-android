@@ -8,6 +8,7 @@
     <color name="text_color">#99def7</color>
     <color name="bg_color">#D6F4FF</color>
     <color name="bgToolbarComputer">#36a4f4</color>
+    <color name="bgToolbarComputer_transparent">#8D36A4F4</color>
     <color name="text_color_black">#000</color>
     <color name="bgBottomNavigation">#3F51B5</color>
     <color name="colorWhile">#fff</color>
@@ -19,6 +20,7 @@
     <color name="black_status">#C8000000</color>
     <color name="bg_login">#E16EC4FF</color>
     <color name="while_edt">#80FFFFFF</color>
+    <color name="while_edt_edit">#92719CFD</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="device_border">#6ad3f0</color>
     <color name="device_line">#6ecce6</color>
