@@ -97,6 +97,7 @@ public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.Comput
             Log.d("th2509", mListComputer.get(i).getId());
             Bundle bundle = new Bundle();
             bundle.putString(AppConstants.ID_COMPUTER, mListComputer.get(i).getId());
+            bundle.putString(AppConstants.ID_COMPUTER, mListComputer.get(i).getName());
             navigator.startActivity(DeviceActivity.class, bundle);
         });
     }
