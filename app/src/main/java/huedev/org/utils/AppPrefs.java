@@ -27,14 +27,64 @@ public class AppPrefs {
         return preferences.getString(AppConstants.API_TOKEN,AppConstants.API_TOKEN_DEFAULT);
     }
 
-    public void putBooleanRemember(boolean value){
+    public void putIdUser(String value){
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean(AppConstants.BOOLEAN_REMEMBER, value);
+        editor.putString(AppConstants.ID_USER, value);
         editor.commit();
     }
 
-    public boolean getBooleanRemember(){
-        return preferences.getBoolean(AppConstants.BOOLEAN_REMEMBER,AppConstants.BOOLEAN_REMEMBER_DEFAULT);
+    public String getIdUser(){
+        return preferences.getString(AppConstants.ID_USER,AppConstants.ID_USER_DEFAULT);
+    }
+
+    public void putNameUser(String value){
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(AppConstants.ID_NAME, value);
+        editor.commit();
+    }
+
+    public String getNameUser(){
+        return preferences.getString(AppConstants.ID_NAME,AppConstants.NAME_DEFAULT);
+    }
+
+    public void putUserNameUser(String value){
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(AppConstants.ID_USERNAME, value);
+        editor.commit();
+    }
+
+    public String getUserNameUser(){
+        return preferences.getString(AppConstants.ID_USERNAME,AppConstants.USERNAME_DEFAULT);
+    }
+
+    public void putPasswordUser(String value){
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(AppConstants.ID_PASSWORD, value);
+        editor.commit();
+    }
+
+    public String getPasswordUser(){
+        return preferences.getString(AppConstants.ID_PASSWORD,AppConstants.PASSWORD_DEFAULT);
+    }
+
+    public void putEmailUser(String value){
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(AppConstants.ID_EMAIL, value);
+        editor.commit();
+    }
+
+    public String getEmailUser(){
+        return preferences.getString(AppConstants.ID_EMAIL,AppConstants.EMAIL_DEFAULT);
+    }
+
+    public void putRole(int value){
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt(AppConstants.ID_ROLE, value);
+        editor.commit();
+    }
+
+    public int getRole(){
+        return preferences.getInt(AppConstants.ID_ROLE,AppConstants.ROLE_DEFAULT);
     }
 
 

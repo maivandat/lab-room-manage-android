@@ -5,6 +5,8 @@ import android.content.Context;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import huedev.org.utils.AppPrefs;
+
 public class StringHelper {
     public static String dateToString(){
         Date date = new Date();
@@ -35,4 +37,21 @@ public class StringHelper {
         int resId = mContext.getResources().getIdentifier(aString, "string", packageName);
         return mContext.getString(resId);
     }
+
+    public static String formatString(int n){
+        String format = String.valueOf(n);
+        return format;
+    }
+    public static String formatStringRole(int role, Context mContext){
+        String sRole;
+        if (role== 0){
+            sRole = StringHelper.getStringResourceByName("admin", mContext);
+        }else if (role == 1){
+            sRole = StringHelper.getStringResourceByName("technicians", mContext);
+        }else {
+            sRole = StringHelper.getStringResourceByName("member", mContext);
+        }
+        return sRole;
+    }
+
 }

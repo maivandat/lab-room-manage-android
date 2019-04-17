@@ -81,6 +81,8 @@ public class ComputerActivity extends BaseActivity implements ComputerContract.V
         if (item.getItemId() == R.id.menu_computerReset){
             finish();
             startActivity(getIntent());
+
+//            mComputerAdapter.notifyDataSetChanged();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -96,7 +98,7 @@ public class ComputerActivity extends BaseActivity implements ComputerContract.V
                 GridLayoutManager.VERTICAL,
                 false);
         mRvComputer.setLayoutManager(manager);
-        mComputerAdapter.notifyDataSetChanged();
+
     }
 
     @Override

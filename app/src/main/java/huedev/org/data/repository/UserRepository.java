@@ -2,10 +2,12 @@ package huedev.org.data.repository;
 
 import android.support.annotation.NonNull;
 
+import huedev.org.data.model.User;
 import huedev.org.data.source.UserDataSource;
 import huedev.org.data.source.local.UserLocalDataSource;
 import huedev.org.data.source.remote.UserRemoteDataSource;
 import huedev.org.data.source.remote.response.user.ListUserResponse;
+import huedev.org.data.source.remote.response.user.UpdateUserReponse;
 import io.reactivex.Single;
 
 public class UserRepository implements UserDataSource.LocalDataSource, UserDataSource.RemoteDataSource {
@@ -34,5 +36,12 @@ public class UserRepository implements UserDataSource.LocalDataSource, UserDataS
     @Override
     public Single<ListUserResponse> users() {
         return mUserRemoteDataSource.users();
+    }
+
+    @Override
+    public Single<UpdateUserReponse> update(String id, String username,
+                                            String password, String name,
+                                            String email, int role) {
+        return mUserRemoteDataSource.update(id, username, password, name, email, role);
     }
 }

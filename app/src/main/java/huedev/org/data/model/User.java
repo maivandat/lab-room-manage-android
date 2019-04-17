@@ -38,7 +38,7 @@ public class User extends BaseModel implements Serializable, Parcelable {
     @Expose
     private String access_token;
 
-    protected User(Parcel in) {
+    public User(Parcel in) {
         this.id = ((String) in.readValue((Integer.class.getClassLoader())));
         this.name = ((String) in.readValue((String.class.getClassLoader())));
         this.username = ((String) in.readValue((String.class.getClassLoader())));
@@ -47,6 +47,8 @@ public class User extends BaseModel implements Serializable, Parcelable {
         this.access_token = ((String) in.readValue((String.class.getClassLoader())));
     }
 
+    public User() {
+    }
 
     public final static Parcelable.Creator<User> CREATOR = new Creator<User>() {
 

@@ -51,4 +51,8 @@
     <string name="informations_personnelles">Informations personnelles</string>
     <string name="fullname_user">Full name</string>
     <string name="email_user">Email</string>
+    <string name="edit">Edit</string>
+    <string name="admin">ADMIN</string>
+    <string name="technicians">TECHNICIANS</string>
+    <string name="member">MEMBER</string>
 </resources>

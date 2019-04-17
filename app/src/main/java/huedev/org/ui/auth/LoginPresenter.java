@@ -27,17 +27,23 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     @Override
-    public void login(String email, String password) {
+    public void login(String username, String password) {
         mView.showLoadingIndicator();
-        mLoginRepository.login(email, password)
+        mLoginRepository.login(username, password)
                 .subscribeOn(mSchedulerProvider.io())
                 .observeOn(mSchedulerProvider.ui())
-                .subscribe(loginResponse -> handleLoginSuccess(loginResponse),
+                .subscribe(loginResponse -> handleLoginSuccess(loginResponse, username, password),
                         error -> handleLoginFailed(error));
     }
 
-    private void handleLoginSuccess(LoginResponse loginResponse){
+    private void handleLoginSuccess(LoginResponse loginResponse, String username, String password){
         AppPrefs.getInstance(mContext).putApiToken(loginResponse.data.getAccess_token());
+        AppPrefs.getInstance(mContext).putIdUser(loginResponse.data.getId());
+        AppPrefs.getInstance(mContext).putUserNameUser(username);
+        AppPrefs.getInstance(mContext).putPasswordUser(password);
+        AppPrefs.getInstance(mContext).putNameUser(loginResponse.data.getName());
+        AppPrefs.getInstance(mContext).putEmailUser(loginResponse.data.getEmail());
+        AppPrefs.getInstance(mContext).putRole(Integer.parseInt(loginResponse.data.getRole()));
         mView.getUser(loginResponse.data);
     }
 

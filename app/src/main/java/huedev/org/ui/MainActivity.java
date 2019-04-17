@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import huedev.org.R;
 import huedev.org.ui.auth.LoginActivity;
@@ -29,6 +30,7 @@ import huedev.org.ui.fragments.room.RoomFragment;
 import huedev.org.ui.user.edit.UEditActivity;
 import huedev.org.utils.AppConstants;
 import huedev.org.utils.AppPrefs;
+import huedev.org.utils.helpers.StringHelper;
 import huedev.org.utils.navigator.Navigator;
 
 
@@ -42,7 +44,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     Toolbar mToolbar;
     Navigator navigator;
     LinearLayout linearLayout;
-    String bLogin = "";
+    TextView tvNameUSer, tvPosition;
+    String name = "abc", role = "123";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +56,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
         mToolbar = findViewById(R.id.toolbar_main);
         linearLayout = findViewById(R.id.linear_container);
         mBtNavigation = findViewById(R.id.navigation_main);
+        View headerLayout = mNavigationView.getHeaderView(0);
+        tvNameUSer = headerLayout.findViewById(R.id.tv_nameUser);
+        tvPosition = headerLayout.findViewById(R.id.tv_position);
 
         navigator = new Navigator(this);
         mToolbar.setTitle("");
         setupToolbar(mToolbar, R.drawable.btn_menu);
-
-
+        setNameUser();
         if (!AppPrefs.getInstance(this).getApiToken().equals(AppConstants.API_TOKEN_DEFAULT)){
             mNavigationView.getMenu().getItem(0).setVisible(true);
             mNavigationView.getMenu().getItem(1).setVisible(true);
@@ -111,15 +116,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
                 finish();
                 return true;
             case R.id.nav_start_logout:
-                AppPrefs.getInstance(
-                        getApplicationContext()).
-                        putApiToken(AppConstants.
-                                API_TOKEN_DEFAULT);
+                AppPrefs.getInstance(this).putApiToken(AppConstants.API_TOKEN_DEFAULT);
+                AppPrefs.getInstance(this).putIdUser(AppConstants.ID_USER_DEFAULT);
+                AppPrefs.getInstance(this).putUserNameUser(AppConstants.USERNAME_DEFAULT);
+                AppPrefs.getInstance(this).putPasswordUser(AppConstants.PASSWORD_DEFAULT);
+                AppPrefs.getInstance(this).putNameUser(AppConstants.NAME_DEFAULT);
+                AppPrefs.getInstance(this).putEmailUser(AppConstants.EMAIL_DEFAULT);
+                AppPrefs.getInstance(this).putRole(AppConstants.ROLE_DEFAULT);
                 mDrawerLayout.closeDrawers();
                 navigator.startActivity(MainActivity.class);
                 return true;
             case R.id.nav_start_editInformation:
                 navigator.startActivity(UEditActivity.class);
+                mDrawerLayout.closeDrawers();
                 return true;
 
         }
@@ -129,6 +138,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     @Override
     public void onClick(View view) {
         mDrawerLayout.openDrawer(GravityCompat.START);
+        setNameUser();
     }
 
     private void replaceFragment(Fragment fragment){
@@ -142,5 +152,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     public void overridePendingTransition(int enterAnim, int exitAnim) {
         super.overridePendingTransition(R.anim.slide_left_in,
                 R.anim.slide_left_out);
+    }
+
+    public void setNameUser(){
+        if (!AppPrefs.getInstance(this).getNameUser().isEmpty() && AppPrefs.getInstance(this).getRole() > -1){
+            name = AppPrefs.getInstance(this).getNameUser();
+            role = StringHelper.formatStringRole(AppPrefs.getInstance(this).getRole(), this);
+        }else {
+            name = StringHelper.getStringResourceByName("admin", this);
+            role = StringHelper.formatStringRole(2, this);
+        }
+
+        tvNameUSer.setText(name);
+        tvPosition.setText(role);
     }
 }
