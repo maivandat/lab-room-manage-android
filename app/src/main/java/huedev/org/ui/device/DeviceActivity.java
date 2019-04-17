@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -24,6 +25,8 @@ import huedev.org.utils.navigator.Navigator;
 import huedev.org.utils.rx.SchedulerProvider;
 
 public class DeviceActivity extends BaseActivity implements DeviceConstract.View{
+    ArrayList<Integer> arrayimg;
+    TextView textNameCom;
     DeviceConstract.Presenter presenter;
     DeviceAdapter deviceAdapter;
     RecyclerView recyclerView;
@@ -50,14 +53,17 @@ public class DeviceActivity extends BaseActivity implements DeviceConstract.View
     }
 
     private void mapping() {
+        textNameCom = findViewById(R.id.text_comtitle);
         recyclerView = findViewById(R.id.recycler_device);
         listDevices = new ArrayList<>();
         navigator = new Navigator(this);
+        arrayimg = new ArrayList<>();
     }
 
     @Override
     public void updateTempDeviceList(List<Device> deviceList) {
         String idComputer = navigator.getData().getString(AppConstants.ID_COMPUTER);
+        String name  = navigator.getData().getString(AppConstants.ID_COM_NAME);
         Log.d("showid", idComputer);
         for (Device device : deviceList){
 //            Log.d("getcpid", device.getComputersId());
