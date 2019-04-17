@@ -20,4 +20,5 @@ public class AppConstants {
     public static final String PATH = "WORKFILE";
     public static final String ID_COMPUTER = "ID_COMPUTER";
     public static final String ID_COM_NAME = "NAME_COMPUTER";
+
 }

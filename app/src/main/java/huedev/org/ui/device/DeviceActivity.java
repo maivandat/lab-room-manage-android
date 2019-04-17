@@ -49,7 +49,6 @@ public class DeviceActivity extends BaseActivity implements DeviceConstract.View
         );
         presenter.setView(this);
         presenter.tempDevices();
-
     }
 
     private void mapping() {
@@ -64,14 +63,11 @@ public class DeviceActivity extends BaseActivity implements DeviceConstract.View
     public void updateTempDeviceList(List<Device> deviceList) {
         String idComputer = navigator.getData().getString(AppConstants.ID_COMPUTER);
         String name  = navigator.getData().getString(AppConstants.ID_COM_NAME);
-        Log.d("showid", idComputer);
         for (Device device : deviceList){
-//            Log.d("getcpid", device.getComputersId());
             if (device.getComputersId().equals(idComputer)){
                 listDevices.add(device);
             }
         }
-        Log.d("listsize", "" + listDevices.size());
         recyclerView.setHasFixedSize(true);
         deviceAdapter = new DeviceAdapter(this,listDevices);
         recyclerView.setAdapter(deviceAdapter);
