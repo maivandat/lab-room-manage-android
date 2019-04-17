@@ -106,7 +106,7 @@
                     style="?android:attr/buttonStyleSmall"
                     android:id="@+id/btn.gologin"
                     android:textColor="@color/colorWhile"
-                    android:background="@drawable/custom_btn_go"
+                    android:background="@drawable/custom_hover_btn_go"
                     android:text="@string/go"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/layout_size_60" />

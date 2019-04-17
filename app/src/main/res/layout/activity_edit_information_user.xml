@@ -66,7 +66,7 @@
                 android:padding="@dimen/margin_15"
                 android:hint="@string/fullname_user"
                 android:background="@drawable/custom_edittext_edit"
-                android:id="@+id/et.nameUser"
+                android:id="@+id/et.nameEditUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -78,17 +78,59 @@
                 android:padding="@dimen/margin_15"
                 android:hint="@string/email_user"
                 android:background="@drawable/custom_edittext_edit"
-                android:id="@+id/et.emailUser"
+                android:id="@+id/et.emailEditUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
 
+        <!--<TextView-->
+            <!--android:textStyle="bold"-->
+            <!--android:textSize="17sp"-->
+            <!--android:layout_marginTop="@dimen/margin_20"-->
+            <!--android:layout_below="@+id/linear.form"-->
+            <!--android:textColor="@color/black_status"-->
+            <!--android:text="Role: "-->
+            <!--android:id="@+id/tv.role"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content" />-->
 
+        <!--<RadioGroup-->
+            <!--android:id="@+id/rg.role"-->
+            <!--android:orientation="vertical"-->
+
+            <!--android:layout_below="@+id/tv.role"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<RadioButton-->
+                <!--android:id="@+id/rb.admin"-->
+                <!--android:text="@string/admin"-->
+                <!--android:background="@drawable/custom_cb_rmb"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+
+            <!--<RadioButton-->
+                <!--android:id="@+id/rb.technicians"-->
+                <!--android:text="@string/technicians"-->
+                <!--android:background="@drawable/custom_cb_rmb"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+
+            <!--<RadioButton-->
+                <!--android:id="@+id/rb.member"-->
+                <!--android:text="@string/member"-->
+                <!--android:background="@drawable/custom_cb_rmb"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+
+        <!--</RadioGroup>-->
 
         <Button
-            android:text="Edit"
-            android:background="@drawable/custom_border"
+            android:id="@+id/btn.edit"
+            android:textColor="@color/colorWhile"
+            android:text="@string/edit"
+            android:background="@drawable/custom_hover_btn_edit"
             android:layout_alignParentBottom="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

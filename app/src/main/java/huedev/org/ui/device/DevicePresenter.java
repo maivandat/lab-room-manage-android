@@ -14,6 +14,12 @@ public class DevicePresenter implements DeviceConstract.Presenter {
     private DeviceRepository deviceRepository;
     private BaseSchedulerProvider baseSchedulerProvider;
 
+    public DevicePresenter(Context context, DeviceRepository deviceRepository, BaseSchedulerProvider baseSchedulerProvider) {
+        this.context = context;
+        this.deviceRepository = deviceRepository;
+        this.baseSchedulerProvider = baseSchedulerProvider;
+    }
+
     @Override
     public void tempDevices() {
         mView.showLoadingIndicator();
@@ -31,12 +37,6 @@ public class DevicePresenter implements DeviceConstract.Presenter {
     private void handleTempDeviceSuccess(ListDeviceResponse listDeviceResponse) {
         mView.hideLoadingIndicator();
         mView.updateTempDeviceList(listDeviceResponse.deviceList);
-    }
-
-    public DevicePresenter(Context context, DeviceRepository deviceRepository, BaseSchedulerProvider baseSchedulerProvider) {
-        this.context = context;
-        this.deviceRepository = deviceRepository;
-        this.baseSchedulerProvider = baseSchedulerProvider;
     }
 
     @Override
