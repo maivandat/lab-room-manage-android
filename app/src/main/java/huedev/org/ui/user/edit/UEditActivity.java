@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import huedev.org.R;
@@ -29,6 +30,7 @@ public class UEditActivity extends BaseActivity implements View.OnClickListener,
     private EditText etFullName;
     private EditText etEmail;
     private Button btnEdit;
+    private TextView tvFullname;
 
     private String name;
     private String email;
@@ -43,6 +45,7 @@ public class UEditActivity extends BaseActivity implements View.OnClickListener,
         etFullName = findViewById(R.id.et_nameEditUser);
         etEmail = findViewById(R.id.et_emailEditUser);
         btnEdit = findViewById(R.id.btn_edit);
+        tvFullname = findViewById(R.id.tv_fullname);
 
         setupToolbar(toolbar, R.drawable.btn_back);
         init();
@@ -51,6 +54,7 @@ public class UEditActivity extends BaseActivity implements View.OnClickListener,
 
         etFullName.setText(AppPrefs.getInstance(this).getNameUser());
         etEmail.setText(AppPrefs.getInstance(this).getEmailUser());
+        tvFullname.setText(AppPrefs.getInstance(this).getNameUser());
 
     }
 

@@ -67,12 +67,10 @@ public class RoomFragment extends Fragment implements RoomContract.View {
 
     @Override
     public void showLoadingIndicator() {
-        Toast.makeText(getContext(), "Xin chào", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void hideLoadingIndicator() {
-        Toast.makeText(getContext(), "Thành công", Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -1,14 +1,10 @@
-package huedev.org.ui.auth;
+package huedev.org.ui.auth.login;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import huedev.org.R;
@@ -18,8 +14,6 @@ import huedev.org.data.source.local.LoginLocalDataSource;
 import huedev.org.data.source.remote.LoginRemoteDataSource;
 import huedev.org.ui.MainActivity;
 import huedev.org.ui.base.BaseActivity;
-import huedev.org.utils.AppConstants;
-import huedev.org.utils.AppPrefs;
 import huedev.org.utils.navigator.Navigator;
 import huedev.org.utils.rx.SchedulerProvider;
 
@@ -62,18 +56,15 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
 
     @Override
     public void showLoadingIndicator() {
-        Toast.makeText(this, "Loading ...", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void getUser(User user) {
-        Toast.makeText(this, "Xin chào " + user.getName(), Toast.LENGTH_SHORT).show();
         navigator.startActivity(MainActivity.class);
     }
 
     @Override
     public void hideLoadingIndicator() {
-        Toast.makeText(this, "Hiding ...", Toast.LENGTH_LONG).show();
     }
 
     @Override

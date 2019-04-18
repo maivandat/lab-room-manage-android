@@ -1,7 +1,6 @@
 package huedev.org.ui;
 
-import android.app.ActivityOptions;
-import android.content.Intent;
+import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,15 +12,18 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import huedev.org.R;
-import huedev.org.ui.auth.LoginActivity;
+import huedev.org.ui.auth.login.LoginActivity;
+import huedev.org.ui.auth.login.LoginPresenter;
+import huedev.org.ui.auth.logout.LogoutContact;
+import huedev.org.ui.auth.logout.LogoutPresenter;
 import huedev.org.ui.base.BaseActivity;
 import huedev.org.ui.fragments.MessengerFragment.MessengerFragment;
 import huedev.org.ui.fragments.calendar.CalendarFragment;
@@ -37,7 +39,7 @@ import huedev.org.utils.navigator.Navigator;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener,
         NavigationView.OnNavigationItemSelectedListener,
-        BottomNavigationView.OnNavigationItemSelectedListener {
+        BottomNavigationView.OnNavigationItemSelectedListener, LogoutContact.View {
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
     BottomNavigationView mBtNavigation;
@@ -45,12 +47,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     Navigator navigator;
     LinearLayout linearLayout;
     TextView tvNameUSer, tvPosition;
-    String name = "abc", role = "123";
+    LogoutPresenter logoutPresenter;
+    Dialog dialog;
+    String name = "", role = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         mNavigationView = findViewById(R.id.nav_view);
         mDrawerLayout = findViewById(R.id.dl_main);
         mToolbar = findViewById(R.id.toolbar_main);
@@ -59,11 +64,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
         View headerLayout = mNavigationView.getHeaderView(0);
         tvNameUSer = headerLayout.findViewById(R.id.tv_nameUser);
         tvPosition = headerLayout.findViewById(R.id.tv_position);
-
         navigator = new Navigator(this);
+        logoutPresenter = new LogoutPresenter(this);
+
         mToolbar.setTitle("");
         setupToolbar(mToolbar, R.drawable.btn_menu);
         setNameUser();
+
         if (!AppPrefs.getInstance(this).getApiToken().equals(AppConstants.API_TOKEN_DEFAULT)){
             mNavigationView.getMenu().getItem(0).setVisible(true);
             mNavigationView.getMenu().getItem(1).setVisible(true);
@@ -80,18 +87,41 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
-
+        logoutPresenter.setView(this);
         mToolbar.setNavigationOnClickListener(this);
         mNavigationView.setNavigationItemSelectedListener(this);
         mBtNavigation.setOnNavigationItemSelectedListener(this);
-
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main_hometop, menu);
+        if (AppPrefs.getInstance(this).getRole() == 2){
+            menu.getItem(0).setVisible(false);
+        }else {
+            menu.getItem(0).setVisible(true);
+        }
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_add_room:
+                setupDialogAdd();
+                break;
+            case R.id.menu_notify:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void setupDialogAdd() {
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_addroom);
+        dialog.show();
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -111,20 +141,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
                 replaceFragment(new MessengerFragment());
                 return true;
             case R.id.nav_start_login:
-                navigator.startActivity(LoginActivity.class);
                 mDrawerLayout.closeDrawers();
+                navigator.startActivity(LoginActivity.class);
                 finish();
                 return true;
             case R.id.nav_start_logout:
-                AppPrefs.getInstance(this).putApiToken(AppConstants.API_TOKEN_DEFAULT);
-                AppPrefs.getInstance(this).putIdUser(AppConstants.ID_USER_DEFAULT);
-                AppPrefs.getInstance(this).putUserNameUser(AppConstants.USERNAME_DEFAULT);
-                AppPrefs.getInstance(this).putPasswordUser(AppConstants.PASSWORD_DEFAULT);
-                AppPrefs.getInstance(this).putNameUser(AppConstants.NAME_DEFAULT);
-                AppPrefs.getInstance(this).putEmailUser(AppConstants.EMAIL_DEFAULT);
-                AppPrefs.getInstance(this).putRole(AppConstants.ROLE_DEFAULT);
-                mDrawerLayout.closeDrawers();
-                navigator.startActivity(MainActivity.class);
+                logoutPresenter.logout();
                 return true;
             case R.id.nav_start_editInformation:
                 navigator.startActivity(UEditActivity.class);
@@ -165,5 +187,27 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
 
         tvNameUSer.setText(name);
         tvPosition.setText(role);
+    }
+
+
+    @Override
+    public void showLoadingIndicator() {
+
+    }
+
+    @Override
+    public void hideLoadingIndicator() {
+
+    }
+
+    @Override
+    public void showLoginError(Throwable throwable) {
+
+    }
+
+    @Override
+    public void logout() {
+        mDrawerLayout.closeDrawers();
+        navigator.startActivity(MainActivity.class);
     }
 }
