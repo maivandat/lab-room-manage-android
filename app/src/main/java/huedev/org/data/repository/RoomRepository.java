@@ -5,7 +5,8 @@ import android.support.annotation.NonNull;
 import huedev.org.data.source.RoomDataSource;
 import huedev.org.data.source.local.RoomLocalDataSource;
 import huedev.org.data.source.remote.RoomRemoteDataSource;
-import huedev.org.data.source.remote.response.room.ListRoomResponse;
+import huedev.org.data.source.remote.response.room.CreateRoomReponse;
+import huedev.org.data.source.remote.response.room.ListRoomReponse;
 import io.reactivex.Single;
 
 public class RoomRepository implements RoomDataSource.LocalDataSource, RoomDataSource.RemoteDataSource {
@@ -32,8 +33,14 @@ public class RoomRepository implements RoomDataSource.LocalDataSource, RoomDataS
     }
 
     @Override
-    public Single<ListRoomResponse> rooms() {
-
+    public Single<ListRoomReponse> rooms() {
         return mRoomRemoteDataSource.rooms();
     }
+
+    @Override
+    public Single<CreateRoomReponse> createRoom(String name, String desc, String status) {
+        return mRoomRemoteDataSource.createRoom(name, desc, status);
+    }
+
+
 }

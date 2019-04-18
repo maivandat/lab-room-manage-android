@@ -137,17 +137,17 @@
                 android:text="@string/cancel"
                 android:layout_alignParentRight="true"
                 android:background="@drawable/custom_hover_btn_edit"
-                android:id="@+id/btn.cancel.create"
+                android:id="@+id/btn.cancel.addroom"
                 android:layout_width="70dp"
                 android:layout_height="@dimen/size_img_40" />
 
             <Button
-                android:id="@+id/btn.cancel"
+                android:id="@+id/btn.add.room"
                 android:textSize="@dimen/left_rc_10"
                 android:textColor="@color/colorWhile"
                 android:text="@string/add_room"
                 android:background="@drawable/custom_hover_btn_edit"
-                android:layout_toLeftOf="@id/btn.cancel.create"
+                android:layout_toLeftOf="@id/btn.cancel.addroom"
                 android:layout_width="70dp"
                 android:layout_height="@dimen/size_img_40" />
 

@@ -1,17 +1,16 @@
-package huedev.org.ui.fragments.room;
-
-import java.util.List;
+package huedev.org.ui.fragments.room.create;
 
 import huedev.org.data.model.Room;
 import huedev.org.ui.base.BasePresenter;
 import huedev.org.ui.base.BaseView;
 
-public interface RoomContract {
+public interface CRoomContact {
     interface View extends BaseView {
-        void updateRoomsList(List<Room> roomList);
-
+        void logicCorrect(Room room);
+        void logicFaild();
     }
+
     interface Presenter extends BasePresenter<View> {
-        void rooms();
+        void createRoom(String name, String desc, String status);
     }
 }

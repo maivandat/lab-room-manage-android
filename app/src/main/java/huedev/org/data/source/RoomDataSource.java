@@ -1,6 +1,7 @@
 package huedev.org.data.source;
 
-import huedev.org.data.source.remote.response.room.ListRoomResponse;
+import huedev.org.data.source.remote.response.room.CreateRoomReponse;
+import huedev.org.data.source.remote.response.room.ListRoomReponse;
 import io.reactivex.Single;
 
 public interface RoomDataSource {
@@ -9,6 +10,7 @@ public interface RoomDataSource {
     }
 
     interface RemoteDataSource{
-        Single<ListRoomResponse> rooms();
+        Single<ListRoomReponse> rooms();
+        Single<CreateRoomReponse> createRoom(String name, String desc, String status);
     }
 }

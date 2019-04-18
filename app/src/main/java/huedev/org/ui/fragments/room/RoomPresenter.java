@@ -5,7 +5,7 @@ import android.content.Context;
 import com.google.common.base.Preconditions;
 
 import huedev.org.data.repository.RoomRepository;
-import huedev.org.data.source.remote.response.room.ListRoomResponse;
+import huedev.org.data.source.remote.response.room.ListRoomReponse;
 import huedev.org.utils.rx.BaseSchedulerProvider;
 
 public class RoomPresenter implements RoomContract.Presenter {
@@ -32,9 +32,9 @@ public class RoomPresenter implements RoomContract.Presenter {
                         error -> handleRoomsFailed(error));
     }
 
-    private void handleRoomsSuccess(ListRoomResponse listRoomResponse){
+    private void handleRoomsSuccess(ListRoomReponse listRoomReponse){
         mView.hideLoadingIndicator();
-        mView.updateRoomsList(listRoomResponse.roomList);
+        mView.updateRoomsList(listRoomReponse.roomList);
     }
 
     private void handleRoomsFailed(Throwable err){

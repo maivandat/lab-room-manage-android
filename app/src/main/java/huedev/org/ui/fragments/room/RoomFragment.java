@@ -65,6 +65,7 @@ public class RoomFragment extends Fragment implements RoomContract.View {
         });
     }
 
+
     @Override
     public void showLoadingIndicator() {
     }
