@@ -62,4 +62,13 @@
     <string name="broken">Broken</string>
     <string name="repair">Repair</string>
     <string name="active">Active</string>
+    <string name="edit_device_title">EDIT DEVICE</string>
+    <string name="edit_device_name">Name: </string>
+    <string name="edit_device_desc">Desc: </string>
+    <string name="edit_device_status">Status: </string>
+    <string name="edit_device_computer">Computer: </string>
+    <string name="edit_device_type">Type: </string>
+    <string name="list_device_btn_edit">Edit</string>
+    <string name="list_device_btn_del">Delete</string>
+
 </resources>
