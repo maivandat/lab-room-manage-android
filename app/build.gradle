@@ -51,5 +51,6 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.0.0'
     // Navigation Transition
     implementation "android.arch.navigation:navigation-ui-ktx:1.0.0-alpha01"
-
+    //Swipe Layout
+    implementation "com.daimajia.swipelayout:library:1.2.0@aar"
 }

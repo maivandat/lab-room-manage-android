@@ -1,141 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.daimajia.swipe.SwipeLayout
+    android:id="@+id/swipe.DeviceItem"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="1dp"
-    android:weightSum="16"
-    android:orientation="horizontal"
     android:background="@color/device_item_background">
-    <RelativeLayout
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="match_parent">
-        <View
-            android:background="@drawable/custom_img_bar"
-            android:layout_centerVertical="true"
-            android:layout_width="10dp"
-            android:layout_height="40dp" />
-    </RelativeLayout>
     <LinearLayout
-        android:layout_weight="4"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content">
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/device_image"
-            app:civ_circle_background_color="@color/colorWhile"
-            android:layout_gravity="right"
-            android:src="@drawable/mainresize"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:paddingLeft="20dp"
-            app:civ_border_width="1dp"
-            app:civ_border_color="@color/device_border"
-            />
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:id="@+id/linear.device_item_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/btn.edit_device"
+            android:background="#FCE976"
+            android:textColor="@color/colorWhile"
+            android:text="@string/list_device_btn_edit"
+            android:textSize="11sp"
+            android:textStyle="italic"
+            android:drawableTop="@drawable/edit_icon_white_24dp"
+            android:layout_width="70dp"
+            android:padding="15dp"
+            android:layout_height="match_parent" />
+        <Button
+            android:id="@+id/btn.del_device"
+            android:background="#FF7269"
+            android:textColor="@color/colorWhile"
+            android:text="@string/list_device_btn_del"
+            android:textSize="11sp"
+            android:textStyle="italic"
+            android:drawableTop="@drawable/ic_clear_black_24dp"
+            android:layout_width="70dp"
+            android:padding="15dp"
+            android:layout_height="match_parent" />
     </LinearLayout>
     <LinearLayout
-        android:weightSum="200"
-        android:orientation="vertical"
-        android:layout_weight="10"
-        android:layout_width="0dp"
-        android:layout_height="match_parent">
+        android:id="@+id/linear.device_item_serface"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="16"
+        android:orientation="horizontal"
+        android:background="@color/device_item_background">
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <View
+                android:background="@drawable/custom_img_bar"
+                android:layout_centerVertical="true"
+                android:layout_width="10dp"
+                android:layout_height="40dp" />
+        </RelativeLayout>
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_weight="96"
-            android:layout_height="0dp">
-            <TextView
-                android:layout_marginLeft="10dp"
-                android:text="test"
-                android:gravity="center_vertical"
-                android:id="@+id/text_item_title"
-                android:layout_width="180dp"
-                android:layout_marginTop="10dp"
-                android:layout_height="wrap_content"
-                android:textSize="25sp"
-                android:textColor="#515b5f"/>
-            <TextView
-                android:textSize="10sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:textColor="#fff"
-                android:text="working"
-                android:background="@drawable/custom_status_tag_green"
-                android:id="@+id/text_status"
-                android:layout_marginTop="10dp"
-                android:layout_width="50dp"
-                android:layout_height="20dp">
-            </TextView>
-            <ImageButton
-                android:id="@+id/device_item_del_button"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="2dp"
-                android:src="@drawable/redx"
-                android:layout_width="15dp"
-                android:layout_height="15dp" />
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/device_image"
+                app:civ_circle_background_color="@color/colorWhile"
+                android:layout_gravity="right"
+                android:src="@drawable/mainresize"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:paddingLeft="20dp"
+                app:civ_border_width="1dp"
+                app:civ_border_color="@color/device_border"
+                />
         </LinearLayout>
-        <View
-            android:layout_marginTop="5dp"
-            android:background="#e0ebed"
-            android:layout_width="match_parent"
-            android:layout_weight="3"
-            android:layout_height="0dp">
-        </View>
-
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="101"
-            android:orientation="horizontal"
-            android:padding="7dp">
-
-            <TextView
-                android:id="@+id/text_item_content"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:textColor="#515b5f"
-                android:textSize="12sp" />
-
-            <ImageButton
-                android:id="@+id/device_item_edit_button"
+            android:weightSum="200"
+            android:orientation="vertical"
+            android:layout_weight="10"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_weight="96"
+                android:layout_height="0dp">
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:text="test"
+                    android:gravity="center_vertical"
+                    android:id="@+id/text_item_title"
+                    android:layout_width="180dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"
+                    android:textColor="#515b5f"/>
+                <TextView
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textColor="#fff"
+                    android:text="working"
+                    android:background="@drawable/custom_status_tag_green"
+                    android:id="@+id/text_status"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp">
+                </TextView>
+            </LinearLayout>
+            <View
                 android:layout_marginTop="5dp"
-                android:layout_width="60dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="5dp"
-                android:src="@drawable/editbutton" />
+                android:background="#e0ebed"
+                android:layout_width="match_parent"
+                android:layout_weight="3"
+                android:layout_height="0dp">
+            </View>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="101"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:id="@+id/text_item_content"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#515b5f"
+                    android:textSize="12sp" />
+            </LinearLayout>
         </LinearLayout>
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="match_parent">
-        <View
-            android:background="#b5d0da"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_weight="1"
-            android:layout_marginLeft="3dp"
-            android:layout_width="3dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent">
-        </View>
-        <de.hdodenhof.circleimageview.CircleImageView
-            app:civ_border_width="2dp"
-            app:civ_border_color="#a8dbea"
-            android:src="@drawable/cyandot"
-            android:layout_width="9dp"
-            android:layout_height="9dp">
-        </de.hdodenhof.circleimageview.CircleImageView>
-        <View
-            android:layout_marginLeft="3dp"
-            android:background="#b5d0da"
-            android:layout_weight="1"
-            android:layout_width="3dp"
-            android:layout_height="match_parent">
-        </View>
+            <View
+                android:background="#b5d0da"
+                android:layout_weight="1"
+                android:layout_marginLeft="3dp"
+                android:layout_width="3dp"
+                android:layout_height="match_parent">
+            </View>
+            <de.hdodenhof.circleimageview.CircleImageView
+                app:civ_border_width="2dp"
+                app:civ_border_color="#a8dbea"
+                android:src="@drawable/cyandot"
+                android:layout_width="9dp"
+                android:layout_height="9dp">
+            </de.hdodenhof.circleimageview.CircleImageView>
+            <View
+                android:layout_marginLeft="3dp"
+                android:background="#b5d0da"
+                android:layout_weight="1"
+                android:layout_width="3dp"
+                android:layout_height="match_parent">
+            </View>
+        </LinearLayout>
     </LinearLayout>
-
-
-</LinearLayout>
+</com.daimajia.swipe.SwipeLayout>

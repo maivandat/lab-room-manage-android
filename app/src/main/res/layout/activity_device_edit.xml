@@ -1,29 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    android:padding="20dp"
     android:background="@drawable/gradient"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:id="@+id/text_edit_device_title"
+        android:id="@+id/edt.edit_device_title"
         android:textStyle="bold"
-        android:text="EDIT DEVICE"
-        android:layout_marginTop="220dp"
+        android:textColor="@color/colorWhile"
+        android:text="@string/edit_device_title"
+        android:layout_marginTop="30dp"
         android:textSize="40sp"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/edt_edit_device_name"
-        android:layout_marginTop="50dp"
+    <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/text_edit_device_title"
-        android:layout_width="230dp"
-        android:layout_height="50dp" />
-    <EditText
-        android:id="@+id/edt_edit_device_desc"
-        android:layout_marginTop="5dp"
+        android:layout_below="@id/edt.edit_device_title"
+        android:id="@+id/linear.edit_line1"
+        android:orientation="horizontal"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorWhile"
+            android:textSize="18sp"
+            android:text="@string/edit_device_name"
+            android:layout_width="85dp"
+            android:layout_height="50dp" />
+        <EditText
+            android:textColor="@color/colorWhile"
+            android:textSize="18sp"
+            android:id="@+id/edt.edit_device_name"
+            android:layout_width="230dp"
+            android:layout_height="50dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear.edit_line2"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/edt_edit_device_name"
-        android:layout_width="230dp"
-        android:layout_height="50dp" />
+        android:layout_below="@id/linear.edit_line1"
+        android:orientation="horizontal"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorWhile"
+            android:textSize="18sp"
+            android:text="@string/edit_device_desc"
+            android:layout_width="85dp"
+            android:layout_height="50dp" />
+        <EditText
+            android:textColor="@color/colorWhile"
+            android:textSize="18sp"
+            android:id="@+id/edt.edit_device_desc"
+            android:layout_width="230dp"
+            android:layout_height="50dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear.edit_line3"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/linear.edit_line2"
+        android:orientation="horizontal"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorWhile"
+            android:textSize="18sp"
+            android:text="@string/edit_device_status"
+            android:layout_width="85dp"
+            android:layout_height="50dp" />
+        <Spinner
+            android:layout_marginTop="10dp"
+            android:id="@+id/spiner.device_status"
+            android:layout_centerHorizontal="true"
+            android:spinnerMode="dropdown"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear.edit_line4"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/linear.edit_line3"
+        android:orientation="horizontal"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorWhile"
+            android:textSize="18sp"
+            android:text="@string/edit_device_computer"
+            android:layout_width="85dp"
+            android:layout_height="50dp" />
+        <Spinner
+            android:layout_marginTop="10dp"
+            android:id="@+id/spiner.device_computer_id"
+            android:spinnerMode="dropdown"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear.edit_line5"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/linear.edit_line4"
+        android:orientation="horizontal"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorWhile"
+            android:textSize="18sp"
+            android:text="@string/edit_device_type"
+            android:layout_width="85dp"
+            android:layout_height="50dp" />
+        <Spinner
+            android:layout_marginTop="10dp"
+            android:id="@+id/spiner.device_type_device"
+            android:spinnerMode="dropdown"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <Button
+        android:text="submit"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/linear.edit_line5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>
