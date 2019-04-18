@@ -2,7 +2,7 @@
     <string name="app_name">Lab Room Manage</string>
     <string name="todolist">TODO LIST</string>
     <string name="computer">COMPUTER</string>
-    <string name="add">Add</string>
+    <string name="add_room">Add</string>
     <string name="notify">Notify</string>
     <string name="home">Home</string>
     <string name="calendar">Calendar</string>
@@ -31,7 +31,8 @@
     <string name="cancel">Cancel</string>
     <string name="enter_your_work">Enter your work</string>
     <string name="time">Time: </string>
-    <string name="timeAM">AM</string>
+    <string name="timeAM">
+        AM</string>
     <string name="timePM">PM</string>
     <string name="enterhours">Hours</string>
     <string name="sumwork">Total work: </string>
@@ -55,4 +56,10 @@
     <string name="admin">ADMIN</string>
     <string name="technicians">TECHNICIANS</string>
     <string name="member">MEMBER</string>
+    <string name="title_room">Room Title</string>
+    <string name="short_description">Short Description</string>
+    <string name="create">Create</string>
+    <string name="broken">Broken</string>
+    <string name="repair">Repair</string>
+    <string name="active">Active</string>
 </resources>

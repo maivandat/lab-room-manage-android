@@ -29,6 +29,7 @@
             android:layout_height="@dimen/layout_size_100" />
         
         <TextView
+            android:id="@+id/tv.fullname"
             android:textSize="@dimen/fab_margin_16"
             android:textColor="@color/colorWhile"
             android:layout_marginTop="@dimen/left_rc_10"

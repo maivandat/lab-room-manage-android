@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/img_bg_login"
-    tools:context=".ui.auth.LoginActivity">
+    tools:context=".ui.auth.login.LoginActivity">
     <LinearLayout
         android:orientation="vertical"
         android:background="@color/bg_login"

@@ -1,4 +1,4 @@
-package huedev.org.ui.auth;
+package huedev.org.ui.auth.login;
 
 import android.provider.ContactsContract;
 import android.widget.CheckBox;

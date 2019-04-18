@@ -79,12 +79,10 @@ public class DeviceActivity extends BaseActivity implements DeviceConstract.View
 
     @Override
     public void showLoadingIndicator() {
-        Toast.makeText(this, "Xin chào", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void hideLoadingIndicator() {
-        Toast.makeText(this, "Thành công", Toast.LENGTH_SHORT).show();
     }
 
     @Override
