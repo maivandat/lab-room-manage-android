@@ -91,6 +91,16 @@ public class UEditActivity extends BaseActivity implements View.OnClickListener,
     }
 
     @Override
+    public void logicFaild() {
+
+    }
+
+    @Override
+    public void logicSuccess() {
+
+    }
+
+    @Override
     public void showLoadingIndicator() {
 
     }

@@ -17,8 +17,8 @@
     <string name="view_item_room">VIEW ➞</string>
     <string name="detail">Detail</string>
     <string name="login">LOGIN</string>
-    <string name="username_login">USERNAME</string>
-    <string name="password_login">PASSWORD</string>
+    <string name="username_login">Username</string>
+    <string name="password_login">Password</string>
     <string name="go">GO !</string>
     <string name="remember">Keep me sign in</string>
     <string name="forgot">Forgot ?</string>
@@ -70,5 +70,8 @@
     <string name="edit_device_type">Type: </string>
     <string name="list_device_btn_edit">Edit</string>
     <string name="list_device_btn_del">Delete</string>
+    <string name="change_password">Change Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
 
 </resources>

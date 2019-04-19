@@ -1,5 +1,6 @@
 package huedev.org.ui.computer;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -7,8 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import huedev.org.data.model.Computer;
+import huedev.org.data.model.Room;
 import huedev.org.data.repository.ComputerRepository;
 import huedev.org.data.source.remote.response.computer.ListComputerResponse;
+import huedev.org.utils.AppConstants;
+import huedev.org.utils.navigator.Navigator;
 import huedev.org.utils.rx.BaseSchedulerProvider;
 
 public class ComputerPresenter implements ComputerContract.Presenter {
@@ -16,6 +20,7 @@ public class ComputerPresenter implements ComputerContract.Presenter {
     private ComputerContract.View mView;
     private ComputerRepository mComputerRepository;
     private BaseSchedulerProvider mBaseSchedulerProvider;
+    private Navigator navigator;
 
     public ComputerPresenter(Context context,
                              ComputerRepository computerRepository,
@@ -23,6 +28,7 @@ public class ComputerPresenter implements ComputerContract.Presenter {
         this.mContext = context;
         this.mComputerRepository = computerRepository;
         this.mBaseSchedulerProvider = baseSchedulerProvider;
+        this.navigator = new Navigator((Activity) mContext);
     }
 
     @Override
@@ -37,7 +43,14 @@ public class ComputerPresenter implements ComputerContract.Presenter {
 
     private void handleComputerSuccess(ListComputerResponse computerResponse){
         mView.hideLoadingIndicator();
-        mView.updateComputerList(computerResponse.computersByRoom);
+        List<Computer> computerList = new ArrayList<>();
+        String id = navigator.getData().getString(AppConstants.ID_ROOM);
+        for (Computer computer: computerResponse.computersByRoom) {
+            if (computer.getRoomId().equals(id)){
+                computerList.add(computer);
+            }
+        }
+        mView.updateComputerList(computerList);
     }
 
 

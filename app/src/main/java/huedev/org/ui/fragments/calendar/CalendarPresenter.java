@@ -59,10 +59,8 @@ public class CalendarPresenter implements CalendarContact.Presenter{
     @Override
     public void dates(String date, TextView tvWorkEmpty) {
         List<Work> dsWorkOfDate = new ArrayList<>();
-        Log.d("getDate", date);
         if (!listWork.isEmpty()){
             for (Work work : listWork){
-                Log.d("getItemWork", work.getName() + " " + work.getTime() + " " + work.getDate());
                 if (work.getDate().equals(date)){
                     dsWorkOfDate.add(work);
                 }
