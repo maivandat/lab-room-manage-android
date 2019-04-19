@@ -29,10 +29,14 @@ import javax.sql.DataSource;
 
 import huedev.org.R;
 import huedev.org.data.model.Room;
+import huedev.org.data.model.User;
 import huedev.org.data.repository.RoomRepository;
+import huedev.org.data.repository.UserRepository;
 import huedev.org.data.source.RoomDataSource;
 import huedev.org.data.source.local.RoomLocalDataSource;
+import huedev.org.data.source.local.UserLocalDataSource;
 import huedev.org.data.source.remote.RoomRemoteDataSource;
+import huedev.org.data.source.remote.UserRemoteDataSource;
 import huedev.org.ui.auth.login.LoginActivity;
 import huedev.org.ui.auth.login.LoginPresenter;
 import huedev.org.ui.auth.logout.LogoutContact;
@@ -47,6 +51,8 @@ import huedev.org.ui.fragments.room.RoomPresenter;
 import huedev.org.ui.fragments.room.create.CRoomContact;
 import huedev.org.ui.fragments.room.create.CRoomPresenter;
 import huedev.org.ui.user.edit.UEditActivity;
+import huedev.org.ui.user.edit.UEditContact;
+import huedev.org.ui.user.edit.UEditPresenter;
 import huedev.org.utils.AppConstants;
 import huedev.org.utils.AppPrefs;
 import huedev.org.utils.helpers.StringHelper;
@@ -56,7 +62,8 @@ import huedev.org.utils.rx.SchedulerProvider;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener,
         NavigationView.OnNavigationItemSelectedListener,
-        BottomNavigationView.OnNavigationItemSelectedListener, LogoutContact.View, CRoomContact.View {
+        BottomNavigationView.OnNavigationItemSelectedListener,
+        LogoutContact.View, CRoomContact.View, UEditContact.View {
 
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
@@ -66,12 +73,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     LinearLayout linearLayout;
     TextView tvNameUSer, tvPosition;
     LogoutPresenter mLogoutPresenter;
-    EditText etNameRoom, edtDescRoom;
+    EditText etNameRoom, edtDescRoom, etOldPassword, etNewPassword, etConfirmNewPassword;
     RadioButton rbActive, rbRepair, rbBroken;
     Dialog dialog;
-    Button btnCancel, btnAdd;
+    Button btnCancelAddRoom, btnAddRoom, btnConfirmChangePassword, btnCancelChangePassword;
 
     CRoomPresenter mCRoomPresenter;
+    UEditPresenter mUEditPresenter;
 
     String name = "", role = "";
     int status;
@@ -127,21 +135,31 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
         if (!AppPrefs.getInstance(this).getApiToken().equals(AppConstants.API_TOKEN_DEFAULT)){
             mNavigationView.getMenu().getItem(0).setVisible(true);
             mNavigationView.getMenu().getItem(1).setVisible(true);
-            mNavigationView.getMenu().getItem(2).setVisible(false);
+            mNavigationView.getMenu().getItem(2).setVisible(true);
+            mNavigationView.getMenu().getItem(3).setVisible(false);
 
         }else {
             mNavigationView.getMenu().getItem(0).setVisible(false);
             mNavigationView.getMenu().getItem(1).setVisible(false);
-            mNavigationView.getMenu().getItem(2).setVisible(true);
+            mNavigationView.getMenu().getItem(2).setVisible(false);
+            mNavigationView.getMenu().getItem(3).setVisible(true);
         }
     }
 
     private void init() {
         mLogoutPresenter = new LogoutPresenter(this);
-        RoomRepository roomRepository = new RoomRepository(RoomLocalDataSource.getInstance(), RoomRemoteDataSource.getInstance(this));
+        RoomRepository roomRepository = new RoomRepository(
+                RoomLocalDataSource.getInstance(),
+                RoomRemoteDataSource.getInstance(this));
         mCRoomPresenter = new CRoomPresenter(this, SchedulerProvider.getInstance(), roomRepository);
+        UserRepository userRepository = UserRepository.getInstance(
+                UserLocalDataSource.getInstance(),
+                UserRemoteDataSource.getInstance(this));
+        mUEditPresenter = new UEditPresenter(this, userRepository, SchedulerProvider.getInstance());
         mLogoutPresenter.setView(this);
         mCRoomPresenter.setView(this);
+        mUEditPresenter.setView((UEditContact.View) this);
+
     }
 
     @Override
@@ -159,7 +177,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.menu_add_room:
-                setupDialogAdd();
+                setupDialogAddRoom();
                 break;
             case R.id.menu_notify:
                 break;
@@ -167,7 +185,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
         return super.onOptionsItemSelected(item);
     }
 
-    private void setupDialogAdd() {
+    private void setupDialogAddRoom() {
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_addroom);
 
@@ -176,17 +194,31 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
         rbActive = dialog.findViewById(R.id.rb_active);
         rbRepair = dialog.findViewById(R.id.rb_repair);
         rbBroken = dialog.findViewById(R.id.rb_broken);
-        btnAdd = dialog.findViewById(R.id.btn_add_room);
-        btnCancel = dialog.findViewById(R.id.btn_cancel_addroom);
+        btnAddRoom = dialog.findViewById(R.id.btn_add_room);
+        btnCancelAddRoom = dialog.findViewById(R.id.btn_cancel_addroom);
 
-        btnAdd.setOnClickListener(this);
-        btnCancel.setOnClickListener(this);
-
+        btnAddRoom.setOnClickListener(this);
+        btnCancelAddRoom.setOnClickListener(this);
         dialog.show();
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    private void settupDialogChangePassword(){
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_change_password);
+
+        etOldPassword = dialog.findViewById(R.id.et_old_password);
+        etNewPassword = dialog.findViewById(R.id.et_new_password);
+        etConfirmNewPassword = dialog.findViewById(R.id.et_confirm_new_password);
+        btnConfirmChangePassword = dialog.findViewById(R.id.btn_confirm_change_password);
+        btnCancelChangePassword = dialog.findViewById(R.id.btn_cancel_change_password);
+
+        btnConfirmChangePassword.setOnClickListener(this);
+        btnCancelChangePassword.setOnClickListener(this);
+
+        dialog.show();
+    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
@@ -203,6 +235,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
                 replaceFragment(new MessengerFragment());
                 return true;
             case R.id.nav_start_login:
+                menuItem.setChecked(false);
                 mDrawerLayout.closeDrawers();
                 navigator.startActivity(LoginActivity.class);
                 finish();
@@ -211,7 +244,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
                 mLogoutPresenter.logout();
                 return true;
             case R.id.nav_start_editInformation:
+                menuItem.setChecked(false);
                 navigator.startActivity(UEditActivity.class);
+                mDrawerLayout.closeDrawers();
+                return true;
+
+            case R.id.mav_start_changePassword:
+                menuItem.setChecked(false);
+                settupDialogChangePassword();
                 mDrawerLayout.closeDrawers();
                 return true;
 
@@ -236,6 +276,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
                 mCRoomPresenter.createRoom(name, desc, sStatus);
                 break;
             case R.id.btn_cancel_addroom:
+                dialog.dismiss();
+                break;
+            case R.id.btn_confirm_change_password:
+                String oldPassword = etOldPassword.getText().toString().trim();
+                String newPassword = etNewPassword.getText().toString().trim();
+                String confirmNewPassword= etConfirmNewPassword.getText().toString().trim();
+                mUEditPresenter.updateUser(oldPassword, newPassword, confirmNewPassword);
+                break;
+            case R.id.btn_cancel_change_password:
                 dialog.dismiss();
                 break;
             default:
@@ -291,5 +340,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     @Override
     public void logicFaild() {
         Toast.makeText(this, "Bạn cần nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void logicSuccess() {
+        Toast.makeText(this, "Thay đổi Password thành công", Toast.LENGTH_SHORT).show();
+        dialog.dismiss();
+    }
+
+    @Override
+    public void user(User user) {
+
     }
 }

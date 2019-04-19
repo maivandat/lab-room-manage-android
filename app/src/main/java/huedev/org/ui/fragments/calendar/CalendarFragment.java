@@ -112,17 +112,11 @@ public class CalendarFragment extends Fragment implements View.OnClickListener, 
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.ib_addwork:
-                Animation animationIn = AnimationUtils.loadAnimation(getContext(), R.anim.slide_right_in);
-                linearForm.setVisibility(View.VISIBLE);
-                linearForm.setAnimation(animationIn);
-                ibAddWork.setVisibility(View.INVISIBLE);
+                setAnimation(R.anim.slide_right_in, View.VISIBLE, View.INVISIBLE);
                 rbAM.setChecked(true);
                 break;
             case R.id.btn_cancel:
-                Animation animationOut = AnimationUtils.loadAnimation(getContext(), R.anim.slide_right_out);
-                linearForm.setAnimation(animationOut);
-                linearForm.setVisibility(View.INVISIBLE);
-                ibAddWork.setVisibility(View.VISIBLE);
+                setAnimation(R.anim.slide_right_out, View.INVISIBLE, View.VISIBLE);
                 break;
             case R.id.btn_confirm:
                 String name = etNameWork.getText().toString().trim();
@@ -139,6 +133,13 @@ public class CalendarFragment extends Fragment implements View.OnClickListener, 
                 break;
         }
 
+    }
+
+    private void setAnimation(int anim, int visible, int invisible) {
+        Animation animation = AnimationUtils.loadAnimation(getContext(), anim);
+        linearForm.setVisibility(visible);
+        linearForm.setAnimation(animation);
+        ibAddWork.setVisibility(invisible);
     }
 
     @Override
@@ -185,5 +186,6 @@ public class CalendarFragment extends Fragment implements View.OnClickListener, 
     public void showLoginError(Throwable throwable) {
 
     }
+
 
 }

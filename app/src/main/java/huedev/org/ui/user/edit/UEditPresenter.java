@@ -34,8 +34,32 @@ public class UEditPresenter implements UEditContact.Presenter {
                         , err -> handleUpdateUserFailed(err));
     }
 
+    @Override
+    public void updateUser(String oldPassword, String newPassword, String cofirmNewPassword) {
+        if (oldPassword.isEmpty() || newPassword.isEmpty() || cofirmNewPassword.isEmpty()){
+            mView.logicFaild();
+        }else {
+            if (oldPassword.equals(AppPrefs.getInstance(mContext).getPasswordUser()) && newPassword.equals(cofirmNewPassword)){
+                mView.showLoadingIndicator();
+                String id = AppPrefs.getInstance(mContext).getIdUser();
+                String username = AppPrefs.getInstance(mContext).getUserNameUser();
+                String name = AppPrefs.getInstance(mContext).getNameUser();
+                String email = AppPrefs.getInstance(mContext).getEmailUser();
+                int role = AppPrefs.getInstance(mContext).getRole();
+                mUserRepository.update(id, username, cofirmNewPassword, name, email, role)
+                        .subscribeOn(mBaseSchedulerProvider.io())
+                        .observeOn(mBaseSchedulerProvider.ui())
+                        .subscribe(updateUserReponse -> handleUdpateUserSuccess(updateUserReponse)
+                                , err -> handleUpdateUserFailed(err));
+            }
+
+        }
+
+    }
+
     public void handleUdpateUserSuccess(UpdateUserReponse updateUserReponse){
         mView.hideLoadingIndicator();
+        mView.logicSuccess();
         mView.user(updateUserReponse.user);
     }
 

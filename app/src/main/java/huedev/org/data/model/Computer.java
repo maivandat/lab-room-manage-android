@@ -20,7 +20,7 @@ public class Computer extends BaseModel implements Parcelable
     @SerializedName("status")
     @Expose
     private String status;
-    @SerializedName("room_id")
+    @SerializedName("rooms_id")
     @Expose
     private String roomId;
     public final static Parcelable.Creator<Computer> CREATOR = new Creator<Computer>() {

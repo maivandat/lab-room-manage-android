@@ -1,11 +1,19 @@
 package huedev.org.ui.fragments.room;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.google.common.base.Preconditions;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import huedev.org.data.model.Room;
+import huedev.org.data.model.User;
 import huedev.org.data.repository.RoomRepository;
 import huedev.org.data.source.remote.response.room.ListRoomReponse;
+import huedev.org.utils.AppConstants;
+import huedev.org.utils.navigator.Navigator;
 import huedev.org.utils.rx.BaseSchedulerProvider;
 
 public class RoomPresenter implements RoomContract.Presenter {

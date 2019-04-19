@@ -1,9 +1,11 @@
 package huedev.org.ui.adapter;
 
+import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
@@ -19,14 +21,18 @@ import java.util.List;
 import huedev.org.R;
 import huedev.org.data.model.Room;
 import huedev.org.ui.computer.ComputerActivity;
+import huedev.org.utils.AppConstants;
+import huedev.org.utils.navigator.Navigator;
 
 public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder> {
     private Context mContext;
     private List<Room> mRoomList;
+    private Navigator navigator;
 
     public RoomAdapter(Context context, List<Room> roomList) {
         this.mContext = context;
         this.mRoomList = roomList;
+        navigator = new Navigator((Activity) mContext);
     }
 
     public class RoomViewHolder extends RecyclerView.ViewHolder {
@@ -64,10 +70,10 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), ComputerActivity.class);
-                intent.putExtra("idRoom", mRoomList.get(position).getId());
-                ActivityOptions options = ActivityOptions.makeCustomAnimation(view.getContext(), R.anim.slide_right_in, R.anim.slide_right_out);
-                view.getContext().startActivity(intent,options.toBundle());
+                Bundle bundle = new Bundle();
+                bundle.putString(AppConstants.ID_ROOM, mRoomList.get(position).getId());
+                navigator.startActivity(ComputerActivity.class, bundle);
+
 //                Log.d("LoggId", mRoomList.get(position).getId() + "");
             }
         });

@@ -23,38 +23,28 @@ import huedev.org.ui.base.BaseActivity;
 import huedev.org.utils.rx.SchedulerProvider;
 
 
-public class ComputerActivity extends BaseActivity implements ComputerContract.View{
+public class ComputerActivity extends BaseActivity implements ComputerContract.View, View.OnClickListener {
 
     ComputerContract.Presenter mComputerPresenter;
     RecyclerView mRvComputer;
     ComputerAdapter mComputerAdapter;
     Toolbar tbComputer;
-    Intent mIntent;
 
-    int roomId;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_computer);
         tbComputer = findViewById(R.id.toolbar_computer);
         mRvComputer = findViewById(R.id.rv_computer);
+
         tbComputer.setTitle("");
         setSupportActionBar(tbComputer);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         tbComputer.setNavigationIcon(R.drawable.btn_back);
 
-        mIntent = this.getIntent();
-        roomId = Integer.parseInt(mIntent.getStringExtra("idRoom"));
-        Toast.makeText(this, roomId + "", Toast.LENGTH_SHORT).show();
-
         init();
-        tbComputer.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        tbComputer.setNavigationOnClickListener(this);
     }
 
     public void init(){
@@ -115,4 +105,8 @@ public class ComputerActivity extends BaseActivity implements ComputerContract.V
                 "" + throwable.toString(), Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onClick(View view) {
+        finish();
+    }
 }
