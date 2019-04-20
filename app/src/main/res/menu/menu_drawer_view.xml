@@ -5,18 +5,16 @@
             android:id="@+id/nav.start.editInformation"
             android:icon="@drawable/btn_edit_information"/>
 
-        <item android:id="@+id/mav.start.changePassword"
-            android:title="@string/change_password"
-            android:icon="@drawable/btn_change_password"/>
+        <item android:title="@string/user_manager"
+            android:id="@+id/nav.start.user.manager"
+            android:icon="@drawable/iv_user_manager"/>
 
-        <item android:title="@string/logout"
+        <item android:title="@string/logoutUser"
             android:id="@+id/nav.start.logout"
-            android:icon="@drawable/btn_login"/>
-
-        <item android:title="@string/logoutUC"
-            android:id="@+id/nav.start.login"
             android:icon="@drawable/btn_logout"/>
 
-
+        <item android:title="@string/loginUser"
+            android:id="@+id/nav.start.login"
+            android:icon="@drawable/btn_login"/>
     </group>
 </menu>

@@ -10,10 +10,13 @@ public interface UEditContact {
         void user(User user);
         void logicFaild();
         void logicSuccess();
+        void oldPasswordFail();
+        void newPasswordFail();
     }
 
     interface Presenter extends BasePresenter<View> {
-        void updateUser(String name, String email);
-        void updateUser(String oldPassword, String newPassword, String confirmNewPassword);
+        void updateUser(String name, String email,
+                        String oldPassword, String newPassword,
+                        String confirmNewPassword);
     }
 }

@@ -4,7 +4,7 @@ import huedev.org.data.model.Room;
 import huedev.org.ui.base.BasePresenter;
 import huedev.org.ui.base.BaseView;
 
-public interface CRoomContact {
+public interface RCreateContact {
     interface View extends BaseView {
         void logicCorrect(Room room);
         void logicFaild();

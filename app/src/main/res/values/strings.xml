@@ -22,8 +22,8 @@
     <string name="go">GO !</string>
     <string name="remember">Keep me sign in</string>
     <string name="forgot">Forgot ?</string>
-    <string name="logout">Log out</string>
-    <string name="logoutUC">Login</string>
+    <string name="logoutUser">Log out</string>
+    <string name="loginUser">Login</string>
     <string name="edit_information">Edit Information</string>
     <string name="today">Today</string>
     <string name="work_empty">Your work empty</string>
@@ -52,7 +52,7 @@
     <string name="informations_personnelles">Informations personnelles</string>
     <string name="fullname_user">Full name</string>
     <string name="email_user">Email</string>
-    <string name="edit">Edit</string>
+    <string name="update">Update</string>
     <string name="admin">ADMIN</string>
     <string name="technicians">TECHNICIANS</string>
     <string name="member">MEMBER</string>
@@ -73,5 +73,6 @@
     <string name="change_password">Change Password</string>
     <string name="new_password">New Password</string>
     <string name="confirm_new_password">Confirm New Password</string>
+    <string name="user_manager">User Manager</string>
 
 </resources>

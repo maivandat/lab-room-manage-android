@@ -12,7 +12,7 @@ import huedev.org.data.model.User;
 import huedev.org.data.repository.LoginRepository;
 import huedev.org.data.source.local.LoginLocalDataSource;
 import huedev.org.data.source.remote.LoginRemoteDataSource;
-import huedev.org.ui.MainActivity;
+import huedev.org.ui.main.MainActivity;
 import huedev.org.ui.base.BaseActivity;
 import huedev.org.utils.navigator.Navigator;
 import huedev.org.utils.rx.SchedulerProvider;
