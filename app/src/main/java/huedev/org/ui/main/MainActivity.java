@@ -1,10 +1,8 @@
-package huedev.org.ui;
+package huedev.org.ui.main;
 
 import android.app.Dialog;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -12,44 +10,35 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
-
-import javax.sql.DataSource;
-
 import huedev.org.R;
 import huedev.org.data.model.Room;
-import huedev.org.data.model.User;
 import huedev.org.data.repository.RoomRepository;
 import huedev.org.data.repository.UserRepository;
-import huedev.org.data.source.RoomDataSource;
 import huedev.org.data.source.local.RoomLocalDataSource;
 import huedev.org.data.source.local.UserLocalDataSource;
 import huedev.org.data.source.remote.RoomRemoteDataSource;
 import huedev.org.data.source.remote.UserRemoteDataSource;
 import huedev.org.ui.auth.login.LoginActivity;
-import huedev.org.ui.auth.login.LoginPresenter;
 import huedev.org.ui.auth.logout.LogoutContact;
 import huedev.org.ui.auth.logout.LogoutPresenter;
 import huedev.org.ui.base.BaseActivity;
 import huedev.org.ui.fragments.MessengerFragment.MessengerFragment;
 import huedev.org.ui.fragments.calendar.CalendarFragment;
 import huedev.org.ui.fragments.feed.FeedFragment;
-import huedev.org.ui.fragments.room.RoomContract;
 import huedev.org.ui.fragments.room.RoomFragment;
-import huedev.org.ui.fragments.room.RoomPresenter;
-import huedev.org.ui.fragments.room.create.CRoomContact;
-import huedev.org.ui.fragments.room.create.CRoomPresenter;
+import huedev.org.ui.fragments.room.create.RCreateContact;
+import huedev.org.ui.fragments.room.create.RCreatePresenter;
 import huedev.org.ui.user.edit.UEditActivity;
 import huedev.org.ui.user.edit.UEditContact;
 import huedev.org.ui.user.edit.UEditPresenter;
@@ -63,7 +52,7 @@ import huedev.org.utils.rx.SchedulerProvider;
 public class MainActivity extends BaseActivity implements View.OnClickListener,
         NavigationView.OnNavigationItemSelectedListener,
         BottomNavigationView.OnNavigationItemSelectedListener,
-        LogoutContact.View, CRoomContact.View, UEditContact.View {
+        LogoutContact.View, RCreateContact.View {
 
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
@@ -73,12 +62,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     LinearLayout linearLayout;
     TextView tvNameUSer, tvPosition;
     LogoutPresenter mLogoutPresenter;
-    EditText etNameRoom, edtDescRoom, etOldPassword, etNewPassword, etConfirmNewPassword;
+    EditText etNameRoom, edtDescRoom;
     RadioButton rbActive, rbRepair, rbBroken;
     Dialog dialog;
-    Button btnCancelAddRoom, btnAddRoom, btnConfirmChangePassword, btnCancelChangePassword;
+    Button btnCancelAddRoom, btnAddRoom;
 
-    CRoomPresenter mCRoomPresenter;
+    RCreatePresenter mRCreatePresenter;
     UEditPresenter mUEditPresenter;
 
     String name = "", role = "";
@@ -137,7 +126,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
             mNavigationView.getMenu().getItem(1).setVisible(true);
             mNavigationView.getMenu().getItem(2).setVisible(true);
             mNavigationView.getMenu().getItem(3).setVisible(false);
-
         }else {
             mNavigationView.getMenu().getItem(0).setVisible(false);
             mNavigationView.getMenu().getItem(1).setVisible(false);
@@ -151,15 +139,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
         RoomRepository roomRepository = new RoomRepository(
                 RoomLocalDataSource.getInstance(),
                 RoomRemoteDataSource.getInstance(this));
-        mCRoomPresenter = new CRoomPresenter(this, SchedulerProvider.getInstance(), roomRepository);
+        mRCreatePresenter = new RCreatePresenter(this, SchedulerProvider.getInstance(), roomRepository);
         UserRepository userRepository = UserRepository.getInstance(
                 UserLocalDataSource.getInstance(),
                 UserRemoteDataSource.getInstance(this));
         mUEditPresenter = new UEditPresenter(this, userRepository, SchedulerProvider.getInstance());
         mLogoutPresenter.setView(this);
-        mCRoomPresenter.setView(this);
-        mUEditPresenter.setView((UEditContact.View) this);
-
+        mRCreatePresenter.setView(this);
     }
 
     @Override
@@ -203,22 +189,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
 
     }
 
-    private void settupDialogChangePassword(){
-        dialog = new Dialog(this);
-        dialog.setContentView(R.layout.dialog_change_password);
-
-        etOldPassword = dialog.findViewById(R.id.et_old_password);
-        etNewPassword = dialog.findViewById(R.id.et_new_password);
-        etConfirmNewPassword = dialog.findViewById(R.id.et_confirm_new_password);
-        btnConfirmChangePassword = dialog.findViewById(R.id.btn_confirm_change_password);
-        btnCancelChangePassword = dialog.findViewById(R.id.btn_cancel_change_password);
-
-        btnConfirmChangePassword.setOnClickListener(this);
-        btnCancelChangePassword.setOnClickListener(this);
-
-        dialog.show();
-    }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
@@ -245,13 +215,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
                 return true;
             case R.id.nav_start_editInformation:
                 menuItem.setChecked(false);
+                Log.d("password", AppPrefs.getInstance(this).getPasswordUser());
                 navigator.startActivity(UEditActivity.class);
                 mDrawerLayout.closeDrawers();
                 return true;
 
-            case R.id.mav_start_changePassword:
+            case R.id.nav_start_user_manager:
                 menuItem.setChecked(false);
-                settupDialogChangePassword();
+
                 mDrawerLayout.closeDrawers();
                 return true;
 
@@ -273,18 +244,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
                     status = 2;
                 }
                 String sStatus = StringHelper.formatStringStatus(status, this);
-                mCRoomPresenter.createRoom(name, desc, sStatus);
+                mRCreatePresenter.createRoom(name, desc, sStatus);
                 break;
             case R.id.btn_cancel_addroom:
-                dialog.dismiss();
-                break;
-            case R.id.btn_confirm_change_password:
-                String oldPassword = etOldPassword.getText().toString().trim();
-                String newPassword = etNewPassword.getText().toString().trim();
-                String confirmNewPassword= etConfirmNewPassword.getText().toString().trim();
-                mUEditPresenter.updateUser(oldPassword, newPassword, confirmNewPassword);
-                break;
-            case R.id.btn_cancel_change_password:
                 dialog.dismiss();
                 break;
             default:
@@ -340,16 +302,5 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     @Override
     public void logicFaild() {
         Toast.makeText(this, "Bạn cần nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void logicSuccess() {
-        Toast.makeText(this, "Thay đổi Password thành công", Toast.LENGTH_SHORT).show();
-        dialog.dismiss();
-    }
-
-    @Override
-    public void user(User user) {
-
     }
 }

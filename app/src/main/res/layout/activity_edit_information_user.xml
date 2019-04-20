@@ -60,11 +60,11 @@
                 android:layout_height="wrap_content" />
 
             <EditText
-                android:layout_marginTop="@dimen/layout_size_30"
-                android:textSize="17sp"
+                android:layout_marginTop="@dimen/left_rc_10"
+                android:textSize="15sp"
                 android:textColor="@color/colorWhile"
                 android:textColorHint="@color/colorWhile"
-                android:padding="@dimen/margin_15"
+                android:padding="13dp"
                 android:hint="@string/fullname_user"
                 android:background="@drawable/custom_edittext_edit"
                 android:id="@+id/et.nameEditUser"
@@ -72,65 +72,87 @@
                 android:layout_height="wrap_content" />
 
             <EditText
-                android:layout_marginTop="@dimen/margin_15"
-                android:textSize="17sp"
+                android:layout_marginTop="@dimen/left_rc_10"
+                android:textSize="15sp"
                 android:textColor="@color/colorWhile"
                 android:textColorHint="@color/colorWhile"
-                android:padding="@dimen/margin_15"
+                android:padding="13dp"
                 android:hint="@string/email_user"
                 android:background="@drawable/custom_edittext_edit"
                 android:id="@+id/et.emailEditUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
+            <FrameLayout
+                android:layout_marginTop="@dimen/left_rc_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:visibility="visible"
+                    android:id="@+id/tv.changePassword"
+                    android:textColor="@color/bgToolbarComputer"
+                    android:text="@string/change_password"
+                    android:textSize="@dimen/margin_15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:visibility="invisible"
+                    android:orientation="vertical"
+                    android:id="@+id/linear.changePassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:clickable="true"
+                        android:textSize="15sp"
+                        android:textColor="@color/colorWhile"
+                        android:textColorHint="@color/colorWhile"
+                        android:padding="13dp"
+                        android:hint="@string/password_login"
+                        android:background="@drawable/custom_edittext_edit"
+                        android:id="@+id/et.oldPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:layout_marginTop="@dimen/left_rc_10"
+                        android:textSize="15sp"
+                        android:textColor="@color/colorWhile"
+                        android:textColorHint="@color/colorWhile"
+                        android:padding="13dp"
+                        android:hint="@string/new_password"
+                        android:background="@drawable/custom_edittext_edit"
+                        android:id="@+id/et.newPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:layout_marginTop="@dimen/left_rc_10"
+                        android:textSize="15sp"
+                        android:textColor="@color/colorWhile"
+                        android:textColorHint="@color/colorWhile"
+                        android:padding="13dp"
+                        android:hint="@string/confirm_new_password"
+                        android:background="@drawable/custom_edittext_edit"
+                        android:id="@+id/et.cfNewPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </FrameLayout>
+
         </LinearLayout>
 
-        <!--<TextView-->
-            <!--android:textStyle="bold"-->
-            <!--android:textSize="17sp"-->
-            <!--android:layout_marginTop="@dimen/margin_20"-->
-            <!--android:layout_below="@+id/linear.form"-->
-            <!--android:textColor="@color/black_status"-->
-            <!--android:text="Role: "-->
-            <!--android:id="@+id/tv.role"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content" />-->
-
-        <!--<RadioGroup-->
-            <!--android:id="@+id/rg.role"-->
-            <!--android:orientation="vertical"-->
-
-            <!--android:layout_below="@+id/tv.role"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content">-->
-
-            <!--<RadioButton-->
-                <!--android:id="@+id/rb.admin"-->
-                <!--android:text="@string/admin"-->
-                <!--android:background="@drawable/custom_cb_rmb"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content" />-->
-
-            <!--<RadioButton-->
-                <!--android:id="@+id/rb.technicians"-->
-                <!--android:text="@string/technicians"-->
-                <!--android:background="@drawable/custom_cb_rmb"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content" />-->
-
-            <!--<RadioButton-->
-                <!--android:id="@+id/rb.member"-->
-                <!--android:text="@string/member"-->
-                <!--android:background="@drawable/custom_cb_rmb"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content" />-->
-
-        <!--</RadioGroup>-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/btn.edit"
             android:textColor="@color/colorWhile"
-            android:text="@string/edit"
+            android:text="@string/update"
             android:background="@drawable/custom_hover_btn_edit"
             android:layout_alignParentBottom="true"
             android:layout_width="wrap_content"

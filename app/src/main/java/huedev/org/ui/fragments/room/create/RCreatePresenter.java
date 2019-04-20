@@ -6,14 +6,14 @@ import huedev.org.data.repository.RoomRepository;
 import huedev.org.data.source.remote.response.room.CreateRoomReponse;
 import huedev.org.utils.rx.BaseSchedulerProvider;
 
-public class CRoomPresenter implements CRoomContact.Presenter {
+public class RCreatePresenter implements RCreateContact.Presenter {
 
     Context mContext;
-    CRoomContact.View mView;
+    RCreateContact.View mView;
     BaseSchedulerProvider mBaseSchedulerProvider;
     RoomRepository mRoomRepository;
 
-    public CRoomPresenter(Context context, BaseSchedulerProvider baseSchedulerProvider, RoomRepository roomRepository) {
+    public RCreatePresenter(Context context, BaseSchedulerProvider baseSchedulerProvider, RoomRepository roomRepository) {
         this.mContext = context;
         this.mBaseSchedulerProvider = baseSchedulerProvider;
         this.mRoomRepository = roomRepository;
@@ -43,7 +43,7 @@ public class CRoomPresenter implements CRoomContact.Presenter {
     }
 
     @Override
-    public void setView(CRoomContact.View view) {
+    public void setView(RCreateContact.View view) {
         this.mView = view;
     }
 

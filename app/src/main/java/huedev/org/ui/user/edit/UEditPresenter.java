@@ -1,6 +1,7 @@
 package huedev.org.ui.user.edit;
 
 import android.content.Context;
+import android.util.Log;
 
 import huedev.org.data.repository.UserRepository;
 import huedev.org.data.source.remote.response.user.UpdateUserReponse;
@@ -21,40 +22,43 @@ public class UEditPresenter implements UEditContact.Presenter {
     }
 
     @Override
-    public void updateUser(String name, String email) {
-        mView.showLoadingIndicator();
-        String id = AppPrefs.getInstance(mContext).getIdUser();
-        String username = AppPrefs.getInstance(mContext).getUserNameUser();
-        String password = AppPrefs.getInstance(mContext).getPasswordUser();
-        int role = AppPrefs.getInstance(mContext).getRole();
-        mUserRepository.update(id, username, password, name, email, role)
-                .subscribeOn(mBaseSchedulerProvider.io())
-                .observeOn(mBaseSchedulerProvider.ui())
-                .subscribe(updateUserReponse -> handleUdpateUserSuccess(updateUserReponse)
-                        , err -> handleUpdateUserFailed(err));
-    }
-
-    @Override
-    public void updateUser(String oldPassword, String newPassword, String cofirmNewPassword) {
-        if (oldPassword.isEmpty() || newPassword.isEmpty() || cofirmNewPassword.isEmpty()){
+    public void updateUser(String name, String email, String oldPassword, String newPassword, String cofirmNewPassword) {
+        if (name.isEmpty() || email.isEmpty()){
             mView.logicFaild();
         }else {
-            if (oldPassword.equals(AppPrefs.getInstance(mContext).getPasswordUser()) && newPassword.equals(cofirmNewPassword)){
+            if (oldPassword.isEmpty() && newPassword.isEmpty() && cofirmNewPassword.isEmpty()){
                 mView.showLoadingIndicator();
                 String id = AppPrefs.getInstance(mContext).getIdUser();
                 String username = AppPrefs.getInstance(mContext).getUserNameUser();
-                String name = AppPrefs.getInstance(mContext).getNameUser();
-                String email = AppPrefs.getInstance(mContext).getEmailUser();
+                String password = AppPrefs.getInstance(mContext).getPasswordUser();
                 int role = AppPrefs.getInstance(mContext).getRole();
-                mUserRepository.update(id, username, cofirmNewPassword, name, email, role)
+                mUserRepository.update(id, username, password, name, email, role)
                         .subscribeOn(mBaseSchedulerProvider.io())
                         .observeOn(mBaseSchedulerProvider.ui())
                         .subscribe(updateUserReponse -> handleUdpateUserSuccess(updateUserReponse)
                                 , err -> handleUpdateUserFailed(err));
+            }else if (oldPassword.isEmpty() || newPassword.isEmpty() || cofirmNewPassword.isEmpty()) {
+                mView.logicFaild();
+            } else {
+                if (oldPassword.equals(AppPrefs.getInstance(mContext).getPasswordUser())){
+                    if (newPassword.equals(cofirmNewPassword)) {
+                        mView.showLoadingIndicator();
+                        String id = AppPrefs.getInstance(mContext).getIdUser();
+                        String username = AppPrefs.getInstance(mContext).getUserNameUser();
+                        int role = AppPrefs.getInstance(mContext).getRole();
+                        mUserRepository.update(id, username, cofirmNewPassword, name, email, role)
+                                .subscribeOn(mBaseSchedulerProvider.io())
+                                .observeOn(mBaseSchedulerProvider.ui())
+                                .subscribe(updateUserReponse -> handleUdpateUserSuccess(updateUserReponse)
+                                        , err -> handleUpdateUserFailed(err));
+                    }else {
+                        mView.newPasswordFail();
+                    }
+                }else {
+                    mView.oldPasswordFail();
+                }
             }
-
         }
-
     }
 
     public void handleUdpateUserSuccess(UpdateUserReponse updateUserReponse){
@@ -64,7 +68,7 @@ public class UEditPresenter implements UEditContact.Presenter {
     }
 
     public void handleUpdateUserFailed(Throwable err){
-
+        mView.showLoginError(err);
     }
 
     @Override
