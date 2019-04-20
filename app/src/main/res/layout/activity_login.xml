@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/img_bg_login"
-    tools:context=".ui.auth.login.LoginActivity">
+    android:background="@drawable/iv_bg_login"
+    tools:context=".ui.activity.auth.login.LoginActivity">
     <LinearLayout
         android:orientation="vertical"
         android:background="@color/bg_login"
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:background="@null"
-                android:src="@drawable/img_logo_login"
+                android:src="@drawable/iv_logo_login"
                 android:layout_marginTop="@dimen/layout_size_80"
                 android:layout_gravity="center"
                 android:layout_width="@dimen/layout_size_100"

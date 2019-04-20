@@ -30,12 +30,13 @@ import java.util.List;
 import huedev.org.R;
 import huedev.org.data.model.Work;
 import huedev.org.ui.adapter.WorkAdapter;
-import huedev.org.ui.auth.login.LoginActivity;
+import huedev.org.ui.activity.auth.login.LoginActivity;
+import huedev.org.ui.base.fragment.BaseFagment;
 import huedev.org.utils.AppConstants;
 import huedev.org.utils.AppPrefs;
 import huedev.org.utils.helpers.StringHelper;
 
-public class CalendarFragment extends Fragment implements View.OnClickListener, CalendarContact.View {
+public class CalendarFragment extends BaseFagment implements View.OnClickListener, CalendarContact.View {
     LinearLayout linearForm, linearWork;
     ImageButton ibAddWork;
     Button btnConfirm, btnCancel;

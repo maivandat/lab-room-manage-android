@@ -6,13 +6,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/img_logo_login"
+        android:icon="@drawable/iv_logo_login"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.main.MainActivity">
+        <activity android:name=".ui.activity.main.MainActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,10 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.device.DeviceActivity"></activity>
-        <activity android:name=".ui.auth.login.LoginActivity"></activity>
-        <activity android:name=".ui.computer.ComputerActivity"></activity>
-        <activity android:name=".ui.user.edit.UEditActivity"></activity>
+        <activity android:name=".ui.activity.device.DeviceActivity"></activity>
+        <activity android:name=".ui.activity.auth.login.LoginActivity"></activity>
+        <activity android:name=".ui.activity.computer.ComputerActivity"></activity>
+        <activity android:name=".ui.activity.user.edit.UEditActivity"></activity>
+        <activity android:name=".ui.activity.add.AddActivity"></activity>
     </application>
 
 </manifest>

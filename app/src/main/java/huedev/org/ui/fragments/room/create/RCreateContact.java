@@ -1,8 +1,8 @@
 package huedev.org.ui.fragments.room.create;
 
 import huedev.org.data.model.Room;
-import huedev.org.ui.base.BasePresenter;
-import huedev.org.ui.base.BaseView;
+import huedev.org.ui.base.activity.BasePresenter;
+import huedev.org.ui.base.activity.BaseView;
 
 public interface RCreateContact {
     interface View extends BaseView {

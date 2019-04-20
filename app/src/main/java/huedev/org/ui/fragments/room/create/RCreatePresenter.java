@@ -21,6 +21,7 @@ public class RCreatePresenter implements RCreateContact.Presenter {
 
     @Override
     public void createRoom(String name, String desc, String status) {
+
         if (name.isEmpty() || desc.isEmpty() || status.isEmpty()){
             mView.logicFaild();
         }else {

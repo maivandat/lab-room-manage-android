@@ -1,16 +1,13 @@
 package huedev.org.ui.adapter;
 
 import android.app.Activity;
-import android.app.ActivityOptions;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +17,7 @@ import java.util.List;
 
 import huedev.org.R;
 import huedev.org.data.model.Room;
-import huedev.org.ui.computer.ComputerActivity;
+import huedev.org.ui.activity.computer.ComputerActivity;
 import huedev.org.utils.AppConstants;
 import huedev.org.utils.navigator.Navigator;
 
@@ -51,7 +48,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
             this.rItem = room;
 
             tvTitleItem.setText(room.getName());
-            tvDescibeItem.setText(room.getStatus());
+            tvDescibeItem.setText(room.getDesc());
         }
 
     }
@@ -74,7 +71,6 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
                 bundle.putString(AppConstants.ID_ROOM, mRoomList.get(position).getId());
                 navigator.startActivity(ComputerActivity.class, bundle);
 
-//                Log.d("LoggId", mRoomList.get(position).getId() + "");
             }
         });
     }
