@@ -26,6 +26,6 @@
     <color name="device_border">#6ad3f0</color>
     <color name="device_line">#6ecce6</color>
     <color name="device_item_background">#F3FAF7</color>
-    <color name="colorGrayTransparent">#83BEBEBE</color>
+    <color name="colorGrayTransparent">#37B8B8B8</color>
     <color name="background_while_transparent">#4FF3FAF7</color>
 </resources>

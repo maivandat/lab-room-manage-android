@@ -7,8 +7,8 @@ import android.widget.TextView;
 import java.util.List;
 
 import huedev.org.data.model.Work;
-import huedev.org.ui.base.BasePresenter;
-import huedev.org.ui.base.BaseView;
+import huedev.org.ui.base.activity.BasePresenter;
+import huedev.org.ui.base.activity.BaseView;
 
 public interface CalendarContact {
     interface View extends BaseView {

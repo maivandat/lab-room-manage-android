@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"/>
         
         <ImageView
-            android:src="@drawable/img_icon_user"
+            android:src="@drawable/iv_icon_user"
             android:layout_marginTop="@dimen/margin_20"
             android:layout_gravity="center"
             android:layout_width="@dimen/layout_size_100"

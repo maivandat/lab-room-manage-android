@@ -20,9 +20,10 @@ import huedev.org.data.repository.RoomRepository;
 import huedev.org.data.source.local.RoomLocalDataSource;
 import huedev.org.data.source.remote.RoomRemoteDataSource;
 import huedev.org.ui.adapter.RoomAdapter;
+import huedev.org.ui.base.fragment.BaseFagment;
 import huedev.org.utils.rx.SchedulerProvider;
 
-public class RoomFragment extends Fragment implements RoomContract.View {
+public class RoomFragment extends BaseFagment implements RoomContract.View {
     RoomContract.Presenter mPresenter;
 
     RecyclerView mRecyclerView;
