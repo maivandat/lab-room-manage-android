@@ -75,5 +75,7 @@
     <string name="confirm_new_password">Confirm New Password</string>
     <string name="user_manager">User Manager</string>
     <string name="add_material_facilities">MATERIAL FACILITIES</string>
+    <string name="all_user">All Users</string>
+    <string name="total_user">Total users</string>
 
 </resources>
