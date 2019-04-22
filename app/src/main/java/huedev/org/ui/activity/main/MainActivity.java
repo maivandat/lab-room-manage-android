@@ -26,6 +26,7 @@ import huedev.org.ui.activity.add.AddActivity;
 import huedev.org.ui.activity.auth.login.LoginActivity;
 import huedev.org.ui.activity.auth.logout.LogoutContact;
 import huedev.org.ui.activity.auth.logout.LogoutPresenter;
+import huedev.org.ui.activity.user.UserActivity;
 import huedev.org.ui.base.activity.BaseActivity;
 import huedev.org.ui.fragments.MessengerFragment.MessengerFragment;
 import huedev.org.ui.fragments.calendar.CalendarFragment;
@@ -185,7 +186,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
 
             case R.id.nav_start_user_manager:
                 menuItem.setChecked(false);
-
+                navigator.startActivity(UserActivity.class);
                 mDrawerLayout.closeDrawers();
                 return true;
 
