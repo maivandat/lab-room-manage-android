@@ -4,6 +4,7 @@
     android:orientation="horizontal"
     android:layout_height="wrap_content">
 
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_weight="1"
@@ -68,6 +69,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
+            <View
+                android:id="@+id/v.status"
+                android:layout_marginRight="@dimen/left_rc_10"
+                android:layout_marginTop="@dimen/left_rc_10"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/red_status"
+                android:layout_width="@dimen/left_rc_10"
+                android:layout_height="@dimen/left_rc_10"/>
+
             <TextView
                 android:layout_below="@id/tv.titleItemRoom"
                 android:id="@+id/tv.floorItemRoom"
@@ -93,16 +103,75 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp" />
 
-            <TextView
-                android:id="@+id/tv.viewcomputer"
-                android:clickable="true"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
-                android:layout_marginTop="@dimen/left_rc_10"
+            <RelativeLayout
                 android:layout_below="@id/tv.horizontal"
-                android:text="@string/view_item_room"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_marginTop="@dimen/left_rc_10"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/tv.viewcomputer"
+                    android:clickable="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
+                    android:text="@string/view_item_room"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageButton
+                    android:visibility="visible"
+                    android:id="@+id/ib.moreHandleRoom"
+                    android:background="@null"
+                    android:layout_alignParentRight="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/btn_more_handle"
+                    android:layout_width="18dp"
+                    android:layout_height="16dp" />
+
+                <LinearLayout
+                    android:visibility="invisible"
+                    android:id="@+id/linear.handler.room"
+                    android:layout_alignParentRight="true"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/ib.collapseHandleRoom"
+                        android:layout_marginRight="@dimen/margin_5"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/btn_collapse_handle"
+                        android:background="@null"
+                        android:layout_width="@dimen/margin_20"
+                        android:layout_height="@dimen/margin_20" />
+
+                    <TextView
+                        android:layout_marginRight="@dimen/left_rc_10"
+                        android:layout_toLeftOf="@id/tv.delRoom"
+                        android:id="@+id/tv.editRoom"
+                        android:clickable="true"
+                        android:textColor="@color/yellow_status"
+                        android:textStyle="bold"
+                        android:text="@string/edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+
+                    <TextView
+                        android:id="@+id/tv.delRoom"
+                        android:clickable="true"
+                        android:textColor="@color/red_status"
+                        android:textStyle="bold"
+                        android:text="@string/del"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+
 
         </RelativeLayout>
     </RelativeLayout>

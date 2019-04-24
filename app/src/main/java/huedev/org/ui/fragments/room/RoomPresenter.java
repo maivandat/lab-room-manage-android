@@ -1,25 +1,20 @@
 package huedev.org.ui.fragments.room;
 
-import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 
 import com.google.common.base.Preconditions;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import huedev.org.data.model.Room;
-import huedev.org.data.model.User;
 import huedev.org.data.repository.RoomRepository;
+import huedev.org.data.source.remote.response.room.CreateRoomReponse;
 import huedev.org.data.source.remote.response.room.ListRoomReponse;
-import huedev.org.utils.AppConstants;
-import huedev.org.utils.navigator.Navigator;
+import huedev.org.data.source.remote.response.room.UpdateRoomReponse;
 import huedev.org.utils.rx.BaseSchedulerProvider;
 
-public class RoomPresenter implements RoomContract.Presenter {
+public class RoomPresenter implements RoomContact.Presenter {
 
     Context mContext;
-    RoomContract.View mView;
+    RoomContact.View mView;
     RoomRepository mRoomRepository;
     BaseSchedulerProvider mSchedulerProvider;
 
@@ -28,6 +23,21 @@ public class RoomPresenter implements RoomContract.Presenter {
         this.mContext = Preconditions.checkNotNull(context);
         this.mRoomRepository = Preconditions.checkNotNull(roomRepository);
         this.mSchedulerProvider = Preconditions.checkNotNull(schedulerProvider);
+    }
+
+    @Override
+    public void createRoom(String name, String desc, String status) {
+
+        if (name.isEmpty() || desc.isEmpty()){
+            mView.logicFaild();
+        }else {
+            mRoomRepository.createRoom(name, desc, status)
+                    .subscribeOn(mSchedulerProvider.io())
+                    .observeOn(mSchedulerProvider.ui())
+                    .subscribe(createRoomReponse -> handleAddRommSuccess(createRoomReponse),
+                            error -> handleAddRommFailed(error));
+        }
+
     }
 
     @Override
@@ -40,6 +50,62 @@ public class RoomPresenter implements RoomContract.Presenter {
                         error -> handleRoomsFailed(error));
     }
 
+    @Override
+    public void updateRoom(String id, String name, String desc, String status, Dialog dialog) {
+        if (name.isEmpty() || desc.isEmpty()){
+            mView.logicFaild();
+        }else {
+            mView.showLoadingIndicator();
+            mRoomRepository.updateRoom(id, name, desc, status)
+                    .subscribeOn(mSchedulerProvider.io())
+                    .observeOn(mSchedulerProvider.ui())
+                    .subscribe(updateRoomReponse -> handleUpdateRoomSuccess(updateRoomReponse, dialog),
+                            err -> handleUpdateRoomFaild(err));
+        }
+
+    }
+
+    @Override
+    public void deleteRoom(String id) {
+        mRoomRepository.deleteRoom(id)
+                .subscribeOn(mSchedulerProvider.io())
+                .observeOn(mSchedulerProvider.ui())
+                .subscribe(voidd -> handleDelRoomSuccess(),
+                        err ->handleDelRoomFaild(err));
+    }
+
+    //Del Room
+
+    private void handleDelRoomSuccess() {
+
+    }
+
+    private void handleDelRoomFaild(Throwable err) {
+        mView.delRoomFaild(err);
+    }
+
+    //Add Room
+    private void handleAddRommSuccess(CreateRoomReponse createRoomReponse) {
+        mView.hideLoadingIndicator();
+        mView.createRoomItem(createRoomReponse.room);
+    }
+
+    private void handleAddRommFailed(Throwable error) {
+        mView.showLoginError(error);
+    }
+
+    //Update Room
+    private void handleUpdateRoomSuccess(UpdateRoomReponse updateRoomReponse, Dialog dialog) {
+        mView.hideLoadingIndicator();
+        mView.updateRoomItem(updateRoomReponse.itemRoom, dialog);
+
+    }
+
+    private void handleUpdateRoomFaild(Throwable err) {
+        mView.showLoginError(err);
+    }
+
+    // Get List Room
     private void handleRoomsSuccess(ListRoomReponse listRoomReponse){
         mView.hideLoadingIndicator();
         mView.updateRoomsList(listRoomReponse.roomList);
@@ -49,7 +115,7 @@ public class RoomPresenter implements RoomContract.Presenter {
         mView.showLoginError(err);
     }
     @Override
-    public void setView(RoomContract.View view) {
+    public void setView(RoomContact.View view) {
         mView = view;
     }
 

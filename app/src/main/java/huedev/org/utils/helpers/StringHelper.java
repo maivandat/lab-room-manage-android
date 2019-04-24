@@ -55,16 +55,4 @@ public class StringHelper {
         return sRole;
     }
 
-    public static String formatStringStatus(int status, Context mContext){
-        String sStatus;
-        if (status == 0){
-            sStatus = StringHelper.getStringResourceByName("active", mContext);
-        }else if (status == 1){
-            sStatus = StringHelper.getStringResourceByName("repair", mContext);
-        }else {
-            sStatus = StringHelper.getStringResourceByName("broken", mContext);
-        }
-        return sStatus;
-    }
-
 }

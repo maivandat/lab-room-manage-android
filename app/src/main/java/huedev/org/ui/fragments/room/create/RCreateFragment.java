@@ -1,5 +1,6 @@
 package huedev.org.ui.fragments.room.create;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,23 +13,28 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.util.List;
+
 import huedev.org.R;
 import huedev.org.data.model.Room;
 import huedev.org.data.repository.RoomRepository;
 import huedev.org.data.source.local.RoomLocalDataSource;
 import huedev.org.data.source.remote.RoomRemoteDataSource;
 import huedev.org.ui.base.fragment.BaseFagment;
+import huedev.org.ui.fragments.room.RoomContact;
+import huedev.org.ui.fragments.room.RoomPresenter;
+import huedev.org.utils.helpers.NotifyHelper;
 import huedev.org.utils.helpers.StringHelper;
 import huedev.org.utils.navigator.Navigator;
 import huedev.org.utils.rx.SchedulerProvider;
 
-public class RCreateFragment extends BaseFagment implements RCreateContact.View, View.OnClickListener {
+public class RCreateFragment extends BaseFagment implements RoomContact.View, View.OnClickListener {
 
     EditText etRoomTitle, etRoomDesc;
     RadioGroup rgStatus;
     RadioButton rbActive, rbRepair, rbBroken;
     Button btnAdd;
-    RCreatePresenter mRCreatePresenter;
+    RoomPresenter mRoomPresenter;
 
     @Nullable
     @Override
@@ -51,18 +57,38 @@ public class RCreateFragment extends BaseFagment implements RCreateContact.View,
 
     private void init() {
         RoomRepository roomRepository = RoomRepository.getInstance(RoomLocalDataSource.getInstance(), RoomRemoteDataSource.getInstance(getContext()));
-        mRCreatePresenter = new RCreatePresenter(getContext(), SchedulerProvider.getInstance(), roomRepository);
-        mRCreatePresenter.setView(this);
+        mRoomPresenter = new RoomPresenter(getContext(), roomRepository, SchedulerProvider.getInstance());
+        mRoomPresenter.setView(this);
+    }
+
+
+    @Override
+    public void updateRoomsList(List<Room> roomList) {
+
     }
 
     @Override
-    public void logicCorrect(Room room) {
-        Toast.makeText(getContext(), "Tạo " + room.getName() + " thành công", Toast.LENGTH_SHORT).show();
+    public void updateRoomItem(Room room, Dialog dialog) {
+
+    }
+
+    @Override
+    public void createRoomItem(Room room) {
+        NotifyHelper.logicSuccess("Create " + room.getName() + " succsess", getContext());
+    }
+
+    @Override
+    public void delRoomFaild(Throwable err) {
+
+    }
+
+    @Override
+    public void logicSuccess() {
     }
 
     @Override
     public void logicFaild() {
-        Toast.makeText(getContext(), "Bạn vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+        NotifyHelper.logicFaild("Please enter full information", getContext());
     }
 
     @Override
@@ -84,18 +110,18 @@ public class RCreateFragment extends BaseFagment implements RCreateContact.View,
     public void onClick(View view) {
         String title = etRoomTitle.getText().toString().trim();
         String desc = etRoomDesc.getText().toString().trim();
-        int status;
+        String status;
 
         if (rbActive.isChecked()){
-            status = 0;
+            status = "Open";
         }else if (rbRepair.isChecked()){
-            status = 1;
+            status = "Repair";
         }else {
-            status = 2;
+            status = "Close";
         }
 
-        String sStatus = StringHelper.formatStringStatus(status, getContext());
-        mRCreatePresenter.createRoom(title, desc, sStatus);
+
+        mRoomPresenter.createRoom(title, desc, status);
 
     }
 }

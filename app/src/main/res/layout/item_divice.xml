@@ -6,7 +6,9 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="1dp"
-    android:background="@color/device_item_background">
+    android:background="@color/device_item_background"
+    app:leftEdgeSwipeOffset="0dp"
+    app:rightEdgeSwipeOffset="0dp">
     <LinearLayout
         android:gravity="right"
         android:orientation="horizontal"
