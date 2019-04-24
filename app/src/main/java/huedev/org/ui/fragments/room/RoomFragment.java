@@ -1,12 +1,11 @@
 package huedev.org.ui.fragments.room;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +22,8 @@ import huedev.org.ui.adapter.RoomAdapter;
 import huedev.org.ui.base.fragment.BaseFagment;
 import huedev.org.utils.rx.SchedulerProvider;
 
-public class RoomFragment extends BaseFagment implements RoomContract.View {
-    RoomContract.Presenter mPresenter;
+public class RoomFragment extends BaseFagment implements RoomContact.View {
+    RoomPresenter mPresenter;
 
     RecyclerView mRecyclerView;
 
@@ -55,7 +54,7 @@ public class RoomFragment extends BaseFagment implements RoomContract.View {
 
     @Override
     public void updateRoomsList(List<Room> roomList) {
-        mAdapter = new RoomAdapter(getContext(), roomList);
+        mAdapter = new RoomAdapter(getContext(), roomList, mPresenter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(llm);
@@ -64,6 +63,32 @@ public class RoomFragment extends BaseFagment implements RoomContract.View {
         mRecyclerView.setOnClickListener(view -> {
 
         });
+    }
+
+    @Override
+    public void updateRoomItem(Room room, Dialog dialog) {
+        dialog.dismiss();
+        mPresenter.rooms();
+    }
+
+    @Override
+    public void createRoomItem(Room room) {
+
+    }
+
+    @Override
+    public void delRoomFaild(Throwable err) {
+        Toast.makeText(getContext(), err.toString(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void logicSuccess() {
+
+    }
+
+    @Override
+    public void logicFaild() {
+        Toast.makeText(getContext(), "Please enter full information", Toast.LENGTH_SHORT).show();
     }
 
 

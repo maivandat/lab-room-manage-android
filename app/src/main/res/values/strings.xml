@@ -77,5 +77,7 @@
     <string name="add_material_facilities">MATERIAL FACILITIES</string>
     <string name="all_user">All Users</string>
     <string name="total_user">Total users</string>
+    <string name="edit">EDIT</string>
+    <string name="del">DELETE</string>
 
 </resources>

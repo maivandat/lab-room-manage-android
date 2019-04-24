@@ -1,5 +1,6 @@
 package huedev.org.ui.activity.main;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -17,6 +18,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 import huedev.org.R;
 import huedev.org.data.model.Room;
 import huedev.org.data.repository.UserRepository;
@@ -31,10 +34,10 @@ import huedev.org.ui.base.activity.BaseActivity;
 import huedev.org.ui.fragments.MessengerFragment.MessengerFragment;
 import huedev.org.ui.fragments.calendar.CalendarFragment;
 import huedev.org.ui.fragments.feed.FeedFragment;
+import huedev.org.ui.fragments.room.RoomContact;
 import huedev.org.ui.fragments.room.RoomFragment;
-import huedev.org.ui.fragments.room.create.RCreateContact;
-import huedev.org.ui.activity.user.edit.UEditActivity;
-import huedev.org.ui.activity.user.edit.UEditPresenter;
+import huedev.org.ui.activity.user.update.UEditActivity;
+import huedev.org.ui.activity.user.update.UEditPresenter;
 import huedev.org.utils.AppConstants;
 import huedev.org.utils.AppPrefs;
 import huedev.org.utils.helpers.StringHelper;
@@ -45,7 +48,7 @@ import huedev.org.utils.rx.SchedulerProvider;
 public class MainActivity extends BaseActivity implements View.OnClickListener,
         NavigationView.OnNavigationItemSelectedListener,
         BottomNavigationView.OnNavigationItemSelectedListener,
-        LogoutContact.View, RCreateContact.View {
+        LogoutContact.View {
 
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
@@ -232,17 +235,5 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     public void logout() {
         mDrawerLayout.closeDrawers();
         navigator.startActivity(MainActivity.class);
-    }
-
-
-    @Override
-    public void logicCorrect(Room room) {
-        Toast.makeText(this, "Thêm thành công phòng " + room.getName(), Toast.LENGTH_SHORT).show();
-
-    }
-
-    @Override
-    public void logicFaild() {
-        Toast.makeText(this, "Bạn cần nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
     }
 }

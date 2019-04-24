@@ -42,6 +42,7 @@ public class UserActivity extends BaseActivity implements View.OnClickListener, 
 
         init();
         fabAddUser.setOnClickListener(this);
+        mToolbar.setNavigationOnClickListener(this);
     }
 
     private void init() {
@@ -62,7 +63,7 @@ public class UserActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void onClick(View view) {
-
+        finish();
     }
 
     @Override

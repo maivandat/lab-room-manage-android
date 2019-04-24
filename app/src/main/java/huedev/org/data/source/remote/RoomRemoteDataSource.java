@@ -6,6 +6,7 @@ import huedev.org.data.source.RoomDataSource;
 import huedev.org.data.source.remote.api.ApiRoom;
 import huedev.org.data.source.remote.response.room.CreateRoomReponse;
 import huedev.org.data.source.remote.response.room.ListRoomReponse;
+import huedev.org.data.source.remote.response.room.UpdateRoomReponse;
 import huedev.org.data.source.remote.service.AppServiceClient;
 import io.reactivex.Single;
 
@@ -33,4 +34,15 @@ public class RoomRemoteDataSource implements RoomDataSource.RemoteDataSource {
     public Single<CreateRoomReponse> createRoom(String name, String desc, String status) {
         return mApiRoom.createRoom(name, desc, status);
     }
+
+    @Override
+    public Single<UpdateRoomReponse> updateRoom(String id, String name, String desc, String status) {
+        return mApiRoom.updateRoom(id, name, desc, status);
+    }
+
+    @Override
+    public Single<Void> deleteRoom(String id) {
+        return mApiRoom.delete(id);
+    }
+
 }

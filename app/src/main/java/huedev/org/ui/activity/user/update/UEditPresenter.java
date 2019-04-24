@@ -1,4 +1,4 @@
-package huedev.org.ui.activity.user.edit;
+package huedev.org.ui.activity.user.update;
 
 import android.content.Context;
 

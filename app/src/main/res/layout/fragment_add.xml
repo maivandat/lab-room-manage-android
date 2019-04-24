@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/relative.container"
         android:padding="@dimen/margin_20"
         android:background="@drawable/custom_border_bg_create_room"
         android:layout_width="match_parent"
