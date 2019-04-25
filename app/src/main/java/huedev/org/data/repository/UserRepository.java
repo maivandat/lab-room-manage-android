@@ -6,6 +6,7 @@ import huedev.org.data.model.User;
 import huedev.org.data.source.UserDataSource;
 import huedev.org.data.source.local.UserLocalDataSource;
 import huedev.org.data.source.remote.UserRemoteDataSource;
+import huedev.org.data.source.remote.response.user.CreateUserReponse;
 import huedev.org.data.source.remote.response.user.ListUserResponse;
 import huedev.org.data.source.remote.response.user.UpdateUserReponse;
 import io.reactivex.Single;
@@ -39,9 +40,19 @@ public class UserRepository implements UserDataSource.LocalDataSource, UserDataS
     }
 
     @Override
+    public Single<CreateUserReponse> userItem(String name, String username, String password, String confirm_password, String email, String role) {
+        return mUserRemoteDataSource.userItem(name, username, password, confirm_password, email, role);
+    }
+
+    @Override
     public Single<UpdateUserReponse> update(String id, String username,
                                             String password, String name,
                                             String email, int role) {
         return mUserRemoteDataSource.update(id, username, password, name, email, role);
+    }
+
+    @Override
+    public Single<Void> delete(String id) {
+        return mUserRemoteDataSource.delete(id);
     }
 }

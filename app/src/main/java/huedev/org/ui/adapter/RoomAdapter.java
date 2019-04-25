@@ -111,9 +111,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
         alertDialog.setNegativeButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                mRoomPresenter.deleteRoom(mRoomList.get(position).getId());
-                dialogInterface.dismiss();
-                mRoomPresenter.rooms();
+                mRoomPresenter.deleteRoom(mRoomList.get(position).getId(), dialogInterface);
             }
         });
         alertDialog.show();

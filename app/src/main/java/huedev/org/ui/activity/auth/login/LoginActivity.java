@@ -23,7 +23,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
 
     private EditText etUsername, etPassword;
     private Button btnConfirm;
-    private CheckBox cbRemember;
     Navigator navigator;
 
     String sUsername, sPassword;
@@ -38,7 +37,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
         etUsername = findViewById(R.id.et_usernameLogin);
         etPassword = findViewById(R.id.et_passwordLogin);
         btnConfirm = findViewById(R.id.btn_gologin);
-        cbRemember = findViewById(R.id.cb_remeberLogin);
 
         init();
 

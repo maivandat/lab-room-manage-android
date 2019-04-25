@@ -1,6 +1,7 @@
 package huedev.org.ui.fragments.room;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 
 import java.util.List;
 
@@ -13,7 +14,10 @@ public interface RoomContact {
         void updateRoomsList(List<Room> roomList);
         void updateRoomItem(Room room, Dialog dialog);
         void createRoomItem(Room room);
+        void delRoomSuccess(DialogInterface dialogInterface);
         void delRoomFaild(Throwable err);
+        void addRoomFaild(Throwable err);
+        void updateRoomFaild(Throwable err);
         void logicSuccess();
         void logicFaild();
 
@@ -22,6 +26,6 @@ public interface RoomContact {
         void createRoom(String name, String desc, String status);
         void rooms();
         void updateRoom(String id, String name, String desc, String status, Dialog dialog);
-        void deleteRoom(String id);
+        void deleteRoom(String id, DialogInterface dialogInterface);
     }
 }
