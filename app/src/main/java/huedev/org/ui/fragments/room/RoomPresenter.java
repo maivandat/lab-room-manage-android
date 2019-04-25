@@ -2,6 +2,7 @@ package huedev.org.ui.fragments.room;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 
 import com.google.common.base.Preconditions;
 
@@ -66,18 +67,18 @@ public class RoomPresenter implements RoomContact.Presenter {
     }
 
     @Override
-    public void deleteRoom(String id) {
+    public void deleteRoom(String id, DialogInterface dialogInterface) {
         mRoomRepository.deleteRoom(id)
                 .subscribeOn(mSchedulerProvider.io())
                 .observeOn(mSchedulerProvider.ui())
-                .subscribe(voidd -> handleDelRoomSuccess(),
+                .subscribe(voidd -> handleDelRoomSuccess(dialogInterface),
                         err ->handleDelRoomFaild(err));
     }
 
     //Del Room
 
-    private void handleDelRoomSuccess() {
-
+    private void handleDelRoomSuccess(DialogInterface dialogInterface) {
+        mView.delRoomSuccess(dialogInterface);
     }
 
     private void handleDelRoomFaild(Throwable err) {
@@ -91,7 +92,7 @@ public class RoomPresenter implements RoomContact.Presenter {
     }
 
     private void handleAddRommFailed(Throwable error) {
-        mView.showLoginError(error);
+        mView.addRoomFaild(error);
     }
 
     //Update Room
@@ -102,7 +103,7 @@ public class RoomPresenter implements RoomContact.Presenter {
     }
 
     private void handleUpdateRoomFaild(Throwable err) {
-        mView.showLoginError(err);
+        mView.updateRoomFaild(err);
     }
 
     // Get List Room

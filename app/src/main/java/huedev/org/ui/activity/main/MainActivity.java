@@ -1,6 +1,5 @@
 package huedev.org.ui.activity.main;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -16,12 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.List;
-
 import huedev.org.R;
-import huedev.org.data.model.Room;
 import huedev.org.data.repository.UserRepository;
 import huedev.org.data.source.local.UserLocalDataSource;
 import huedev.org.data.source.remote.UserRemoteDataSource;
@@ -30,14 +24,13 @@ import huedev.org.ui.activity.auth.login.LoginActivity;
 import huedev.org.ui.activity.auth.logout.LogoutContact;
 import huedev.org.ui.activity.auth.logout.LogoutPresenter;
 import huedev.org.ui.activity.user.UserActivity;
+import huedev.org.ui.activity.user.UserPresenter;
 import huedev.org.ui.base.activity.BaseActivity;
 import huedev.org.ui.fragments.MessengerFragment.MessengerFragment;
 import huedev.org.ui.fragments.calendar.CalendarFragment;
 import huedev.org.ui.fragments.feed.FeedFragment;
-import huedev.org.ui.fragments.room.RoomContact;
 import huedev.org.ui.fragments.room.RoomFragment;
-import huedev.org.ui.activity.user.update.UEditActivity;
-import huedev.org.ui.activity.user.update.UEditPresenter;
+import huedev.org.ui.activity.user.update.UEditInfoActivity;
 import huedev.org.utils.AppConstants;
 import huedev.org.utils.AppPrefs;
 import huedev.org.utils.helpers.StringHelper;
@@ -58,7 +51,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     LinearLayout linearLayout;
     TextView tvNameUSer, tvPosition;
     LogoutPresenter mLogoutPresenter;
-    UEditPresenter mUEditPresenter;
+    UserPresenter mUserPresenter;
 
     String name = "", role = "";
 
@@ -128,7 +121,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
         UserRepository userRepository = UserRepository.getInstance(
                 UserLocalDataSource.getInstance(),
                 UserRemoteDataSource.getInstance(this));
-        mUEditPresenter = new UEditPresenter(this, userRepository, SchedulerProvider.getInstance());
+        mUserPresenter = new UserPresenter(this, userRepository, SchedulerProvider.getInstance());
         mLogoutPresenter.setView(this);
     }
 
@@ -183,7 +176,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
             case R.id.nav_start_editInformation:
                 menuItem.setChecked(false);
                 Log.d("password", AppPrefs.getInstance(this).getPasswordUser());
-                navigator.startActivity(UEditActivity.class);
+                navigator.startActivity(UEditInfoActivity.class);
                 mDrawerLayout.closeDrawers();
                 return true;
 

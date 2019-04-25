@@ -1,6 +1,7 @@
 package huedev.org.ui.fragments.room.create;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,10 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
-
 import java.util.List;
-
 import huedev.org.R;
 import huedev.org.data.model.Room;
 import huedev.org.data.repository.RoomRepository;
@@ -24,8 +22,6 @@ import huedev.org.ui.base.fragment.BaseFagment;
 import huedev.org.ui.fragments.room.RoomContact;
 import huedev.org.ui.fragments.room.RoomPresenter;
 import huedev.org.utils.helpers.NotifyHelper;
-import huedev.org.utils.helpers.StringHelper;
-import huedev.org.utils.navigator.Navigator;
 import huedev.org.utils.rx.SchedulerProvider;
 
 public class RCreateFragment extends BaseFagment implements RoomContact.View, View.OnClickListener {
@@ -78,12 +74,28 @@ public class RCreateFragment extends BaseFagment implements RoomContact.View, Vi
     }
 
     @Override
-    public void delRoomFaild(Throwable err) {
+    public void delRoomSuccess(DialogInterface dialogInterface) {
 
     }
 
     @Override
+    public void delRoomFaild(Throwable err) {
+        NotifyHelper.logicFaild(err.toString(), getContext());
+    }
+
+    @Override
+    public void addRoomFaild(Throwable err) {
+        NotifyHelper.logicFaild(err.toString(), getContext());
+    }
+
+    @Override
+    public void updateRoomFaild(Throwable err) {
+        NotifyHelper.logicFaild(err.toString(), getContext());
+    }
+
+    @Override
     public void logicSuccess() {
+
     }
 
     @Override

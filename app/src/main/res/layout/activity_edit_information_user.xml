@@ -60,28 +60,28 @@
                 android:layout_height="wrap_content" />
 
             <EditText
+                android:id="@+id/et.nameEditIFUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/left_rc_10"
-                android:textSize="15sp"
+                android:background="@drawable/custom_edittext_edit"
+                android:hint="@string/fullname_user"
+                android:padding="13dp"
                 android:textColor="@color/colorWhile"
                 android:textColorHint="@color/colorWhile"
-                android:padding="13dp"
-                android:hint="@string/fullname_user"
-                android:background="@drawable/custom_edittext_edit"
-                android:id="@+id/et.nameEditUser"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:textSize="15sp" />
 
             <EditText
+                android:id="@+id/et.emailIFEditUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/left_rc_10"
-                android:textSize="15sp"
+                android:background="@drawable/custom_edittext_edit"
+                android:hint="@string/email_user"
+                android:padding="13dp"
                 android:textColor="@color/colorWhile"
                 android:textColorHint="@color/colorWhile"
-                android:padding="13dp"
-                android:hint="@string/email_user"
-                android:background="@drawable/custom_edittext_edit"
-                android:id="@+id/et.emailEditUser"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:textSize="15sp" />
 
             <FrameLayout
                 android:layout_marginTop="@dimen/left_rc_10"
@@ -106,6 +106,7 @@
                     android:layout_height="wrap_content">
 
                     <EditText
+                        android:inputType="textPassword"
                         android:clickable="true"
                         android:textSize="15sp"
                         android:textColor="@color/colorWhile"
@@ -118,6 +119,7 @@
                         android:layout_height="wrap_content" />
 
                     <EditText
+                        android:inputType="textPassword"
                         android:layout_marginTop="@dimen/left_rc_10"
                         android:textSize="15sp"
                         android:textColor="@color/colorWhile"
@@ -130,6 +132,7 @@
                         android:layout_height="wrap_content" />
 
                     <EditText
+                        android:inputType="textPassword"
                         android:layout_marginTop="@dimen/left_rc_10"
                         android:textSize="15sp"
                         android:textColor="@color/colorWhile"
@@ -150,7 +153,7 @@
             android:layout_height="wrap_content" />
 
         <Button
-            android:id="@+id/btn.edit"
+            android:id="@+id/btn.editIFUser"
             android:textColor="@color/colorWhile"
             android:text="@string/update"
             android:background="@drawable/custom_hover_btn_edit"

@@ -1,11 +1,13 @@
 package huedev.org.ui.fragments.room;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,8 +79,24 @@ public class RoomFragment extends BaseFagment implements RoomContact.View {
     }
 
     @Override
+    public void delRoomSuccess(DialogInterface dialogInterface) {
+        dialogInterface.dismiss();
+        mPresenter.rooms();
+    }
+
+    @Override
     public void delRoomFaild(Throwable err) {
-        Toast.makeText(getContext(), err.toString(), Toast.LENGTH_SHORT).show();
+        Log.e("ErroDelRoom", err.toString());
+    }
+
+    @Override
+    public void addRoomFaild(Throwable err) {
+
+    }
+
+    @Override
+    public void updateRoomFaild(Throwable err) {
+
     }
 
     @Override
