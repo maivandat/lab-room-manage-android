@@ -28,7 +28,16 @@ public interface ApiUser {
                                      @Field("password") String password,
                                      @Field("confirm_password") String confirm_password,
                                      @Field("email") String email,
-                                     @Field("role") String role);
+                                     @Field("role") int role);
+
+    @FormUrlEncoded
+    @POST("v1/register")
+    Single<CreateUserReponse> create(@Field("Content-Type") String content_type,
+                                     @Field("name") String name,
+                                     @Field("username") String username,
+                                     @Field("password") String password,
+                                     @Field("email") String email,
+                                     @Field("confirmpassword") String confirm_password);
     @FormUrlEncoded
     @PUT("users/{id}")
     Single<UpdateUserReponse> update(@Path("id") String id,

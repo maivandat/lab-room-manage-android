@@ -32,9 +32,15 @@ public class UserRemoteDataSource implements UserDataSource.RemoteDataSource {
     }
 
     @Override
-    public Single<CreateUserReponse> userItem(String name, String username, String password, String confirm_password, String email, String role) {
+    public Single<CreateUserReponse> userItem(String name, String username, String password, String confirm_password, String email, int role) {
         return mApiUser.create(name, username, password, confirm_password, email, role);
     }
+
+    @Override
+    public Single<CreateUserReponse> userItem(String content_type, String name, String username, String password, String email, String confirm_password) {
+        return mApiUser.create(content_type, name, username, password, email, confirm_password);
+    }
+
 
     @Override
     public Single<UpdateUserReponse> update(String id, String username,

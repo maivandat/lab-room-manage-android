@@ -13,19 +13,22 @@
         android:background="#fff">
         <ImageView
             android:id="@+id/image_title_device"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/layout_size_80"
+            android:layout_height="70dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/logo_pc" />
 
         <TextView
+            android:layout_marginBottom="@dimen/left_rc_10"
+            android:textStyle="bold"
+            android:textColor="@color/black_status"
             android:id="@+id/text_comtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/image_title_device"
             android:layout_centerHorizontal="true"
             android:text="Computer"
-            android:textSize="@dimen/text_size_divice_activity" />
+            android:textSize="@dimen/text_title_18" />
     </RelativeLayout>
     <android.support.v7.widget.RecyclerView
         android:background="#a6cdd7"

@@ -112,6 +112,7 @@ public class UserAdapter extends RecyclerSwipeAdapter<UserAdapter.UserViewHolder
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 mUserPresenter.deleteUser(mUserList.get(position).getId(), dialogInterface);
+
             }
         });
 

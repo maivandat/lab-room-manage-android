@@ -1,13 +1,12 @@
-package huedev.org.data.source.remote.response.user;
+package huedev.org.data.source.remote.response.auth;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import huedev.org.data.model.User;
-import io.reactivex.Single;
 
-public class CreateUserReponse {
+public class RegisterResponse {
     @SerializedName("data")
     @Expose
-    public User userItem;
+    public User itemUser;
 }
