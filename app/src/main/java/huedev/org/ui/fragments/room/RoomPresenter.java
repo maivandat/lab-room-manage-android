@@ -26,6 +26,7 @@ public class RoomPresenter implements RoomContact.Presenter {
         this.mSchedulerProvider = Preconditions.checkNotNull(schedulerProvider);
     }
 
+    //Add Room
     @Override
     public void createRoom(String name, String desc, String status) {
 
@@ -41,6 +42,16 @@ public class RoomPresenter implements RoomContact.Presenter {
 
     }
 
+    private void handleAddRommSuccess(CreateRoomReponse createRoomReponse) {
+        mView.hideLoadingIndicator();
+        mView.createRoomItem(createRoomReponse.room);
+    }
+
+    private void handleAddRommFailed(Throwable error) {
+        mView.addRoomFaild(error);
+    }
+    //
+    // Get List Room
     @Override
     public void rooms() {
         mView.showLoadingIndicator();
@@ -51,6 +62,16 @@ public class RoomPresenter implements RoomContact.Presenter {
                         error -> handleRoomsFailed(error));
     }
 
+    private void handleRoomsSuccess(ListRoomReponse listRoomReponse){
+        mView.hideLoadingIndicator();
+        mView.updateRoomsList(listRoomReponse.roomList);
+    }
+
+    private void handleRoomsFailed(Throwable err){
+        mView.showLoginError(err);
+    }
+    //
+    //Update Room
     @Override
     public void updateRoom(String id, String name, String desc, String status, Dialog dialog) {
         if (name.isEmpty() || desc.isEmpty()){
@@ -66,36 +87,6 @@ public class RoomPresenter implements RoomContact.Presenter {
 
     }
 
-    @Override
-    public void deleteRoom(String id, DialogInterface dialogInterface) {
-        mRoomRepository.deleteRoom(id)
-                .subscribeOn(mSchedulerProvider.io())
-                .observeOn(mSchedulerProvider.ui())
-                .subscribe(voidd -> handleDelRoomSuccess(dialogInterface),
-                        err ->handleDelRoomFaild(err));
-    }
-
-    //Del Room
-
-    private void handleDelRoomSuccess(DialogInterface dialogInterface) {
-        mView.delRoomSuccess(dialogInterface);
-    }
-
-    private void handleDelRoomFaild(Throwable err) {
-        mView.delRoomFaild(err);
-    }
-
-    //Add Room
-    private void handleAddRommSuccess(CreateRoomReponse createRoomReponse) {
-        mView.hideLoadingIndicator();
-        mView.createRoomItem(createRoomReponse.room);
-    }
-
-    private void handleAddRommFailed(Throwable error) {
-        mView.addRoomFaild(error);
-    }
-
-    //Update Room
     private void handleUpdateRoomSuccess(UpdateRoomReponse updateRoomReponse, Dialog dialog) {
         mView.hideLoadingIndicator();
         mView.updateRoomItem(updateRoomReponse.itemRoom, dialog);
@@ -105,16 +96,25 @@ public class RoomPresenter implements RoomContact.Presenter {
     private void handleUpdateRoomFaild(Throwable err) {
         mView.updateRoomFaild(err);
     }
-
-    // Get List Room
-    private void handleRoomsSuccess(ListRoomReponse listRoomReponse){
-        mView.hideLoadingIndicator();
-        mView.updateRoomsList(listRoomReponse.roomList);
+    //
+    //Del Room
+    @Override
+    public void deleteRoom(String id, DialogInterface dialogInterface) {
+        mRoomRepository.deleteRoom(id)
+                .subscribeOn(mSchedulerProvider.io())
+                .observeOn(mSchedulerProvider.ui())
+                .subscribe(voidd -> handleDelRoomSuccess(dialogInterface),
+                        err ->handleDelRoomFaild(err));
     }
 
-    private void handleRoomsFailed(Throwable err){
-        mView.showLoginError(err);
+    private void handleDelRoomSuccess(DialogInterface dialogInterface) {
+        mView.delRoomSuccess(dialogInterface);
     }
+
+    private void handleDelRoomFaild(Throwable err) {
+        mView.delRoomFaild(err);
+    }
+    //
     @Override
     public void setView(RoomContact.View view) {
         mView = view;

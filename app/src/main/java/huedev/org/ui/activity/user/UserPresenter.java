@@ -22,7 +22,7 @@ public class UserPresenter implements UserContact.Presenter {
         this.mBaseSchedulerProvider = baseSchedulerProvider;
     }
 
-
+    // show list user
     @Override
     public void users() {
         mView.showLoadingIndicator();
@@ -33,6 +33,18 @@ public class UserPresenter implements UserContact.Presenter {
                         erro -> handlerFailListUser(erro));
     }
 
+    private void handlerSuccessListUser(ListUserResponse listUserResponse) {
+        mView.hideLoadingIndicator();
+        mView.usersList(listUserResponse.userList);
+    }
+
+    private void handlerFailListUser(Throwable erro) {
+        mView.showLoginError(erro);
+    }
+    //
+
+    // update
+    // update information user
     @Override
     public void updateUser(String name, String email, String oldPassword, String newPassword, String confirmNewPassword) {
         if (name.isEmpty() || email.isEmpty()){
@@ -73,6 +85,7 @@ public class UserPresenter implements UserContact.Presenter {
         }
     }
 
+    // manager update user
     @Override
     public void updateUser(String id, String username, String password, String name, String email, int role, Dialog dialog) {
         if (name.isEmpty() || email.isEmpty()){
@@ -85,23 +98,6 @@ public class UserPresenter implements UserContact.Presenter {
                             , err -> handleUpdateUserFailed(err));
         }
 
-    }
-
-    @Override
-    public void deleteUser(String id, DialogInterface dialogInterface) {
-        mUserRepository.delete(id)
-                .subscribeOn(mBaseSchedulerProvider.io())
-                .observeOn(mBaseSchedulerProvider.ui())
-                .subscribe(nope -> handleDelUserSuccess(dialogInterface)
-                        , err -> handleDelUserFailed(err));
-    }
-
-    private void handleDelUserFailed(Throwable err) {
-        mView.DelFaild(err);
-    }
-
-    private void handleDelUserSuccess(DialogInterface dialogInterface) {
-        mView.delUserSuccess(dialogInterface);
     }
 
     private void handleUdpateUserSuccess(UpdateUserReponse updateUserReponse, Dialog dialog) {
@@ -118,16 +114,27 @@ public class UserPresenter implements UserContact.Presenter {
         mView.logicSuccess();
         mView.user(updateUserReponse.user);
     }
+    //
+    //
 
-    private void handlerSuccessListUser(ListUserResponse listUserResponse) {
-        mView.hideLoadingIndicator();
-        mView.usersList(listUserResponse.userList);
+    // delete user
+    @Override
+    public void deleteUser(String id, DialogInterface dialogInterface) {
+        mUserRepository.delete(id)
+                .subscribeOn(mBaseSchedulerProvider.io())
+                .observeOn(mBaseSchedulerProvider.ui())
+                .subscribe(nope ->handleDelUserSuccess(dialogInterface)
+                        , err -> handleDelUserFailed(err));
     }
 
-    private void handlerFailListUser(Throwable erro) {
-        mView.showLoginError(erro);
+    private void handleDelUserFailed(Throwable err) {
+        mView.DelFaild(err);
     }
 
+    private void handleDelUserSuccess(DialogInterface dialogInterface) {
+        mView.delUserSuccess(dialogInterface);
+    }
+    //
     @Override
     public void setView(UserContact.View view) {
         this.mView = view;

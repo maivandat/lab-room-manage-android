@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import huedev.org.R;
@@ -12,6 +13,7 @@ import huedev.org.data.model.User;
 import huedev.org.data.repository.LoginRepository;
 import huedev.org.data.source.local.LoginLocalDataSource;
 import huedev.org.data.source.remote.LoginRemoteDataSource;
+import huedev.org.ui.activity.auth.register.RegisterActivity;
 import huedev.org.ui.activity.main.MainActivity;
 import huedev.org.ui.base.activity.BaseActivity;
 import huedev.org.utils.navigator.Navigator;
@@ -23,6 +25,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
 
     private EditText etUsername, etPassword;
     private Button btnConfirm;
+    private TextView tvRegister;
     Navigator navigator;
 
     String sUsername, sPassword;
@@ -37,10 +40,12 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
         etUsername = findViewById(R.id.et_usernameLogin);
         etPassword = findViewById(R.id.et_passwordLogin);
         btnConfirm = findViewById(R.id.btn_gologin);
+        tvRegister = findViewById(R.id.tv_registerAccount);
 
         init();
 
         btnConfirm.setOnClickListener(this);
+        tvRegister.setOnClickListener(this);
     }
 
     private void init(){
@@ -78,7 +83,18 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
 
     @Override
     public void onClick(View view) {
-        clickHandle(view);
+        switch (view.getId()){
+            case R.id.btn_gologin:
+                clickHandle(view);
+                break;
+            case R.id.tv_registerAccount:
+                navigator.startActivity(RegisterActivity.class);
+                break;
+        }
     }
 
+    @Override
+    public void overridePendingTransition(int enterAnim, int exitAnim) {
+        super.overridePendingTransition(R.anim.slide_right_in, R.anim.slide_right_out);
+    }
 }

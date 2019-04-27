@@ -26,6 +26,7 @@
         <activity android:name=".ui.activity.user.update.UEditInfoActivity"></activity>
         <activity android:name=".ui.activity.add.AddActivity"></activity>
         <activity android:name=".ui.activity.user.UserActivity"></activity>
+        <activity android:name=".ui.activity.auth.register.RegisterActivity"></activity>
     </application>
 
 </manifest>

@@ -26,8 +26,9 @@ public class UserRepository implements UserDataSource.LocalDataSource, UserDataS
         mUserRemoteDataSource = userRemoteDataSource;
     }
 
-    public static synchronized UserRepository getInstance(@NonNull UserLocalDataSource userLocalDataSource,
-                                                          @NonNull UserRemoteDataSource userRemoteDataSource){
+    public static synchronized UserRepository getInstance(
+            @NonNull UserLocalDataSource userLocalDataSource,
+            @NonNull UserRemoteDataSource userRemoteDataSource){
         if(instance == null){
             instance = new UserRepository(userLocalDataSource, userRemoteDataSource);
         }
@@ -40,9 +41,22 @@ public class UserRepository implements UserDataSource.LocalDataSource, UserDataS
     }
 
     @Override
-    public Single<CreateUserReponse> userItem(String name, String username, String password, String confirm_password, String email, String role) {
-        return mUserRemoteDataSource.userItem(name, username, password, confirm_password, email, role);
+    public Single<CreateUserReponse> userItem(String name, String username, String password,
+                                              String confirm_password, String email, int role) {
+        return mUserRemoteDataSource.userItem(
+                name, username, password,
+                confirm_password, email, role);
     }
+
+    @Override
+    public Single<CreateUserReponse> userItem(String content_type, String name, String username,
+                                              String password, String email,
+                                              String confirm_password) {
+        return mUserRemoteDataSource.userItem(
+                content_type, name, username,
+                password, email, confirm_password);
+    }
+
 
     @Override
     public Single<UpdateUserReponse> update(String id, String username,
