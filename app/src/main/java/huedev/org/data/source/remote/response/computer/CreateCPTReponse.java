@@ -3,13 +3,10 @@ package huedev.org.data.source.remote.response.computer;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
 import huedev.org.data.model.Computer;
-import huedev.org.data.source.remote.response.BaseResponse;
 
-public class ListComputerResponse extends BaseResponse {
+public class CreateCPTReponse {
     @SerializedName("data")
     @Expose
-    public List<Computer> computersByRoom;
+    public Computer computerItem;
 }

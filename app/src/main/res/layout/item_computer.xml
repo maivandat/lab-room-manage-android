@@ -94,7 +94,7 @@
                     android:textSize="@dimen/margin_15"
                     android:textColor="@color/text_color"
                     android:id="@+id/tv.cpuDevice"
-                    android:text="CPU: "
+                    android:text="@string/cpu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -106,7 +106,7 @@
                     android:textSize="@dimen/margin_15"
                     android:textColor="@color/text_color"
                     android:id="@+id/tv.driverDevice"
-                    android:text="Hard Drive: "
+                    android:text="@string/hdd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -119,7 +119,7 @@
                     android:textSize="@dimen/margin_15"
                     android:textColor="@color/text_color"
                     android:id="@+id/tv.chipDevice"
-                    android:text="Ram: "
+                    android:text="@string/ram"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>

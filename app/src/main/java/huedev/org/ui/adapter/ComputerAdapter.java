@@ -14,60 +14,41 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 import huedev.org.R;
 import huedev.org.data.model.Computer;
 import huedev.org.data.model.Device;
-import huedev.org.data.repository.DeviceRepository;
-import huedev.org.data.source.local.DeviceLocalDataSource;
-import huedev.org.data.source.remote.DeviceRemoteDataSource;
 import huedev.org.ui.activity.device.DeviceActivity;
-import huedev.org.ui.activity.device.DeviceConstract;
+import huedev.org.ui.activity.device.DeviceContact;
 import huedev.org.ui.activity.device.DevicePresenter;
 import huedev.org.utils.AppConstants;
 import huedev.org.utils.navigator.Navigator;
-import huedev.org.utils.rx.SchedulerProvider;
 
 
-public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.ComputerViewholder> implements DeviceConstract.View {
-    DeviceConstract.Presenter presenter;
+public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.ComputerViewholder>
+         {
     private Context mContext;
     private List<Computer> mListComputer;
-    Navigator navigator;
-    List<Device> deviceList = new ArrayList<>();
+    private Navigator navigator;
+    private List<Device> mListDevice;
 
-
-    public ComputerAdapter(Context Context, List<Computer> ListComputer) {
+    public ComputerAdapter(Context Context, List<Computer> ListComputer, List<Device> ListDevice) {
         this.mContext = Context;
         this.mListComputer = ListComputer;
-        navigator = new Navigator((Activity) mContext);
-    }
-    private void init() {
-        DeviceRepository deviceRepository = DeviceRepository.getInstance(DeviceLocalDataSource.getInstance(),
-                DeviceRemoteDataSource.getInstance(mContext));
-        presenter = new DevicePresenter(mContext
-                , deviceRepository
-                , SchedulerProvider.getInstance()
-        );
-        presenter.setView(this);
-        presenter.tempDevices();
-    }
+        this.mListDevice = ListDevice;
+        this.navigator = new Navigator((Activity) mContext);
 
-    @Override
-    public void updateTempDeviceList(List<Device> deviceList) {
-        this.deviceList = deviceList;
     }
-
-
 
     public class ComputerViewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvName, tvDetail, tvChildDeviceCpu, tvChildDeviceHD, tvChildDeviceRam;
         ImageButton ibInsivilityDetailComputer;
         LinearLayout linearRoomDetail,linearRoomMain, linearChildDetailComputer;
-
         Computer cptItem;
+
         public ComputerViewholder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tv_nameComputer);
@@ -84,18 +65,27 @@ public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.Comput
             ibInsivilityDetailComputer.setOnClickListener(this);
         }
 
-        public void setData (Computer computer){
+        public void setData (Computer computer) {
             this.cptItem = computer;
             tvName.setText(computer.getName());
-        }
-        public void setChildData(ArrayList<Device> devices){
-            if (devices.size() > 2){
-                Log.d("ListText", devices.get(0).getDesc());
-                tvChildDeviceCpu.setText("CPU: " + devices.get(0).getDesc());
-                tvChildDeviceHD.setText("HDD: " +devices.get(1).getDesc());
-                tvChildDeviceRam.setText("Ram: " +devices.get(2).getDesc());
+            Log.e("DEVICELIST", mListDevice.size() + "");
+            if (mListDevice.size() > 0) {
+                ArrayList<Device> devices = new ArrayList();
+                for (Device device : mListDevice) {
+                    if (device.getComputersId().equals(computer.getId())) {
+                        devices.add(device);
+                    }
+                }
+                if (devices.size() > 0){
+                    tvChildDeviceCpu.setText("CPU: " + devices.get(0).getName());
+                    tvChildDeviceHD.setText("HDD: " + devices.get(1).getName());
+                    tvChildDeviceRam.setText("Ram: " + devices.get(2).getName());
+                }
             }
+
+
         }
+
 
         @Override
         public void onClick(View view) {
@@ -117,6 +107,7 @@ public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.Comput
             linearRoomDetail.setVisibility(visibility);
             linearRoomDetail.startAnimation(animation);
         }
+
     }
 
     @NonNull
@@ -128,9 +119,7 @@ public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.Comput
 
     @Override
     public void onBindViewHolder(@NonNull ComputerAdapter.ComputerViewholder myViewHolder, int i) {
-            init();
             myViewHolder.setData(mListComputer.get(i));
-            myViewHolder.setChildData(getDeviceByCom(mListComputer.get(i)));
             myViewHolder.itemView.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
             bundle.putString(AppConstants.ID_COMPUTER, mListComputer.get(i).getId());
@@ -139,32 +128,22 @@ public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.Comput
         });
     }
 
-    private ArrayList<Device> getDeviceByCom(Computer computer) {
-
-        ArrayList<Device> devices = new ArrayList<>();
-        Log.d("ListSize2509", this.deviceList.size() + "");
-        for (Device device : this.deviceList){
-            if (device.getComputersId().equals(computer.getId())){
-                devices.add(device);
-            }
-        }
-        return devices;
-    }
+//    private ArrayList<Device> getDeviceByCom(Computer computer) {
+//        Log.d("IDCOMPUTER", computer.getId());
+//        ArrayList<Device> devices = new ArrayList<>();
+//        if (this.mListDevice.size() > 0){
+//            for (Device device : this.mListDevice){
+//                Log.d("IDCOMPUTER_DEVICE", device.getComputersId());
+//                if (device.getComputersId().equals(computer.getId())){
+//                    devices.add(device);
+//                }
+//            }
+//        }
+//        return devices;
+//    }
 
     @Override
     public int getItemCount() {
         return mListComputer.size();
-    }
-
-    @Override
-    public void showLoadingIndicator() {
-    }
-
-    @Override
-    public void hideLoadingIndicator() {
-    }
-
-    @Override
-    public void showLoginError(Throwable throwable) {
     }
 }

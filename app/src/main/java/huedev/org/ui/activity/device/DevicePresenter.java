@@ -8,9 +8,9 @@ import huedev.org.data.source.remote.response.device.ListDeviceResponse;
 import huedev.org.utils.rx.BaseSchedulerProvider;
 
 
-public class DevicePresenter implements DeviceConstract.Presenter {
+public class DevicePresenter implements DeviceContact.Presenter {
     private Context context;
-    private DeviceConstract.View mView;
+    private DeviceContact.View mView;
     private DeviceRepository deviceRepository;
     private BaseSchedulerProvider baseSchedulerProvider;
 
@@ -40,7 +40,7 @@ public class DevicePresenter implements DeviceConstract.Presenter {
     }
 
     @Override
-    public void setView(DeviceConstract.View view) {
+    public void setView(DeviceContact.View view) {
         this.mView = view;
     }
 

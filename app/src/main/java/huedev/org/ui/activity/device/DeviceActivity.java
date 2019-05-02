@@ -21,10 +21,10 @@ import huedev.org.utils.AppConstants;
 import huedev.org.utils.navigator.Navigator;
 import huedev.org.utils.rx.SchedulerProvider;
 
-public class DeviceActivity extends BaseActivity implements DeviceConstract.View{
+public class DeviceActivity extends BaseActivity implements DeviceContact.View{
     ArrayList<Integer> arrayimg;
     TextView textNameCom;
-    DeviceConstract.Presenter presenter;
+    DeviceContact.Presenter presenter;
     DeviceAdapter deviceAdapter;
     RecyclerView recyclerView;
     List<Device> listDevices;
@@ -60,18 +60,21 @@ public class DeviceActivity extends BaseActivity implements DeviceConstract.View
     public void updateTempDeviceList(List<Device> deviceList) {
         String idComputer = navigator.getData().getString(AppConstants.ID_COMPUTER);
         String name  = navigator.getData().getString(AppConstants.ID_COM_NAME);
-        for (Device device : deviceList){
-            if (device.getComputersId().equals(idComputer)){
-                listDevices.add(device);
+        if (deviceList.size() > 0) {
+            for (Device device : deviceList){
+                if (device.getComputersId().equals(idComputer)){
+                    listDevices.add(device);
+                }
             }
+            recyclerView.setHasFixedSize(true);
+            deviceAdapter = new DeviceAdapter(this,listDevices);
+            recyclerView.setAdapter(deviceAdapter);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+            linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+            recyclerView.setLayoutManager(linearLayoutManager);
+            deviceAdapter.notifyDataSetChanged();
         }
-        recyclerView.setHasFixedSize(true);
-        deviceAdapter = new DeviceAdapter(this,listDevices);
-        recyclerView.setAdapter(deviceAdapter);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        deviceAdapter.notifyDataSetChanged();
+
     }
 
     @Override

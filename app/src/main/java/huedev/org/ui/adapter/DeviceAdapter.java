@@ -31,7 +31,7 @@ public class DeviceAdapter extends RecyclerSwipeAdapter<DeviceAdapter.ViewHolder
     @Override
     public DeviceAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater layoutInflater = LayoutInflater.from(viewGroup.getContext());
-        View view = layoutInflater.inflate(R.layout.item_divice,viewGroup,false);
+        View view = layoutInflater.inflate(R.layout.item_device,viewGroup,false);
         addArray();
 
         return new ViewHolder(view);

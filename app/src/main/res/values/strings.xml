@@ -86,4 +86,9 @@
     <string name="role">Role</string>
     <string name="register">Register</string>
     <string name="register_title">REGISTER</string>
+    <string name="cpu">CPU:</string>
+    <string name="hdd">HDD:</string>
+    <string name="ram">RAM:</string>
+    <string name="status">Status</string>
+    <string name="room">Room</string>
 </resources>

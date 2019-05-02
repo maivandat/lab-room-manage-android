@@ -2,13 +2,15 @@ package huedev.org.ui.activity.computer;
 
 import android.app.Activity;
 import android.content.Context;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import huedev.org.data.model.Computer;
 import huedev.org.data.repository.ComputerRepository;
-import huedev.org.data.source.remote.response.computer.ListComputerResponse;
+import huedev.org.data.source.remote.response.computer.CreateCPTReponse;
+import huedev.org.data.source.remote.response.computer.ListCPTResponse;
 import huedev.org.utils.AppConstants;
 import huedev.org.utils.navigator.Navigator;
 import huedev.org.utils.rx.BaseSchedulerProvider;
@@ -29,6 +31,7 @@ public class ComputerPresenter implements ComputerContract.Presenter {
         this.navigator = new Navigator((Activity) mContext);
     }
 
+    //Get List
     @Override
     public void computersByRoom() {
         mView.showLoadingIndicator();
@@ -39,7 +42,7 @@ public class ComputerPresenter implements ComputerContract.Presenter {
                         error -> handleComputerFailed(error));
     }
 
-    private void handleComputerSuccess(ListComputerResponse computerResponse){
+    private void handleComputerSuccess(ListCPTResponse computerResponse){
         mView.hideLoadingIndicator();
         List<Computer> computerList = new ArrayList<>();
         String id = navigator.getData().getString(AppConstants.ID_ROOM);
@@ -51,9 +54,42 @@ public class ComputerPresenter implements ComputerContract.Presenter {
         mView.updateComputerList(computerList);
     }
 
-
     private void handleComputerFailed(Throwable error){
         mView.showLoginError(error);
+    }
+
+    //Create
+    @Override
+    public void createComputer(String name, String desc, int status, int room_id) {
+        Toast.makeText(mContext, "name: " + name + "\ndesc: " + desc + "\nstatus: " + status, Toast.LENGTH_SHORT).show();
+        if (name.isEmpty() || desc.isEmpty()){
+            mView.logicCreateFaild();
+        }else {
+            mView.showLoadingIndicator();
+            mComputerRepository.computerItem(name, desc, status, room_id)
+                    .subscribeOn(mBaseSchedulerProvider.io())
+                    .observeOn(mBaseSchedulerProvider.ui())
+                    .subscribe(createCPTReponse -> handleCreateComputerSuccess(createCPTReponse),
+                            erro -> handleCreateComputerFaild(erro));
+        }
+    }
+
+    private void handleCreateComputerFaild(Throwable erro) {
+        mView.showLoginError(erro);
+    }
+
+    private void handleCreateComputerSuccess(CreateCPTReponse createCPTReponse) {
+        mView.createSucess(createCPTReponse.computerItem);
+    }
+
+    @Override
+    public void updateComputer() {
+
+    }
+
+    @Override
+    public void deleteComputer() {
+
     }
 
     @Override

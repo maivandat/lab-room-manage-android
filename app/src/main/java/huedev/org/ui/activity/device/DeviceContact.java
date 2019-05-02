@@ -6,7 +6,7 @@ import huedev.org.data.model.Device;
 import huedev.org.ui.base.activity.BasePresenter;
 import huedev.org.ui.base.activity.BaseView;
 
-public interface DeviceConstract {
+public interface DeviceContact {
     interface View extends BaseView{
         void updateTempDeviceList(List<Device> deviceList);
     }

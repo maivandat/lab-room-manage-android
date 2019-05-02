@@ -4,10 +4,10 @@ import android.content.Context;
 
 import huedev.org.data.source.ComputerDataSource;
 import huedev.org.data.source.remote.api.ApiComputer;
-import huedev.org.data.source.remote.response.computer.ListComputerResponse;
+import huedev.org.data.source.remote.response.computer.CreateCPTReponse;
+import huedev.org.data.source.remote.response.computer.ListCPTResponse;
 import huedev.org.data.source.remote.service.AppServiceClient;
 import io.reactivex.Single;
-import retrofit2.Call;
 
 public class ComputerRemoteDataSource implements ComputerDataSource.RemoteDataSource {
     private static ComputerRemoteDataSource instance;
@@ -25,8 +25,14 @@ public class ComputerRemoteDataSource implements ComputerDataSource.RemoteDataSo
     }
 
     @Override
-    public Single<ListComputerResponse> computersByRoom() {
+    public Single<ListCPTResponse> computersByRoom() {
         return mApiComputer.computersByRoom();
+    }
+
+    @Override
+    public Single<CreateCPTReponse> computerItem(String name, String desc,
+                                                 int status, int room_id) {
+        return mApiComputer.computerItem(name, desc, status, room_id);
     }
 
 }
