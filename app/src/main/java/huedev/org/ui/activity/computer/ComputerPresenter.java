@@ -1,7 +1,9 @@
 package huedev.org.ui.activity.computer;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -11,6 +13,7 @@ import huedev.org.data.model.Computer;
 import huedev.org.data.repository.ComputerRepository;
 import huedev.org.data.source.remote.response.computer.CreateCPTReponse;
 import huedev.org.data.source.remote.response.computer.ListCPTResponse;
+import huedev.org.data.source.remote.response.computer.UpdateCPTReponse;
 import huedev.org.utils.AppConstants;
 import huedev.org.utils.navigator.Navigator;
 import huedev.org.utils.rx.BaseSchedulerProvider;
@@ -61,7 +64,6 @@ public class ComputerPresenter implements ComputerContract.Presenter {
     //Create
     @Override
     public void createComputer(String name, String desc, int status, int room_id) {
-        Toast.makeText(mContext, "name: " + name + "\ndesc: " + desc + "\nstatus: " + status, Toast.LENGTH_SHORT).show();
         if (name.isEmpty() || desc.isEmpty()){
             mView.logicCreateFaild();
         }else {
@@ -82,13 +84,43 @@ public class ComputerPresenter implements ComputerContract.Presenter {
         mView.createSucess(createCPTReponse.computerItem);
     }
 
+    //Update
     @Override
-    public void updateComputer() {
-
+    public void updateComputer(int id, String name, String desc, int status, int room_id, Dialog dialog) {
+        if (name.isEmpty() || desc.isEmpty()){
+            mView.logicUpdateFaild(dialog);
+        }else {
+            mView.showLoadingIndicator();
+            mComputerRepository.computerItem(id, name, desc, status, room_id)
+                    .subscribeOn(mBaseSchedulerProvider.io())
+                    .observeOn(mBaseSchedulerProvider.ui())
+                    .subscribe(updateCPTReponse -> handleUpdateComputerSuccess(updateCPTReponse, dialog),
+                            erro -> handleUpdateComputerFaild(erro));
+        }
     }
 
+    private void handleUpdateComputerSuccess(UpdateCPTReponse updateCPTReponse, Dialog dialog) {
+        mView.updateSuccess(dialog);
+    }
+
+    private void handleUpdateComputerFaild(Throwable err){
+        mView.showLoginError(err);
+    }
+    //Delete
     @Override
-    public void deleteComputer() {
+    public void deleteComputer(int id, DialogInterface dialogInterface) {
+        mComputerRepository.deleteItem(id)
+                .subscribeOn(mBaseSchedulerProvider.io())
+                .observeOn(mBaseSchedulerProvider.ui())
+                .subscribe(nope -> handleDelComputerSuccess(dialogInterface),
+                        erro -> handleDelComputerFaild(erro));
+    }
+
+    private void handleDelComputerSuccess(DialogInterface dialogInterface){
+        mView.delSuccess(dialogInterface);
+    }
+
+    private void handleDelComputerFaild(Throwable err){
 
     }
 

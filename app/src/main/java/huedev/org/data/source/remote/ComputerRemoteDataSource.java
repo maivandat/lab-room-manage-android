@@ -6,6 +6,7 @@ import huedev.org.data.source.ComputerDataSource;
 import huedev.org.data.source.remote.api.ApiComputer;
 import huedev.org.data.source.remote.response.computer.CreateCPTReponse;
 import huedev.org.data.source.remote.response.computer.ListCPTResponse;
+import huedev.org.data.source.remote.response.computer.UpdateCPTReponse;
 import huedev.org.data.source.remote.service.AppServiceClient;
 import io.reactivex.Single;
 
@@ -33,6 +34,16 @@ public class ComputerRemoteDataSource implements ComputerDataSource.RemoteDataSo
     public Single<CreateCPTReponse> computerItem(String name, String desc,
                                                  int status, int room_id) {
         return mApiComputer.computerItem(name, desc, status, room_id);
+    }
+
+    @Override
+    public Single<UpdateCPTReponse> computerItem(int id, String name, String desc, int status, int room_id) {
+        return mApiComputer.computerItem(id, name, desc, status, room_id);
+    }
+
+    @Override
+    public Single<Void> deleteItem(int id) {
+        return mApiComputer.deleteItem(id);
     }
 
 }
