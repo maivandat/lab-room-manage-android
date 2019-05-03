@@ -3,9 +3,8 @@ package huedev.org.data.repository;
 import android.support.annotation.NonNull;
 
 import huedev.org.data.source.ComputerDataSource;
-import huedev.org.data.source.local.ComputerLocalDataSource;
-import huedev.org.data.source.remote.ComputerRemoteDataSource;
-import huedev.org.data.source.remote.response.computer.ListComputerResponse;
+import huedev.org.data.source.remote.response.computer.CreateCPTReponse;
+import huedev.org.data.source.remote.response.computer.ListCPTResponse;
 import io.reactivex.Single;
 
 public class ComputerRepository implements ComputerDataSource.LocalDataSource, ComputerDataSource.RemoteDataSource {
@@ -32,7 +31,13 @@ public class ComputerRepository implements ComputerDataSource.LocalDataSource, C
     }
 
     @Override
-    public Single<ListComputerResponse> computersByRoom() {
+    public Single<ListCPTResponse> computersByRoom() {
         return mComputerRemoteDataSource.computersByRoom();
+    }
+
+    @Override
+    public Single<CreateCPTReponse> computerItem(String name, String desc,
+                                                 int status, int room_id) {
+        return mComputerRemoteDataSource.computerItem(name, desc, status, room_id);
     }
 }

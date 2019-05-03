@@ -66,13 +66,39 @@
                 android:layout_height="@dimen/size_img_40" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_marginTop="@dimen/left_rc_10"
+            android:layout_below="@id/linear.desc"
+            android:id="@+id/linear.type"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/bgToolbarComputer"
+                android:textSize="13sp"
+                android:text="@string/room"
+                android:layout_below="@id/linear.type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:layout_marginLeft="@dimen/left_rc_10"
+                android:id="@+id/spiner.type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </Spinner>
+
+        </LinearLayout>
+
         <TextView
             android:layout_marginTop="@dimen/left_rc_10"
             android:textStyle="bold"
             android:textColor="@color/bgToolbarComputer"
             android:textSize="13sp"
-            android:text="Status"
-            android:layout_below="@id/linear.desc"
+            android:text="@string/status"
+            android:layout_below="@id/linear.type"
             android:id="@+id/tv.status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import java.util.List;
@@ -30,6 +31,7 @@ public class RCreateFragment extends BaseFagment implements RoomContact.View, Vi
     RadioGroup rgStatus;
     RadioButton rbActive, rbRepair, rbBroken;
     Button btnAdd;
+    LinearLayout linearType;
     RoomPresenter mRoomPresenter;
 
     @Nullable
@@ -43,6 +45,9 @@ public class RCreateFragment extends BaseFagment implements RoomContact.View, Vi
         rbRepair = view.findViewById(R.id.rb_repair);
         rbBroken = view.findViewById(R.id.rb_broken);
         btnAdd = view.findViewById(R.id.btn_add);
+        linearType = view.findViewById(R.id.linear_type);
+
+        linearType.removeAllViews();
 
         etRoomTitle.setHint("Room Title");
         init();
@@ -131,7 +136,6 @@ public class RCreateFragment extends BaseFagment implements RoomContact.View, Vi
         }else {
             status = "Close";
         }
-
 
         mRoomPresenter.createRoom(title, desc, status);
 
