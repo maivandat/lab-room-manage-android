@@ -108,7 +108,7 @@ public class CCreateFragment extends BaseFagment implements
         ArrayAdapter<String> adapter = new ArrayAdapter(
                 getContext(),
                 android.R.layout.simple_spinner_item,
-                ArrayHelper.getNameArray((ArrayList<Room>) roomList));
+                ArrayHelper.getNameArrayR((ArrayList<Room>) roomList));
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -195,6 +195,21 @@ public class CCreateFragment extends BaseFagment implements
                 view.findViewById(R.id.btn_add),
                 "Create Computer " + computer.getName(),
                 Snackbar.LENGTH_SHORT);
+    }
+
+    @Override
+    public void updateSuccess(Dialog dialog) {
+
+    }
+
+    @Override
+    public void delSuccess(DialogInterface dialogInterface) {
+
+    }
+
+    @Override
+    public void logicUpdateFaild(Dialog dialog) {
+
     }
 
     @Override
