@@ -7,6 +7,7 @@ import huedev.org.ui.base.activity.BaseView;
 public interface LoginContract {
     interface View extends BaseView{
         void getUser(User user);
+        void logicFaild();
     }
     interface Presenter extends BasePresenter<View>{
         void login(String email, String password);

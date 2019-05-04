@@ -23,7 +23,7 @@
                 <TextView
                     android:textColor="@color/colorWhile"
                     android:textSize="@dimen/text_title_18"
-                    android:text="@string/computer"
+                    android:text="@string/computer_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 

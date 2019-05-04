@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -49,8 +50,10 @@ public class CCreateFragment extends BaseFagment implements
     RadioButton rbActive, rbRepair, rbBroken;
     Button btnAdd;
     Spinner spinner;
+    LinearLayout linearTypeSecond;
     RoomPresenter mRoomPresenter;
     ComputerPresenter mComputerPresenter;
+
     View view;
     String ROOM_ID;
 
@@ -67,9 +70,12 @@ public class CCreateFragment extends BaseFagment implements
         rbRepair = view.findViewById(R.id.rb_repair);
         rbBroken = view.findViewById(R.id.rb_broken);
         btnAdd = view.findViewById(R.id.btn_add);
-        spinner = view.findViewById(R.id.spiner_type);
+        spinner = view.findViewById(R.id.spiner_type_first);
+        linearTypeSecond = view.findViewById(R.id.linear_type_second);
 
-        etComputerTitle.setHint("Computer Title");
+        linearTypeSecond.removeAllViews();
+        etComputerTitle.setHint(StringHelper.getStringResourceByName("computer_hint", getContext()));
+
 
         init();
 
@@ -216,7 +222,7 @@ public class CCreateFragment extends BaseFagment implements
     public void logicCreateFaild() {
         NotifyHelper.showSnackbar(
                 view.findViewById(R.id.btn_add),
-                "Please enter full information",
+                StringHelper.getStringResourceByName("logic_faild", getContext()),
                 Snackbar.LENGTH_SHORT);
     }
 

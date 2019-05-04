@@ -100,15 +100,16 @@
                                     android:layout_height="wrap_content">
 
                                     <EditText
+                                        android:id="@+id/et.namework"
+                                        android:layout_width="@dimen/layout_size_80"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="6"
+                                        android:background="@drawable/custom_edittext"
                                         android:hint="@string/enter_your_work"
                                         android:padding="@dimen/left_rc_10"
-                                        android:layout_gravity="center"
-                                        android:textSize="@dimen/margin_15"
-                                        android:background="@drawable/custom_edittext"
-                                        android:id="@+id/et.namework"
-                                        android:layout_weight="6"
-                                        android:layout_width="@dimen/layout_size_80"
-                                        android:layout_height="wrap_content"/>
+                                        android:singleLine="false"
+                                        android:textSize="@dimen/margin_15" />
                                     <Button
                                         android:textSize="@dimen/left_rc_10"
                                         android:text="@string/confirm"

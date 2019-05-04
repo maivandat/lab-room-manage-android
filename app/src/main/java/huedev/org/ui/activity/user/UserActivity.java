@@ -32,6 +32,7 @@ import huedev.org.ui.activity.auth.register.RegisterPresenter;
 import huedev.org.ui.adapter.UserAdapter;
 import huedev.org.ui.base.activity.BaseActivity;
 import huedev.org.utils.helpers.NotifyHelper;
+import huedev.org.utils.helpers.StringHelper;
 import huedev.org.utils.rx.SchedulerProvider;
 
 public class UserActivity extends BaseActivity implements View.OnClickListener, UserContact.View, RegisterContact.View {
@@ -179,7 +180,7 @@ public class UserActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     public void logicFaild() {
         Snackbar.make(fabAddUser,
-                "Please enter full information",
+                StringHelper.getStringResourceByName("logic_faild", this),
                 Snackbar.LENGTH_SHORT).show();
     }
 

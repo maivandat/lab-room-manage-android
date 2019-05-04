@@ -1,6 +1,7 @@
 package huedev.org.ui.activity.auth.login;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -16,6 +17,8 @@ import huedev.org.data.source.remote.LoginRemoteDataSource;
 import huedev.org.ui.activity.auth.register.RegisterActivity;
 import huedev.org.ui.activity.main.MainActivity;
 import huedev.org.ui.base.activity.BaseActivity;
+import huedev.org.utils.helpers.NotifyHelper;
+import huedev.org.utils.helpers.StringHelper;
 import huedev.org.utils.navigator.Navigator;
 import huedev.org.utils.rx.SchedulerProvider;
 
@@ -64,6 +67,13 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
     @Override
     public void getUser(User user) {
         navigator.startActivity(MainActivity.class);
+    }
+
+    @Override
+    public void logicFaild() {
+        NotifyHelper.showSnackbar(findViewById(R.id.btn_gologin),
+                StringHelper.getStringResourceByName("logic_faild", this),
+                Snackbar.LENGTH_SHORT);
     }
 
     @Override

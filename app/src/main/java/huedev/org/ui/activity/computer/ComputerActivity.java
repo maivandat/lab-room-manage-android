@@ -37,6 +37,7 @@ import huedev.org.ui.base.activity.BaseActivity;
 import huedev.org.ui.fragments.room.RoomContact;
 import huedev.org.ui.fragments.room.RoomPresenter;
 import huedev.org.utils.helpers.NotifyHelper;
+import huedev.org.utils.helpers.StringHelper;
 import huedev.org.utils.navigator.Navigator;
 import huedev.org.utils.rx.SchedulerProvider;
 
@@ -159,7 +160,9 @@ public class ComputerActivity extends BaseActivity implements
 
     @Override
     public void logicUpdateFaild(Dialog dialog) {
-        NotifyHelper.showSnackbar(dialog.findViewById(R.id.btn_add), "Please enter full information", Snackbar.LENGTH_SHORT);
+        NotifyHelper.showSnackbar(dialog.findViewById(R.id.btn_add),
+                StringHelper.getStringResourceByName("logic_faild", this),
+                Snackbar.LENGTH_SHORT);
     }
 
     @Override

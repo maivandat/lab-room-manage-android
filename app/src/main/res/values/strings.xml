@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">Lab Room Manage</string>
-    <string name="todolist">TODO LIST</string>
-    <string name="computer">COMPUTER</string>
+    <string name="todolist">ROOM LIST</string>
+    <string name="computer_label">COMPUTER</string>
+    <string name="room_label">ROOM</string>
+    <string name="device_label">DEVICE</string>
+    <string name="type_device_label">TYPE DEVICE</string>
+    <string name="tags_label">TAGS</string>
     <string name="add_room">Add</string>
     <string name="notify">Notify</string>
     <string name="home">Home</string>
@@ -91,4 +95,15 @@
     <string name="ram">RAM:</string>
     <string name="status">Status</string>
     <string name="room">Room</string>
+    <string name="logic_faild">Please enter full information</string>
+    <string name="computer_title">Computer</string>
+    <string name="type_device">Type Device</string>
+    <string name="device">Device</string>
+    <string name="device_title">Device Title</string>
+    <string name="tag">Tags</string>
+    <string name="tag_title">Tags Title</string>
+    <string name="room_title">Room Title</string>
+    <string name="computer_hint">Computer Title</string>
+    <string name="type_device_title">Type Device Title</string>
+
 </resources>

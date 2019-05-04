@@ -41,6 +41,7 @@ import huedev.org.utils.AppConstants;
 import huedev.org.utils.helpers.ArrayHelper;
 import huedev.org.utils.helpers.NotifyHelper;
 import huedev.org.utils.helpers.SpinerHelper;
+import huedev.org.utils.helpers.StringHelper;
 import huedev.org.utils.navigator.Navigator;
 
 
@@ -71,15 +72,16 @@ public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.Comput
         RelativeLayout relativeFormEdit = dialog.findViewById(R.id.relative_container);
         EditText etTitle = dialog.findViewById(R.id.et_titleCreate);
         EditText etDesc = dialog.findViewById(R.id.et_descCreate);
-        Spinner spinner = dialog.findViewById(R.id.spiner_type);
+        Spinner spinner = dialog.findViewById(R.id.spiner_type_first);
         Button btnUpdate = dialog.findViewById(R.id.btn_add);
         RadioButton rbActive = dialog.findViewById(R.id.rb_active);
         RadioButton rbRepair = dialog.findViewById(R.id.rb_repair);
         RadioButton rbBroken = dialog.findViewById(R.id.rb_broken);
+        LinearLayout linearSecond = dialog.findViewById(R.id.linear_type_second);
 
-
-        etTitle.setHint("Computer Title");
-        btnUpdate.setText("Update");
+        linearSecond.removeAllViews();
+        etTitle.setHint(StringHelper.getStringResourceByName("computer_hint", mContext));
+        btnUpdate.setText(StringHelper.getStringResourceByName("update", mContext));
         relativeFormEdit.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
         etTitle.setText(mListComputer.get(position).getName());

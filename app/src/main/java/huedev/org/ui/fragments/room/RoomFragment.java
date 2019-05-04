@@ -22,6 +22,7 @@ import huedev.org.data.source.local.RoomLocalDataSource;
 import huedev.org.data.source.remote.RoomRemoteDataSource;
 import huedev.org.ui.adapter.RoomAdapter;
 import huedev.org.ui.base.fragment.BaseFagment;
+import huedev.org.utils.helpers.StringHelper;
 import huedev.org.utils.rx.SchedulerProvider;
 
 public class RoomFragment extends BaseFagment implements RoomContact.View {
@@ -106,7 +107,9 @@ public class RoomFragment extends BaseFagment implements RoomContact.View {
 
     @Override
     public void logicFaild() {
-        Toast.makeText(getContext(), "Please enter full information", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(),
+                StringHelper.getStringResourceByName(
+                        "logic_faild", getContext()), Toast.LENGTH_SHORT).show();
     }
 
 

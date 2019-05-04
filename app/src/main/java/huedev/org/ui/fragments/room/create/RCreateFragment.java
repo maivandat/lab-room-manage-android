@@ -23,6 +23,7 @@ import huedev.org.ui.base.fragment.BaseFagment;
 import huedev.org.ui.fragments.room.RoomContact;
 import huedev.org.ui.fragments.room.RoomPresenter;
 import huedev.org.utils.helpers.NotifyHelper;
+import huedev.org.utils.helpers.StringHelper;
 import huedev.org.utils.rx.SchedulerProvider;
 
 public class RCreateFragment extends BaseFagment implements RoomContact.View, View.OnClickListener {
@@ -48,8 +49,7 @@ public class RCreateFragment extends BaseFagment implements RoomContact.View, Vi
         linearType = view.findViewById(R.id.linear_type);
 
         linearType.removeAllViews();
-
-        etRoomTitle.setHint("Room Title");
+        etRoomTitle.setHint(StringHelper.getStringResourceByName("room_title", getContext()));
         init();
 
         btnAdd.setOnClickListener(this);
@@ -105,7 +105,7 @@ public class RCreateFragment extends BaseFagment implements RoomContact.View, Vi
 
     @Override
     public void logicFaild() {
-        NotifyHelper.logicFaild("Please enter full information", getContext());
+        NotifyHelper.logicFaild(StringHelper.getStringResourceByName("logic_faild", getContext()), getContext());
     }
 
     @Override
