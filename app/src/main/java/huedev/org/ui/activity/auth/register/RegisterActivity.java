@@ -20,6 +20,7 @@ import huedev.org.data.source.local.UserLocalDataSource;
 import huedev.org.data.source.remote.UserRemoteDataSource;
 import huedev.org.ui.activity.auth.login.LoginActivity;
 import huedev.org.ui.base.activity.BaseActivity;
+import huedev.org.utils.helpers.StringHelper;
 import huedev.org.utils.navigator.Navigator;
 import huedev.org.utils.rx.SchedulerProvider;
 
@@ -72,12 +73,15 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         String password = etPassword.getText().toString().trim();
         String email = etEmail.getText().toString().trim();
         String cfpassword = etCfPassword.getText().toString().trim();
-        mRegisterPresenter.register("application/json", name, username, password, email, cfpassword);
+        mRegisterPresenter.register("application/json", name, username,
+                password, email, cfpassword);
     }
 
     @Override
     public void logicSuccess(User user) {
-        Snackbar.make(btnRegister, "Register user " + user.getName() + " success", Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(btnRegister,
+                "Register user " + user.getName() + " success",
+                Snackbar.LENGTH_SHORT).show();
         navigator.startActivity(LoginActivity.class);
         finish();
     }
@@ -89,7 +93,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     public void logicFaild() {
-        Snackbar.make(btnRegister, "Please enter full information", Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(btnRegister,
+                StringHelper.getStringResourceByName("logic_faild", this),
+                Snackbar.LENGTH_SHORT).show();
     }
 
     @Override

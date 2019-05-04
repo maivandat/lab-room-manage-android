@@ -67,30 +67,65 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="@dimen/left_rc_10"
             android:layout_below="@id/linear.desc"
             android:id="@+id/linear.type"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:textStyle="bold"
-                android:textColor="@color/bgToolbarComputer"
-                android:textSize="13sp"
-                android:text="@string/room"
-                android:layout_below="@id/linear.type"
+            <LinearLayout
+                android:layout_marginTop="@dimen/left_rc_10"
+
+                android:id="@+id/linear.type.first"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Spinner
-                android:layout_marginLeft="@dimen/left_rc_10"
-                android:id="@+id/spiner.type"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-            </Spinner>
 
+                <TextView
+                    android:id="@+id/tv.tytpe.title.first"
+                    android:textStyle="bold"
+                    android:textColor="@color/bgToolbarComputer"
+                    android:textSize="13sp"
+                    android:text="@string/room"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <Spinner
+                    android:layout_marginLeft="@dimen/left_rc_10"
+                    android:id="@+id/spiner.type.first"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </Spinner>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/left_rc_10"
+                android:id="@+id/linear.type.second"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv.tytpe.title.second"
+                    android:textStyle="bold"
+                    android:textColor="@color/bgToolbarComputer"
+                    android:textSize="13sp"
+                    android:text="@string/room"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <Spinner
+                    android:layout_marginLeft="@dimen/left_rc_10"
+                    android:id="@+id/spiner.type.second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </Spinner>
+
+            </LinearLayout>
         </LinearLayout>
+
+
 
         <TextView
             android:layout_marginTop="@dimen/left_rc_10"

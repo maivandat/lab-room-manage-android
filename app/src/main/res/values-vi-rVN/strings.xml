@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Quản lý phòng máy</string>
+    <string name="todolist">TODO LIST</string>
+    <string name="computer_label">MÁY TÍNH</string>
+    <string name="room_label">PHÒNG</string>
+    <string name="device_label">THIẾT BỊ</string>
+    <string name="type_device_label">KIỂU THIẾT BỊ</string>
+    <string name="tags_label">TAGS</string>
+    <string name="add_room">Thêm</string>
+    <string name="notify">Thông Báo</string>
+    <string name="home">Home</string>
+    <string name="calendar">Lịch</string>
+    <string name="feeds">Tin Tức</string>
+    <string name="title">Title</string>
+    <string name="describe">Mô tả</string>
+    <string name="floor">Tầng</string>
+    <string name="messenger">Phản Hồi</string>
+    <string name="today_task">Nhiệm Vụ Hôm Nay</string>
+    <string name="room_task">Danh Sách Phòng</string>
+    <string name="content_task">Nội dung</string>
+    <string name="view_item_room">XEM ➞</string>
+    <string name="detail">Chi tiết</string>
+    <string name="login">ĐĂNH NHẬP</string>
+    <string name="username_login">Tài khoản</string>
+    <string name="password_login">Mật khẩu</string>
+    <string name="go">BẮT ĐẦU !</string>
+    <string name="not_account">Không có tài khoản? Tạo ngay</string>
+    <string name="forgot">Quên mật khẩu ?</string>
+    <string name="logoutUser">Đăng xuất</string>
+    <string name="loginUser">Đăng nhập</string>
+    <string name="edit_information">Thay đổi thông tin</string>
+    <string name="today">Hôm nay</string>
+    <string name="work_empty">Lịch làm việc rỗng</string>
+    <string name="confirm">Xác nhận</string>
+    <string name="cancel">Hủy bỏ</string>
+    <string name="enter_your_work">Nhập vào công việc</string>
+    <string name="time">Thời gian: </string>
+    <string name="timeAM">
+        AM</string>
+    <string name="timePM">PM</string>
+    <string name="enterhours">Giờ</string>
+    <string name="sumwork">Tổng công việc: </string>
+    <string name="whoisthis">Bạn là ai ?</string>
+    <string-array name="title_devices">
+        <item>ID</item>
+        <item>Name</item>
+        <item>Desc</item>
+        <item>Type Device</item>
+        <item></item>
+    </string-array>
+    <string name="require_data">Vui lòng nhập đầy đủ thông tin vào ô trống</string>
+    <string name="warning_data">Dữ liệu không hợp lệ ! Vui lòng nhập lại</string>
+    <string name="devicenametitle">Tên thiết bị</string>
+    <string name="devicedesctitle">Mô tả</string>
+    <string name="profile">Hồ Sơ</string>
+    <string name="informations_personnelles">Thông tin cá nhân</string>
+    <string name="fullname_user">Tên đầy đủ</string>
+    <string name="email_user">Email</string>
+    <string name="update">CẬP NHẬP</string>
+    <string name="admin">ADMIN</string>
+    <string name="technicians">KỸ THUẬT VIÊN</string>
+    <string name="member">NGƯỜI DÙNG</string>
+    <string name="title_room">Tên phòng</string>
+    <string name="short_description">Mô tả ngắn</string>
+    <string name="create">Tạo</string>
+    <string name="broken">Hỏng</string>
+    <string name="repair">Sửa chữa</string>
+    <string name="active">Hoạt động</string>
+    <string name="edit_device_title">CẬP NHẬP THIẾT BỊ</string>
+    <string name="edit_device_name">Tên: </string>
+    <string name="edit_device_desc">Mô tả: </string>
+    <string name="edit_device_status">Trạng thái: </string>
+    <string name="edit_device_computer">Máy tính: </string>
+    <string name="edit_device_type">Kiểu: </string>
+    <string name="list_device_btn_edit">Cập nhập</string>
+    <string name="list_device_btn_del">Xóa</string>
+    <string name="change_password">Thay đổi mật khẩu</string>
+    <string name="new_password">Mật khẩu mới</string>
+    <string name="confirm_new_password">Xác nhận mật khẩu mới</string>
+    <string name="user_manager">Quản lý người dùng</string>
+    <string name="add_material_facilities">CƠ SỞ VẬT CHẤT</string>
+    <string name="all_user">Tất cả người dùng</string>
+    <string name="total_user">Tổng tài khoản</string>
+    <string name="edit">CẬP NHẬP</string>
+    <string name="del">XÓA</string>
+    <string name="password">Mật khẩu</string>
+    <string name="confirm_password">Cập nhập mật khẩu</string>
+    <string name="username">Tên người dùng</string>
+    <string name="add">Thêm</string>
+    <string name="role">Quyền</string>
+    <string name="register">Ghi danh</string>
+    <string name="register_title">GHI DANH</string>
+    <string name="cpu">CPU:</string>
+    <string name="hdd">HDD:</string>
+    <string name="ram">RAM:</string>
+    <string name="status">Trạng thái</string>
+    <string name="room">Phòng</string>
+    <string name="logic_faild">Vui lòng nhập đầy đủ thông tin</string>
+    <string name="computer_title">Máy tính</string>
+    <string name="type_device">Kiểu thiết bị</string>
+    <string name="device">Thiết bị</string>
+    <string name="device_title">Tên thiết bị</string>
+    <string name="tag">Tags</string>
+    <string name="tag_title">Tên tags</string>
+    <string name="room_title">Tên phòng</string>
+    <string name="computer_hint">Tên máy tính</string>
+    <string name="type_device_title">Tên kiểu thiết bị</string>
+
+</resources>

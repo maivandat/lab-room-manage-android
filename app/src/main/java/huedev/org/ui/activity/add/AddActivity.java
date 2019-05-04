@@ -16,6 +16,7 @@ import huedev.org.ui.fragments.device.create.DCreateFragment;
 import huedev.org.ui.fragments.room.create.RCreateFragment;
 import huedev.org.ui.fragments.tag.create.TCreateFragment;
 import huedev.org.ui.fragments.type_device.create.TDCreateFragment;
+import huedev.org.utils.helpers.StringHelper;
 import huedev.org.utils.navigator.Navigator;
 
 public class AddActivity extends BaseActivity implements View.OnClickListener {
@@ -47,11 +48,16 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
 
     private void setupViewPager() {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new RCreateFragment(), "Room");
-        adapter.addFragment(new CCreateFragment(), "Computer");
-        adapter.addFragment(new DCreateFragment(), "Device");
-        adapter.addFragment(new TDCreateFragment(), "Type Device");
-        adapter.addFragment(new TCreateFragment(), "Tags");
+        adapter.addFragment(new RCreateFragment(),
+                StringHelper.getStringResourceByName("room_label", this));
+        adapter.addFragment(new CCreateFragment(),
+                StringHelper.getStringResourceByName("computer_label", this));
+        adapter.addFragment(new DCreateFragment(),
+                StringHelper.getStringResourceByName("device_label", this));
+        adapter.addFragment(new TDCreateFragment(),
+                StringHelper.getStringResourceByName("type_device_label", this));
+        adapter.addFragment(new TCreateFragment(),
+                StringHelper.getStringResourceByName("tags_label", this));
         vpAdd.setAdapter(adapter);
     }
 

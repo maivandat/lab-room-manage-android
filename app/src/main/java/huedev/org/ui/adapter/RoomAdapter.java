@@ -39,6 +39,7 @@ import huedev.org.ui.fragments.room.RoomContact;
 import huedev.org.ui.fragments.room.RoomPresenter;
 import huedev.org.utils.AppConstants;
 import huedev.org.utils.helpers.NotifyHelper;
+import huedev.org.utils.helpers.StringHelper;
 import huedev.org.utils.navigator.Navigator;
 import huedev.org.utils.rx.SchedulerProvider;
 
@@ -70,7 +71,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
         RadioButton rbRomClose = dialog.findViewById(R.id.rb_broken);
         Button btnEdit = dialog.findViewById(R.id.btn_add);
 
-        btnEdit.setText("Edit");
+        btnEdit.setText(StringHelper.getStringResourceByName("update", mContext));
         relativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 900));
         etRoomTite.setText(mRoomList.get(position).getName());
         etRoomDesc.setText(mRoomList.get(position).getDesc());

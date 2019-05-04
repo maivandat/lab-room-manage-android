@@ -25,12 +25,16 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void login(String username, String password) {
-        mView.showLoadingIndicator();
-        mLoginRepository.login(username, password)
-                .subscribeOn(mSchedulerProvider.io())
-                .observeOn(mSchedulerProvider.ui())
-                .subscribe(loginResponse -> handleLoginSuccess(loginResponse, username, password),
-                        error -> handleLoginFailed(error));
+        if (username.isEmpty() || password.isEmpty()){
+            mView.logicFaild();
+        }else {
+            mView.showLoadingIndicator();
+            mLoginRepository.login(username, password)
+                    .subscribeOn(mSchedulerProvider.io())
+                    .observeOn(mSchedulerProvider.ui())
+                    .subscribe(loginResponse -> handleLoginSuccess(loginResponse, username, password),
+                            error -> handleLoginFailed(error));
+        }
     }
 
     private void handleLoginSuccess(LoginResponse loginResponse, String username, String password){

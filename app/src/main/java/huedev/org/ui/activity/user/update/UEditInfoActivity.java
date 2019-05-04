@@ -26,6 +26,7 @@ import huedev.org.ui.activity.user.UserContact;
 import huedev.org.ui.activity.user.UserPresenter;
 import huedev.org.ui.base.activity.BaseActivity;
 import huedev.org.utils.AppPrefs;
+import huedev.org.utils.helpers.StringHelper;
 import huedev.org.utils.navigator.Navigator;
 import huedev.org.utils.rx.SchedulerProvider;
 
@@ -123,7 +124,7 @@ public class UEditInfoActivity extends BaseActivity implements View.OnClickListe
 
     @Override
     public void logicFaild() {
-        Toast.makeText(this, "Please enter full information", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, StringHelper.getStringResourceByName("logic_faild", this), Toast.LENGTH_SHORT).show();
     }
 
     @Override

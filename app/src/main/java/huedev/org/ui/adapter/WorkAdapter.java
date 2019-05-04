@@ -78,10 +78,10 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.MyViewHolder>{
                     case R.id.ib_delete:
                             listWork.remove(i);
                             notifyDataSetChanged();
-                            SerializableFileFactory.SaveFile(listWork, AppConstants.PATH, view.getContext());
                             if (listWork.isEmpty()){
                                 mTextView.setText(StringHelper.getStringResourceByName("work_empty", view.getContext()));
                             }
+                            SerializableFileFactory.SaveFile(listWork, AppConstants.PATH, view.getContext());
                         break;
                     default:
                         if (itemp == 0){

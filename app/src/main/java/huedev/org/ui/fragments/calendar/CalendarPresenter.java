@@ -37,7 +37,7 @@ public class CalendarPresenter implements CalendarContact.Presenter{
         if (name.isEmpty() || time.isEmpty() || (name.isEmpty() && time.isEmpty())){
             mView.requireData();
         }else {
-            if (Integer.parseInt(time) > 0 && Integer.parseInt(time) < 13){
+            if (Integer.parseInt(time) > 0 && Integer.parseInt(time) < 13 || time.length() <= 2){
                 if (rbAM.isChecked()){
                     time = time + " AM";
                 }else {
