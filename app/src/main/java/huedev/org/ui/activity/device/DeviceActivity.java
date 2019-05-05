@@ -78,6 +78,16 @@ public class DeviceActivity extends BaseActivity implements DeviceContact.View{
     }
 
     @Override
+    public void createSuccess(Device device) {
+
+    }
+
+    @Override
+    public void logicCreateFaild() {
+
+    }
+
+    @Override
     public void showLoadingIndicator() {
     }
 

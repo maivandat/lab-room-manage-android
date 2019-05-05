@@ -196,6 +196,11 @@ public class CCreateFragment extends BaseFagment implements
     }
 
     @Override
+    public void updateComputerListAll(List<Computer> computerList) {
+
+    }
+
+    @Override
     public void createSucess(Computer computer) {
         NotifyHelper.showSnackbar(
                 view.findViewById(R.id.btn_add),

@@ -6,6 +6,7 @@ import huedev.org.data.source.remote.api.ApiAuth;
 import huedev.org.data.source.remote.api.ApiComputer;
 import huedev.org.data.source.remote.api.ApiRoom;
 import huedev.org.data.source.remote.api.ApiDevice;
+import huedev.org.data.source.remote.api.ApiTypeDevice;
 import huedev.org.data.source.remote.api.ApiUser;
 import huedev.org.utils.AppConstants;
 
@@ -15,6 +16,7 @@ public class AppServiceClient extends ServiceClient {
     private static ApiUser mApiUser;
     private static ApiRoom mApiRoom;
     private static ApiComputer mApiComputer;
+    private static ApiTypeDevice mApiTypeDevice;
 
     public static ApiAuth getLoginRemoteInstance(Context context) {
         if(mApiAuth == null){
@@ -56,5 +58,12 @@ public class AppServiceClient extends ServiceClient {
             mApiDevice = createService(context, AppConstants.HOST_URL, ApiDevice.class);
         }
         return mApiDevice;
+    }
+
+    public static ApiTypeDevice getTypeDeviceRemoteInstance(Context context){
+        if (mApiTypeDevice == null){
+            mApiTypeDevice = createService(context, AppConstants.HOST_URL, ApiTypeDevice.class);
+        }
+        return mApiTypeDevice;
     }
 }

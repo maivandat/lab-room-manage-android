@@ -131,6 +131,11 @@ public class ComputerActivity extends BaseActivity implements
     }
 
     @Override
+    public void createSuccess(Device device) {
+
+    }
+
+    @Override
     public void updateComputerList(List<Computer> computerList) {
         mComputerAdapter = new ComputerAdapter(this, computerList, mDeviceList, mRoomList, mComputerPresenter);
         mRvComputer.setAdapter(mComputerAdapter);
@@ -140,6 +145,11 @@ public class ComputerActivity extends BaseActivity implements
                 GridLayoutManager.VERTICAL,
                 false);
         mRvComputer.setLayoutManager(manager);
+    }
+
+    @Override
+    public void updateComputerListAll(List<Computer> computerList) {
+
     }
 
     @Override

@@ -45,6 +45,24 @@ public class ComputerPresenter implements ComputerContract.Presenter {
                         error -> handleComputerFailed(error));
     }
 
+    @Override
+    public void computersByRoomAll() {
+        mView.showLoadingIndicator();
+        mComputerRepository.computersByRoom()
+                .subscribeOn(mBaseSchedulerProvider.io())
+                .observeOn(mBaseSchedulerProvider.ui())
+                .subscribe(computerResponse -> handleComputerAllSuccess(computerResponse),
+                        error -> handleComputerAllFailed(error));
+    }
+
+    private void handleComputerAllFailed(Throwable error) {
+        mView.showLoginError(error);
+    }
+
+    private void handleComputerAllSuccess(ListCPTResponse computerResponse) {
+        mView.updateComputerListAll(computerResponse.computersByRoom);
+    }
+
     private void handleComputerSuccess(ListCPTResponse computerResponse){
         mView.hideLoadingIndicator();
         List<Computer> computerList = new ArrayList<>();
