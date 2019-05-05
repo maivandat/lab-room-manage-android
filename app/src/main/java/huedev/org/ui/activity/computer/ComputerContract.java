@@ -12,6 +12,7 @@ import huedev.org.ui.base.activity.BaseView;
 public interface ComputerContract {
     interface View extends BaseView {
         void updateComputerList(List<Computer> computerList);
+        void updateComputerListAll(List<Computer> computerList);
         void createSucess(Computer computer);
         void updateSuccess(Dialog dialog);
         void delSuccess(DialogInterface dialogInterface);
@@ -21,6 +22,7 @@ public interface ComputerContract {
 
     interface Presenter extends BasePresenter<View> {
         void computersByRoom();
+        void computersByRoomAll();
         void createComputer(String name, String desc, int status, int room_id);
         void updateComputer(int id, String name, String desc, int status, int room_id, Dialog dialog);
         void deleteComputer(int id, DialogInterface dialogInterface);

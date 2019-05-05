@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 import huedev.org.data.repository.DeviceRepository;
+import huedev.org.data.source.remote.response.device.CreateDeviceReponse;
 import huedev.org.data.source.remote.response.device.ListDeviceResponse;
 import huedev.org.utils.rx.BaseSchedulerProvider;
 
@@ -28,6 +29,30 @@ public class DevicePresenter implements DeviceContact.Presenter {
                 .observeOn(baseSchedulerProvider.ui())
                 .subscribe(listTempDeviceResponse -> handleTempDeviceSuccess(listTempDeviceResponse)
                         , error -> handleTempDeviceFail(error));
+    }
+
+    @Override
+    public void createDevice(String name, String desc,
+                             int status, int id_type_device, int id_computer) {
+        if (name.isEmpty() || desc.isEmpty()){
+            mView.logicCreateFaild();
+        }else {
+            mView.showLoadingIndicator();
+            deviceRepository.createDevice(name, desc, status, id_type_device, id_computer)
+                    .subscribeOn(baseSchedulerProvider.io())
+                    .observeOn(baseSchedulerProvider.ui())
+                    .subscribe(
+                            createDeviceReponse -> handleCreateDeviceSuccess(createDeviceReponse),
+                            err -> handleCreateDeviceFaild(err));
+        }
+    }
+
+    private void handleCreateDeviceFaild(Throwable err) {
+        mView.showLoginError(err);
+    }
+
+    private void handleCreateDeviceSuccess(CreateDeviceReponse createDeviceReponse) {
+        mView.createSuccess(createDeviceReponse.deviceItem);
     }
 
     private void handleTempDeviceFail(Throwable error) {

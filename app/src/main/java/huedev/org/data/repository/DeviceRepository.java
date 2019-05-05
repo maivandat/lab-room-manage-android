@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import huedev.org.data.source.DeviceDataSource;
 import huedev.org.data.source.local.DeviceLocalDataSource;
 import huedev.org.data.source.remote.DeviceRemoteDataSource;
+import huedev.org.data.source.remote.response.device.CreateDeviceReponse;
 import huedev.org.data.source.remote.response.device.ListDeviceResponse;
 import io.reactivex.Single;
 
@@ -33,5 +34,10 @@ public class DeviceRepository implements DeviceDataSource.LocalDataSource, Devic
     @Override
     public Single<ListDeviceResponse> tempDevices() {
         return deviceRemoteDataSource.tempDevices();
+    }
+
+    @Override
+    public Single<CreateDeviceReponse> createDevice(String name, String desc, int status, int id_type_device, int id_computer) {
+        return deviceRemoteDataSource.createDevice(name, desc, status, id_type_device, id_computer);
     }
 }
