@@ -1,5 +1,6 @@
 package huedev.org.ui.activity.auth.login;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -61,7 +62,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
 
 
     @Override
-    public void showLoadingIndicator() {
+    public void showLoadingIndicator(Dialog dialog) {
     }
 
     @Override
@@ -77,7 +78,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
     }
 
     @Override
-    public void hideLoadingIndicator() {
+    public void hideLoadingIndicator(Dialog dialog) {
     }
 
     @Override

@@ -3,6 +3,7 @@ package huedev.org.utils.helpers;
 import java.util.ArrayList;
 
 import huedev.org.data.model.Computer;
+import huedev.org.data.model.Device;
 import huedev.org.data.model.Room;
 import huedev.org.data.model.TypeDevice;
 
@@ -19,6 +20,14 @@ public class ArrayHelper {
         ArrayList<String> returnArray = new ArrayList<>();
         for (Computer computer : arrayList){
             returnArray.add(computer.getName());
+        }
+        return returnArray;
+    }
+
+    public static ArrayList<String> getNameArrayD(ArrayList<Device> arrayList){
+        ArrayList<String> returnArray = new ArrayList<>();
+        for (Device device : arrayList){
+            returnArray.add(device.getName());
         }
         return returnArray;
     }

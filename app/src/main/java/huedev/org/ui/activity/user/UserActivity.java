@@ -210,12 +210,12 @@ public class UserActivity extends BaseActivity implements View.OnClickListener, 
     }
 
     @Override
-    public void showLoadingIndicator() {
+    public void showLoadingIndicator(Dialog dialog) {
 
     }
 
     @Override
-    public void hideLoadingIndicator() {
+    public void hideLoadingIndicator(Dialog dialog) {
 
     }
 

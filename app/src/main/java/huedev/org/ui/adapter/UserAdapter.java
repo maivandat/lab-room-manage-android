@@ -33,6 +33,7 @@ import huedev.org.R;
 import huedev.org.data.model.User;
 import huedev.org.ui.activity.user.UserPresenter;
 import huedev.org.utils.helpers.NotifyHelper;
+import huedev.org.utils.helpers.StringHelper;
 
 public class UserAdapter extends RecyclerSwipeAdapter<UserAdapter.UserViewHolder> implements NotifyHelper.ShowDialog {
     private Context mContext;
@@ -101,20 +102,9 @@ public class UserAdapter extends RecyclerSwipeAdapter<UserAdapter.UserViewHolder
     public void showAlerDialogDel(AlertDialog.Builder alertDialog, int position) {
         alertDialog.setTitle("Thông báo");
         alertDialog.setMessage("Bạn có muốn xóa user " + mUserList.get(position).getName() + " không ?");
-        alertDialog.setPositiveButton("Không", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        });
+        alertDialog.setPositiveButton("Không", (dialogInterface, i) -> dialogInterface.dismiss());
 
-        alertDialog.setNegativeButton("Có", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                mUserPresenter.deleteUser(mUserList.get(position).getId(), dialogInterface);
-
-            }
-        });
+        alertDialog.setNegativeButton("Có", (dialogInterface, i) -> mUserPresenter.deleteUser(mUserList.get(position).getId(), dialogInterface));
 
         alertDialog.show();
     }
@@ -147,11 +137,11 @@ public class UserAdapter extends RecyclerSwipeAdapter<UserAdapter.UserViewHolder
             tvName.setText(user.getName());
             tvEmail.setText(user.getEmail());
             if (user.getRole().equals("0")){
-                sRole = "Admin";
+                sRole = StringHelper.getStringResourceByName("admin", mContext);
             }else if (user.getRole().equals("1")){
-                sRole = "Techicians";
+                sRole = StringHelper.getStringResourceByName("technicians", mContext);
             }else {
-                sRole = "Member";
+                sRole = StringHelper.getStringResourceByName("member", mContext);
             }
             tvRole.setText(sRole);
         }
@@ -168,19 +158,16 @@ public class UserAdapter extends RecyclerSwipeAdapter<UserAdapter.UserViewHolder
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder userViewHolder, int i) {
         userViewHolder.setData(mUserList.get(i));
-        View.OnClickListener onClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switch (view.getId()){
-                    case R.id.ib_EditUser:
-                        AlertDialog.Builder alerDialog = new AlertDialog.Builder(mContext);
-                        showAlerDialogDel(alerDialog, i);
-                        break;
-                    case R.id.ib_DelUser:
-                        Dialog dialog = new Dialog(mContext);
-                        showDialogUpdate(dialog, i);
-                        break;
-                }
+        View.OnClickListener onClickListener = view -> {
+            switch (view.getId()){
+                case R.id.ib_EditUser:
+                    AlertDialog.Builder alerDialog = new AlertDialog.Builder(mContext);
+                    showAlerDialogDel(alerDialog, i);
+                    break;
+                case R.id.ib_DelUser:
+                    Dialog dialog = new Dialog(mContext);
+                    showDialogUpdate(dialog, i);
+                    break;
             }
         };
         userViewHolder.ibEdit.setOnClickListener(onClickListener);

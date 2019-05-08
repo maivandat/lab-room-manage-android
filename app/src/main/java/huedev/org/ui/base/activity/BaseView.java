@@ -1,9 +1,11 @@
 package huedev.org.ui.base.activity;
 
-public interface BaseView {
-    void showLoadingIndicator();
+import android.app.Dialog;
 
-    void hideLoadingIndicator();
+public interface BaseView {
+    void showLoadingIndicator(Dialog dialog);
+
+    void hideLoadingIndicator(Dialog dialog);
 
     void showLoginError(Throwable throwable);
 }

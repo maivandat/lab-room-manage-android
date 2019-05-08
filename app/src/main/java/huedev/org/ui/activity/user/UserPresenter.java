@@ -25,7 +25,7 @@ public class UserPresenter implements UserContact.Presenter {
     // show list user
     @Override
     public void users() {
-        mView.showLoadingIndicator();
+
         mUserRepository.users()
                 .subscribeOn(mBaseSchedulerProvider.io())
                 .observeOn(mBaseSchedulerProvider.ui())
@@ -34,7 +34,7 @@ public class UserPresenter implements UserContact.Presenter {
     }
 
     private void handlerSuccessListUser(ListUserResponse listUserResponse) {
-        mView.hideLoadingIndicator();
+
         mView.usersList(listUserResponse.userList);
     }
 
@@ -51,7 +51,7 @@ public class UserPresenter implements UserContact.Presenter {
             mView.logicFaild();
         }else {
             if (oldPassword.isEmpty() && newPassword.isEmpty() && confirmNewPassword.isEmpty()){
-                mView.showLoadingIndicator();
+
                 String id = AppPrefs.getInstance(mContext).getIdUser();
                 String username = AppPrefs.getInstance(mContext).getUserNameUser();
                 String password = AppPrefs.getInstance(mContext).getPasswordUser();
@@ -66,7 +66,7 @@ public class UserPresenter implements UserContact.Presenter {
             } else {
                 if (oldPassword.equals(AppPrefs.getInstance(mContext).getPasswordUser())){
                     if (newPassword.equals(confirmNewPassword)) {
-                        mView.showLoadingIndicator();
+
                         String id = AppPrefs.getInstance(mContext).getIdUser();
                         String username = AppPrefs.getInstance(mContext).getUserNameUser();
                         int role = AppPrefs.getInstance(mContext).getRole();
@@ -101,7 +101,7 @@ public class UserPresenter implements UserContact.Presenter {
     }
 
     private void handleUdpateUserSuccess(UpdateUserReponse updateUserReponse, Dialog dialog) {
-        mView.hideLoadingIndicator();
+
         mView.user(updateUserReponse.user, dialog);
     }
 
@@ -110,7 +110,7 @@ public class UserPresenter implements UserContact.Presenter {
     }
 
     private void handleUdpateUserSuccess(UpdateUserReponse updateUserReponse) {
-        mView.hideLoadingIndicator();
+
         mView.logicSuccess();
         mView.user(updateUserReponse.user);
     }

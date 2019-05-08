@@ -1,5 +1,7 @@
 package huedev.org.ui.activity.main;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -210,12 +212,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     }
 
     @Override
-    public void showLoadingIndicator() {
+    public void showLoadingIndicator(Dialog dialog) {
 
     }
 
     @Override
-    public void hideLoadingIndicator() {
+    public void hideLoadingIndicator(Dialog dialog) {
 
     }
 

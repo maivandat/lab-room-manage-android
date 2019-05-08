@@ -23,9 +23,6 @@ import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.daimajia.swipe.SwipeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,12 +32,10 @@ import huedev.org.data.model.Device;
 import huedev.org.data.model.Room;
 import huedev.org.ui.activity.computer.ComputerPresenter;
 import huedev.org.ui.activity.device.DeviceActivity;
-import huedev.org.ui.activity.device.DeviceContact;
-import huedev.org.ui.activity.device.DevicePresenter;
 import huedev.org.utils.AppConstants;
 import huedev.org.utils.helpers.ArrayHelper;
 import huedev.org.utils.helpers.NotifyHelper;
-import huedev.org.utils.helpers.SpinerHelper;
+import huedev.org.utils.helpers.WidgetHelper;
 import huedev.org.utils.helpers.StringHelper;
 import huedev.org.utils.navigator.Navigator;
 
@@ -51,18 +46,22 @@ public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.Comput
     private List<Computer> mListComputer;
     private List<Device> mListDevice;
     private List<Room> mListRoom;
+    private List<Device> ListDeviceByCPT;
     private ComputerPresenter mComputerPresenter;
     private Navigator navigator;
     private int ROOM_ID;
 
     public ComputerAdapter(Context Context, List<Computer> ListComputer,
-                           List<Device> ListDevice, List<Room> ListRoom, ComputerPresenter computerPresenter) {
+                           List<Device> ListDevice, List<Room> ListRoom,
+                           ComputerPresenter computerPresenter) {
         this.mContext = Context;
         this.mListComputer = ListComputer;
         this.mListDevice = ListDevice;
         this.mListRoom = ListRoom;
         this.mComputerPresenter = computerPresenter;
         this.navigator = new Navigator((Activity) mContext);
+        this.ListDeviceByCPT= new ArrayList();
+
 
     }
 
@@ -87,7 +86,7 @@ public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.Comput
         etTitle.setText(mListComputer.get(position).getName());
         etDesc.setText(mListComputer.get(position).getDesc());
         Log.e("LISTROOM", mListRoom.size() + "");
-        SpinerHelper.setupSpinner(spinner,
+        WidgetHelper.setupSpinner(spinner,
                 ArrayHelper.getNameArrayR((ArrayList<Room>) mListRoom),
                 mContext);
         dialog.show();
@@ -176,18 +175,20 @@ public class ComputerAdapter extends RecyclerView.Adapter<ComputerAdapter.Comput
             tvName.setText(computer.getName());
             Log.e("DEVICELIST", mListDevice.size() + "");
             if (mListDevice.size() > 0) {
-                ArrayList<Device> devices = new ArrayList();
                 for (Device device : mListDevice) {
                     if (device.getComputersId().equals(computer.getId())) {
-                        devices.add(device);
+                        ListDeviceByCPT.add(device);
                     }
                 }
-                if (devices.size() > 0){
-                    tvChildDeviceCpu.setText("CPU: " + devices.get(0).getName());
-                    tvChildDeviceHD.setText("HDD: " + devices.get(1).getName());
-                    tvChildDeviceRam.setText("Ram: " + devices.get(2).getName());
+
+                Log.e("DEVICELIST_CHILD", ListDeviceByCPT.size() + "");
+                if (ListDeviceByCPT.size() > 0){
+                    tvChildDeviceCpu.setText("CPU: " + ListDeviceByCPT.get(0).getName());
+                    tvChildDeviceHD.setText("HDD: " + ListDeviceByCPT.get(1).getName());
+                    tvChildDeviceRam.setText("Ram: " + ListDeviceByCPT.get(2).getName());
                 }
             }
+
 
 
         }

@@ -37,7 +37,7 @@ public class ComputerPresenter implements ComputerContract.Presenter {
     //Get List
     @Override
     public void computersByRoom() {
-        mView.showLoadingIndicator();
+
         mComputerRepository.computersByRoom()
                 .subscribeOn(mBaseSchedulerProvider.io())
                 .observeOn(mBaseSchedulerProvider.ui())
@@ -47,7 +47,7 @@ public class ComputerPresenter implements ComputerContract.Presenter {
 
     @Override
     public void computersByRoomAll() {
-        mView.showLoadingIndicator();
+
         mComputerRepository.computersByRoom()
                 .subscribeOn(mBaseSchedulerProvider.io())
                 .observeOn(mBaseSchedulerProvider.ui())
@@ -64,7 +64,7 @@ public class ComputerPresenter implements ComputerContract.Presenter {
     }
 
     private void handleComputerSuccess(ListCPTResponse computerResponse){
-        mView.hideLoadingIndicator();
+
         List<Computer> computerList = new ArrayList<>();
         String id = navigator.getData().getString(AppConstants.ID_ROOM);
         for (Computer computer: computerResponse.computersByRoom) {
@@ -85,7 +85,7 @@ public class ComputerPresenter implements ComputerContract.Presenter {
         if (name.isEmpty() || desc.isEmpty()){
             mView.logicCreateFaild();
         }else {
-            mView.showLoadingIndicator();
+
             mComputerRepository.computerItem(name, desc, status, room_id)
                     .subscribeOn(mBaseSchedulerProvider.io())
                     .observeOn(mBaseSchedulerProvider.ui())
@@ -108,7 +108,7 @@ public class ComputerPresenter implements ComputerContract.Presenter {
         if (name.isEmpty() || desc.isEmpty()){
             mView.logicUpdateFaild(dialog);
         }else {
-            mView.showLoadingIndicator();
+
             mComputerRepository.computerItem(id, name, desc, status, room_id)
                     .subscribeOn(mBaseSchedulerProvider.io())
                     .observeOn(mBaseSchedulerProvider.ui())

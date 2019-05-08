@@ -23,7 +23,7 @@ public class DevicePresenter implements DeviceContact.Presenter {
 
     @Override
     public void tempDevices() {
-        mView.showLoadingIndicator();
+
         deviceRepository.tempDevices()
                 .subscribeOn(baseSchedulerProvider.io())
                 .observeOn(baseSchedulerProvider.ui())
@@ -37,7 +37,7 @@ public class DevicePresenter implements DeviceContact.Presenter {
         if (name.isEmpty() || desc.isEmpty()){
             mView.logicCreateFaild();
         }else {
-            mView.showLoadingIndicator();
+
             deviceRepository.createDevice(name, desc, status, id_type_device, id_computer)
                     .subscribeOn(baseSchedulerProvider.io())
                     .observeOn(baseSchedulerProvider.ui())
@@ -45,6 +45,16 @@ public class DevicePresenter implements DeviceContact.Presenter {
                             createDeviceReponse -> handleCreateDeviceSuccess(createDeviceReponse),
                             err -> handleCreateDeviceFaild(err));
         }
+    }
+    // Update
+    @Override
+    public void updateDevice(String name, String desc, int status, int id_type_device, int id_computer) {
+
+    }
+    // Delete
+    @Override
+    public void delDevice(int id) {
+
     }
 
     private void handleCreateDeviceFaild(Throwable err) {
@@ -60,7 +70,7 @@ public class DevicePresenter implements DeviceContact.Presenter {
     }
 
     private void handleTempDeviceSuccess(ListDeviceResponse listDeviceResponse) {
-        mView.hideLoadingIndicator();
+
         mView.updateTempDeviceList(listDeviceResponse.deviceList);
     }
 

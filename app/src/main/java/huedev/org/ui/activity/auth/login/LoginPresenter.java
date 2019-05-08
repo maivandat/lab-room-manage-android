@@ -28,7 +28,6 @@ public class LoginPresenter implements LoginContract.Presenter {
         if (username.isEmpty() || password.isEmpty()){
             mView.logicFaild();
         }else {
-            mView.showLoadingIndicator();
             mLoginRepository.login(username, password)
                     .subscribeOn(mSchedulerProvider.io())
                     .observeOn(mSchedulerProvider.ui())

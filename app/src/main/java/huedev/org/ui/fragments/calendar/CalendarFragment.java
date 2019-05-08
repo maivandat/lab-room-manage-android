@@ -1,6 +1,7 @@
 package huedev.org.ui.fragments.calendar;
 
 import android.app.ActivityOptions;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,6 +24,8 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Document;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -174,12 +177,12 @@ public class CalendarFragment extends BaseFagment implements View.OnClickListene
     }
 
     @Override
-    public void showLoadingIndicator() {
+    public void showLoadingIndicator(Dialog dialog) {
 
     }
 
     @Override
-    public void hideLoadingIndicator() {
+    public void hideLoadingIndicator(Dialog dialog) {
 
     }
 

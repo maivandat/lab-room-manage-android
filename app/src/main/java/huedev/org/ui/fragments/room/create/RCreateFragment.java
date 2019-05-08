@@ -109,12 +109,12 @@ public class RCreateFragment extends BaseFagment implements RoomContact.View, Vi
     }
 
     @Override
-    public void showLoadingIndicator() {
+    public void showLoadingIndicator(Dialog dialog) {
 
     }
 
     @Override
-    public void hideLoadingIndicator() {
+    public void hideLoadingIndicator(Dialog dialog) {
 
     }
 

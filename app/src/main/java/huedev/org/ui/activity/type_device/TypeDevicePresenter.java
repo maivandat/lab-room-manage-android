@@ -20,7 +20,6 @@ public class TypeDevicePresenter implements TypeDeviceContact.Presenter {
 
     @Override
     public void listTD() {
-        mView.showLoadingIndicator();
         mTDRepository.listTD()
                 .subscribeOn(mBaseSchedulerProvider.io())
                 .observeOn(mBaseSchedulerProvider.ui())

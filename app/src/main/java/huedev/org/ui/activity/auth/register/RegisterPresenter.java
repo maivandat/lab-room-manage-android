@@ -21,7 +21,7 @@ public class RegisterPresenter implements RegisterContact.Presenter {
 
     @Override
     public void register(String content_type, String name, String username, String password, String cfPassword, String email) {
-        mView.showLoadingIndicator();
+
         if (name.isEmpty() || username.isEmpty() || password.isEmpty() || cfPassword.isEmpty() || email.isEmpty()){
             mView.logicFaild();
         }else {
@@ -36,7 +36,7 @@ public class RegisterPresenter implements RegisterContact.Presenter {
 
     @Override
     public void register(String name, String username, String password, String cfPassword, String email, int role, Dialog dialog) {
-        mView.showLoadingIndicator();
+
         if (name.isEmpty() || username.isEmpty() || password.isEmpty() || cfPassword.isEmpty() || email.isEmpty()){
             mView.logicFaild();
         }else {

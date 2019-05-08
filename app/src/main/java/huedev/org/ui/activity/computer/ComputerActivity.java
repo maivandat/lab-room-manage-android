@@ -106,7 +106,6 @@ public class ComputerActivity extends BaseActivity implements
 
         mRoomPresenter.rooms();
         mDevicePresenter.tempDevices();
-        mComputerPresenter.computersByRoom();
 
     }
 
@@ -128,10 +127,21 @@ public class ComputerActivity extends BaseActivity implements
     @Override
     public void updateTempDeviceList(List<Device> deviceList) {
         mDeviceList = deviceList;
+        mComputerPresenter.computersByRoom();
     }
 
     @Override
     public void createSuccess(Device device) {
+
+    }
+
+    @Override
+    public void updateSucces(Device device) {
+
+    }
+
+    @Override
+    public void logicUpdateFaid() {
 
     }
 
@@ -181,11 +191,11 @@ public class ComputerActivity extends BaseActivity implements
     }
 
     @Override
-    public void showLoadingIndicator() {
+    public void showLoadingIndicator(Dialog dialog) {
     }
 
     @Override
-    public void hideLoadingIndicator() {
+    public void hideLoadingIndicator(Dialog dialog) {
     }
 
     @Override

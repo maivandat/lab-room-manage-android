@@ -8,12 +8,4 @@
         app:showAsAction="ifRoom">
 
     </item>
-
-    <item
-        android:id="@+id/menu.computerAdd"
-        android:title="Reset"
-        android:icon="@drawable/btn_add"
-        app:showAsAction="ifRoom">
-
-    </item>
 </menu>

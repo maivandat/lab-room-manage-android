@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -43,7 +42,7 @@ import huedev.org.ui.activity.type_device.TypeDevicePresenter;
 import huedev.org.ui.base.fragment.BaseFagment;
 import huedev.org.utils.helpers.ArrayHelper;
 import huedev.org.utils.helpers.NotifyHelper;
-import huedev.org.utils.helpers.SpinerHelper;
+import huedev.org.utils.helpers.WidgetHelper;
 import huedev.org.utils.helpers.StringHelper;
 import huedev.org.utils.rx.SchedulerProvider;
 
@@ -178,20 +177,20 @@ public class DCreateFragment extends BaseFagment
     @Override
     public void listTD(List<TypeDevice> listTD) {
         listTypeDevice = (ArrayList<TypeDevice>) listTD;
-        SpinerHelper.setupSpinner(
+        WidgetHelper.setupSpinner(
                 spinnerFirst,
                 ArrayHelper.getNameArrayTD((ArrayList<TypeDevice>) listTD),
                 getContext());
     }
 
     @Override
-    public void showLoadingIndicator() {
-
+    public void showLoadingIndicator(Dialog dialog) {
+        dialog.show();
     }
 
     @Override
-    public void hideLoadingIndicator() {
-
+    public void hideLoadingIndicator(Dialog dialog) {
+        dialog.dismiss();
     }
 
     @Override
@@ -207,7 +206,7 @@ public class DCreateFragment extends BaseFagment
     @Override
     public void updateComputerListAll(List<Computer> computerList) {
         listComputer = (ArrayList<Computer>) computerList;
-        SpinerHelper.setupSpinner(
+        WidgetHelper.setupSpinner(
                 spinnerSecond,
                 ArrayHelper.getNameArrayC((ArrayList<Computer>) computerList),
                 getContext());
@@ -244,6 +243,16 @@ public class DCreateFragment extends BaseFagment
         NotifyHelper.showSnackbar(btnAdd,
                 "Create " + device.getName() + " success",
                 Snackbar.LENGTH_SHORT);
+    }
+
+    @Override
+    public void updateSucces(Device device) {
+
+    }
+
+    @Override
+    public void logicUpdateFaid() {
+
     }
 
     @Override

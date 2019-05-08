@@ -10,6 +10,7 @@ import huedev.org.data.repository.RoomRepository;
 import huedev.org.data.source.remote.response.room.CreateRoomReponse;
 import huedev.org.data.source.remote.response.room.ListRoomReponse;
 import huedev.org.data.source.remote.response.room.UpdateRoomReponse;
+import huedev.org.utils.helpers.WidgetHelper;
 import huedev.org.utils.rx.BaseSchedulerProvider;
 
 public class RoomPresenter implements RoomContact.Presenter {
@@ -17,6 +18,7 @@ public class RoomPresenter implements RoomContact.Presenter {
     Context mContext;
     RoomContact.View mView;
     RoomRepository mRoomRepository;
+    Dialog dialog;
     BaseSchedulerProvider mSchedulerProvider;
 
     public RoomPresenter(Context context, RoomRepository roomRepository,
@@ -24,6 +26,7 @@ public class RoomPresenter implements RoomContact.Presenter {
         this.mContext = Preconditions.checkNotNull(context);
         this.mRoomRepository = Preconditions.checkNotNull(roomRepository);
         this.mSchedulerProvider = Preconditions.checkNotNull(schedulerProvider);
+        dialog = WidgetHelper.setupDialog(mContext);
     }
 
     //Add Room
@@ -33,6 +36,7 @@ public class RoomPresenter implements RoomContact.Presenter {
         if (name.isEmpty() || desc.isEmpty()){
             mView.logicFaild();
         }else {
+
             mRoomRepository.createRoom(name, desc, status)
                     .subscribeOn(mSchedulerProvider.io())
                     .observeOn(mSchedulerProvider.ui())
@@ -43,7 +47,7 @@ public class RoomPresenter implements RoomContact.Presenter {
     }
 
     private void handleAddRommSuccess(CreateRoomReponse createRoomReponse) {
-        mView.hideLoadingIndicator();
+
         mView.createRoomItem(createRoomReponse.room);
     }
 
@@ -54,7 +58,7 @@ public class RoomPresenter implements RoomContact.Presenter {
     // Get List Room
     @Override
     public void rooms() {
-        mView.showLoadingIndicator();
+        mView.showLoadingIndicator(dialog);
         mRoomRepository.rooms()
                 .subscribeOn(mSchedulerProvider.io())
                 .observeOn(mSchedulerProvider.ui())
@@ -63,7 +67,7 @@ public class RoomPresenter implements RoomContact.Presenter {
     }
 
     private void handleRoomsSuccess(ListRoomReponse listRoomReponse){
-        mView.hideLoadingIndicator();
+        mView.hideLoadingIndicator(dialog);
         mView.updateRoomsList(listRoomReponse.roomList);
     }
 
@@ -77,7 +81,7 @@ public class RoomPresenter implements RoomContact.Presenter {
         if (name.isEmpty() || desc.isEmpty()){
             mView.logicFaild();
         }else {
-            mView.showLoadingIndicator();
+
             mRoomRepository.updateRoom(id, name, desc, status)
                     .subscribeOn(mSchedulerProvider.io())
                     .observeOn(mSchedulerProvider.ui())
@@ -88,7 +92,7 @@ public class RoomPresenter implements RoomContact.Presenter {
     }
 
     private void handleUpdateRoomSuccess(UpdateRoomReponse updateRoomReponse, Dialog dialog) {
-        mView.hideLoadingIndicator();
+
         mView.updateRoomItem(updateRoomReponse.itemRoom, dialog);
 
     }

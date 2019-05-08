@@ -114,11 +114,13 @@ public class RoomFragment extends BaseFagment implements RoomContact.View {
 
 
     @Override
-    public void showLoadingIndicator() {
+    public void showLoadingIndicator(Dialog dialog) {
+        dialog.show();
     }
 
     @Override
-    public void hideLoadingIndicator() {
+    public void hideLoadingIndicator(Dialog dialog) {
+        dialog.dismiss();
     }
 
     @Override
